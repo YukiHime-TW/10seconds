@@ -1,4 +1,4 @@
-package game.mainpart;
+package tenseconds;
 
 public class MainPart{
     public static void main(String[] args) {
