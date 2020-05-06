@@ -10,7 +10,7 @@ public class Frame {
     public void init() {
         // 建立一個視窗，並將標題設定為「視窗程式」
         // 標題可用jframe.setTitle("視窗程式");代替
-        JFrame jframe = new JFrame("It's fucking title!!!!");
+        JFrame jframe = new JFrame("時間勇者:Take A Breath");
 
         // 設定圖示
         jframe.setIconImage(jframe.getToolkit().getImage("test.jpg"));
