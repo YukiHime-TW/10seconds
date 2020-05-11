@@ -1,4 +1,4 @@
-package bin.tenseconds;
+package bin.tenseconds.major;
 
 public class MajorPart{
     public static void main(String[] args) {

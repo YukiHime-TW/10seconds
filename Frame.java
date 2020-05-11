@@ -1,4 +1,4 @@
-package bin.tenseconds;
+package bin.tenseconds.major;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
