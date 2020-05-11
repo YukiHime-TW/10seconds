@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 public class Frame {
+
+    //視窗
     public Frame(){
         init();
     }
