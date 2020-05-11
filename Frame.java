@@ -28,7 +28,6 @@ public class Frame {
         jframe.setSize(jframe.getToolkit().getScreenSize());
 
         // 設定視窗開啟時的位置，有以下兩種常用設定方法
-        jframe.setLocation(0, 0); // --> 設定視窗開啟時左上角的座標，也可帶入Point物件
         jframe.setLocationRelativeTo(null); // --> 設定開啟的位置和某個物件相同，帶入null則會在畫面中間開啟
 
         // 關閉選項(右上角的叉叉圖示)按下後的動作
