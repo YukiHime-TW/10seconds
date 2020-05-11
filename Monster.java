@@ -18,9 +18,11 @@ public class Monster extends Mob {
     }
 
     public void attack(Player player) {
-        player.setHp(player.getHp() - this.weapon.getOffense());
-        if(player.getHp()<=0){
+        if (player.getHp() - this.weapon.getOffense() <= 0) {
             player.setHp(0);
+            return;
+        } else {
+            player.setHp(player.getHp() - this.weapon.getOffense());
             return;
         }
     }

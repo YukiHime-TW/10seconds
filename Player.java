@@ -19,6 +19,12 @@ public class Player extends Mob {
     private int tick;
     public int experience = 0;
 
+    public Player(){
+        this.setHp(20);
+        this.weapon = new Weapon();
+        this.level=1;
+    }
+
     public void setTick(int tick) {
         this.tick = tick;
     }
@@ -54,10 +60,12 @@ public class Player extends Mob {
     }
 
     public void attack(Monster enemy) {
-        enemy.setHp(enemy.getHp() - this.weapon.getOffense());
-        if (enemy.getHp() <= 0) {
+        if (enemy.getHp() - this.weapon.getOffense() <= 0) {
             enemy.setHp(0);
             this.changeWeapon(enemy);
+            return;
+        } else {
+            enemy.setHp(enemy.getHp() - this.weapon.getOffense());
             return;
         }
     }
