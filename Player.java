@@ -19,6 +19,12 @@ public class Player extends Mob {
     private int tick;
     public int experience = 0;
 
+    public Player(){
+        this.setHp(20);
+        this.weapon = new Weapon();
+        this.level=1;
+    }
+
     public void setTick(int tick) {
         this.tick = tick;
     }
@@ -29,7 +35,7 @@ public class Player extends Mob {
 
     public void changeWeapon(Monster enemy) {
         if (enemy.weapon.getLevel() > this.weapon.getLevel()) {
-            //輸出"更換武器成(武器名)"
+            // 輸出"更換武器成(武器名)"
             this.weapon = enemy.weapon;
         }
     }
@@ -45,11 +51,23 @@ public class Player extends Mob {
 
     public void levelUp() {
         if (experience == (level * 10)) {
-            //輸出"恭喜升級"
+            // 輸出"恭喜升級"
             level++;
             experience = 0;
         } else {
             return;
         }
     }
+
+    public void attack(Monster enemy) {
+        if (enemy.getHp() - this.weapon.getOffense() <= 0) {
+            enemy.setHp(0);
+            this.changeWeapon(enemy);
+            return;
+        } else {
+            enemy.setHp(enemy.getHp() - this.weapon.getOffense());
+            return;
+        }
+    }
+
 }
