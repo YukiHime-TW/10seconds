@@ -1,6 +1,9 @@
-package tenseconds;
+package bin.tenseconds;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 public class Frame {
     public Frame(){
@@ -8,13 +11,17 @@ public class Frame {
     }
 
     public void init() {
+
+        //處理圖片用的
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+
         // 建立一個視窗，並將標題設定為「視窗程式」
         // 標題可用jframe.setTitle("視窗程式");代替
         JFrame jframe = new JFrame("時間勇者:Take A Breath");
 
         // 設定圖示
-        jframe.setIconImage(jframe.getToolkit().getImage("test.jpg"));
-
+        jframe.setIconImage(toolkit.getImage("src/icon.png"));
+        
         // 設定視窗大小(長,寬)
         jframe.setSize(jframe.getToolkit().getScreenSize());
 
