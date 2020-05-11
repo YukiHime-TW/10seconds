@@ -7,14 +7,14 @@ import java.awt.Toolkit;
 
 public class Frame {
 
-    //視窗
-    public Frame(){
+    // 視窗
+    public Frame() {
         init();
     }
 
     public void init() {
 
-        //處理圖片用的
+        // 處理圖片用的
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
         // 建立一個視窗，並將標題設定為「視窗程式」
@@ -23,9 +23,9 @@ public class Frame {
 
         // 設定圖示
         jframe.setIconImage(toolkit.getImage("src/icon.png"));
-        
+
         // 設定視窗大小(長,寬)
-        jframe.setSize(jframe.getToolkit().getScreenSize());
+        jframe.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         // 設定視窗開啟時的位置，有以下兩種常用設定方法
         jframe.setLocationRelativeTo(null); // --> 設定開啟的位置和某個物件相同，帶入null則會在畫面中間開啟
