@@ -8,9 +8,9 @@ public class Monster extends Mob {
     private String name;
 
     public Monster(int hp, Weapon weapon, String name) {
-        this.name = name;
         this.hp = hp;
         this.weapon = weapon;
+        this.name = name;
     }
 
     public String getName() {
