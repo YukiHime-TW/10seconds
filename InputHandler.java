@@ -47,21 +47,25 @@ public class InputHandler implements KeyListener {
         if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
             lookDir = 0;
             up.toggle(isPressed);
+            System.out.println("UP is Pressed");
         }
 
         if (keyCode == KeyEvent.VK_S || keyCode == KeyEvent.VK_DOWN) {
             lookDir = 1;
             down.toggle(isPressed);
+            System.out.println("DOWN is Pressed");
         }
 
         if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
             lookDir = 2;
             left.toggle(isPressed);
+            System.out.println("LEFT is Pressed");
         }
 
         if (keyCode == KeyEvent.VK_D || keyCode == KeyEvent.VK_RIGHT) {
             lookDir = 3;
             right.toggle(isPressed);
+            System.out.println("RIGHT is Pressed");
         }
     }
 }
