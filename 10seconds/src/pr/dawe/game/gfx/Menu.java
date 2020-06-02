@@ -19,7 +19,6 @@ public class Menu extends JFrame {
 	public static boolean credtis;
 	public static boolean running = false;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	private int credits = 0;
 
 	public Menu(String title) {
 

@@ -1,7 +1,9 @@
 package pr.dawe.game;
 
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
 
 import pr.dawe.game.entities.PickableItem;
 import pr.dawe.game.entities.Player;

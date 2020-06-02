@@ -3,16 +3,26 @@ package pr.dawe.game;
 import java.awt.BorderLayout;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.*;
 
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 import pr.dawe.game.entities.NPC;
 import pr.dawe.game.entities.PickableItem;
@@ -36,7 +46,8 @@ public class Game extends Canvas implements Runnable {
 	JFrame frame;
 	Random generator = new Random();
 
-	public boolean running = false;
+	public static boolean running = false;
+	public static boolean menuRunning = false;
 	public int tickCount = 0;
 	long lastTime;
 	public static int xOffset;
@@ -71,7 +82,7 @@ public class Game extends Canvas implements Runnable {
 		frame.add(this, BorderLayout.CENTER);
 		frame.pack();
 
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
@@ -129,13 +140,13 @@ public class Game extends Canvas implements Runnable {
 
 	public synchronized void start() {
 		running = true;
-		Menu.running = true;
+		menuRunning = true;
 		new Thread(this).start();
 	}
 
 	public synchronized void stop() {
 		running = false;
-		Menu.running = true;
+		menuRunning = true;
 	}
 
 	public void close() {
@@ -235,7 +246,38 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		new Game().start();
+		 new Game().Menu(NAME);
+	}
+	
+	private static JButton jButton1 = new JButton();
+	public static boolean enterLevel;
+
+	public void Menu(String title) {
+		
+		
+
+		jButton1.setBounds(168, 80, 305, 57);
+		jButton1.setText("Start new Level");
+		jButton1.setMargin(new Insets(2, 2, 2, 2));
+		jButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jButton1_ActionPerformed(evt);
+			}
+		});
+		jButton1.setBackground(Color.WHITE);
+		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
+		frame.add(jButton1);
+		frame.setBackground(new Color(0xFFC800));
+		
+
+	}
+
+	public void jButton1_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
+		if (menuRunning == false) {
+			this.start();
+		} else {
+			System.out.println("Already running!");
+		}
 	}
 
 }
