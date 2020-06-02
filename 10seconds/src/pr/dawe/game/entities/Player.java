@@ -56,15 +56,15 @@ public class Player extends Mob {
 			}
 		if (!hasCollided(xa, ya))
 
-			System.out.println(x+" "+y);
+			System.out.println(x + " " + y);
 
-			if (xa != 0 || ya != 0) {
-				move(xa, ya);
-				isMoving = true;
-			} else {
-				isMoving = false;
+		if (xa != 0 || ya != 0) {
+			move(xa, ya);
+			isMoving = true;
+		} else {
+			isMoving = false;
 
-			}
+		}
 
 		// SWIMMING
 		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 3) {
