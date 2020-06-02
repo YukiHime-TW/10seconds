@@ -1,9 +1,12 @@
 package pr.dawe.game;
 
 import java.awt.BorderLayout;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -73,7 +76,7 @@ public class Game extends Canvas implements Runnable {
 		frame.setVisible(true);
 
 	}
-
+	
 	public void init() {
 		int index = 0;
 		for (int r = 0; r < 6; r++) {

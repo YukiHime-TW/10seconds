@@ -11,7 +11,7 @@ import pr.dawe.game.level.Level;
 
 public class InputHandler implements KeyListener {
 	public static int lookDir;
-
+	
 	public InputHandler(Game game) {
 		game.addKeyListener(this);
 	}
@@ -49,6 +49,8 @@ public class InputHandler implements KeyListener {
 	public Key investigate = new Key();
 	// MENU
 	public Key escape = new Key();
+	
+	public Game game;
 
 	public void keyPressed(KeyEvent e) {
 		toggleKey(e.getKeyCode(), true);
