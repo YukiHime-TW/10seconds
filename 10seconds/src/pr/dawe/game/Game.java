@@ -6,6 +6,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Toolkit;
@@ -75,8 +76,6 @@ public class Game extends Canvas implements Runnable {
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 
 		frame = new JFrame(NAME);
-		
-		Menu(NAME);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -248,36 +247,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		 new Game();
-	}
-	
-	private static JButton jButton1 = new JButton();
-	public static boolean enterLevel;
-
-	public void Menu(String title) {
-		
-		jButton1.setBounds(168, 80, 305, 57);
-		jButton1.setText("Start new Level");
-		jButton1.setMargin(new Insets(2, 2, 2, 2));
-		jButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				jButton1_ActionPerformed(evt);
-			}
-		});
-		jButton1.setBackground(Color.WHITE);
-		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
-		frame.add(jButton1);
-		frame.setBackground(new Color(0xFFC800));
-
-	}
-
-	public void jButton1_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
-		if (menuRunning == false) {
-			this.start();
-			menuRunning=true;
-		} else {
-			System.out.println("Already running!");
-		}
+		 new Game().start();
 	}
 
 }
