@@ -124,6 +124,7 @@ public class InputHandler implements KeyListener {
 		// MENU / ESCAPE
 		if (keyCode == KeyEvent.VK_ESCAPE) {
 			Menu.main(null);
+			Game.closeGame();
 		}
 
 	}
