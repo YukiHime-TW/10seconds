@@ -54,6 +54,7 @@ public class Menu extends JFrame {
 	public void jButton1_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
 		if (running == false) {
 			Game.main(null);
+			running = true;
 			closeMenu();
 		} else {
 			System.out.println("Already running!");
