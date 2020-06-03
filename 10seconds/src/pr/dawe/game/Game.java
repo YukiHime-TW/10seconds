@@ -8,7 +8,10 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,7 +45,7 @@ public class Game extends Canvas implements Runnable {
 	public static final int WIDTH = 160;
 	public static final int HEIGHT = WIDTH / 12 * 9;
 	public static final int SCALE = 4;
-	public static final String NAME = "®É¶¡«iªÌ:Take a breath";
+	public static final String NAME = "æ™‚é–“å‹‡è€…:Take a breath";
 
 	public static JFrame frame;
 	Random generator = new Random();
@@ -71,16 +74,17 @@ public class Game extends Canvas implements Runnable {
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
 
 	public Game() {
-		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		//setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		//setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		//setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 
 		frame = new JFrame(NAME);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
-
+		frame.setUndecorated(true);
 		frame.add(this, BorderLayout.CENTER);
+		frame.getGraphicsConfiguration().getDevice() .setFullScreenWindow(frame); 
 		frame.pack();
 
 		frame.setResizable(true);
