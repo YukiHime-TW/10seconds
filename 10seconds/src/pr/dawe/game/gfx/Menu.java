@@ -48,7 +48,7 @@ public class Menu extends JFrame {
 		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton1);
 		
-		jButton2.setBounds(168, 160, 255, 50);
+		jButton2.setBounds(168, 160, 305, 57);
 		jButton2.setText("Close Game");
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
