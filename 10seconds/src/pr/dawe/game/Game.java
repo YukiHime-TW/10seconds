@@ -75,6 +75,8 @@ public class Game extends Canvas implements Runnable {
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 
 		frame = new JFrame(NAME);
+		
+		Menu(NAME);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -246,7 +248,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		 new Game().Menu(NAME);
+		 new Game();
 	}
 	
 	private static JButton jButton1 = new JButton();
@@ -266,13 +268,13 @@ public class Game extends Canvas implements Runnable {
 		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		frame.add(jButton1);
 		frame.setBackground(new Color(0xFFC800));
-		
 
 	}
 
 	public void jButton1_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
 		if (menuRunning == false) {
 			this.start();
+			menuRunning=true;
 		} else {
 			System.out.println("Already running!");
 		}
