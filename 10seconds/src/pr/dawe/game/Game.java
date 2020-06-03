@@ -254,8 +254,6 @@ public class Game extends Canvas implements Runnable {
 
 	public void Menu(String title) {
 		
-		
-
 		jButton1.setBounds(168, 80, 305, 57);
 		jButton1.setText("Start new Level");
 		jButton1.setMargin(new Insets(2, 2, 2, 2));
