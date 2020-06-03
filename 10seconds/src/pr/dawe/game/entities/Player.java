@@ -66,11 +66,11 @@ public class Player extends Mob {
 
 		}
 
-		// SWIMMING
-		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 3) {
+		// WATER_or_WATERFALL_SWIMMING
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 3 || level.getTile(this.x >> 3, this.y >> 3).getId() == 7) {
 			isSwimming = true;
 		}
-		if (isSwimming && level.getTile(this.x >> 3, this.y >> 3).getId() != 3) {
+		if (isSwimming && level.getTile(this.x >> 3, this.y >> 3).getId() != 3 && level.getTile(this.x >> 3, this.y >> 3).getId() != 7) {
 			isSwimming = false;
 		}
 
