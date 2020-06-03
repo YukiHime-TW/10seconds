@@ -15,6 +15,7 @@ public class Menu extends JFrame {
 
 	private JButton jButton1 = new JButton();
 	private JButton jButton2 = new JButton();
+	private JButton jButton3 = new JButton();
 	public static boolean enterLevel;
 	public static boolean enterDungeonForest;
 	public static boolean credtis;
@@ -38,7 +39,7 @@ public class Menu extends JFrame {
 		Container cp = getContentPane();
 		cp.setLayout(null);
 
-		jButton1.setBounds(168, 80, 305, 57);
+		jButton1.setBounds(460, 150, 610, 114);
 		jButton1.setText("Start new Level");
 		jButton1.setMargin(new Insets(2, 2, 2, 2));
 		jButton1.addActionListener(new ActionListener() {
@@ -50,8 +51,8 @@ public class Menu extends JFrame {
 		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton1);
 		
-		jButton2.setBounds(168, 160, 305, 57);
-		jButton2.setText("Close Game");
+		jButton2.setBounds(520, 400, 490, 114);
+		jButton2.setText("Setting");
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -61,6 +62,18 @@ public class Menu extends JFrame {
 		jButton2.setBackground(Color.WHITE);
 		jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton2);
+		
+		jButton3.setBounds(580, 650, 370, 114);
+		jButton3.setText("Close Game");
+		jButton3.setMargin(new Insets(2, 2, 2, 2));
+		jButton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jButton3_ActionPerformed(evt);
+			}
+		});
+		jButton3.setBackground(Color.WHITE);
+		jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
+		cp.add(jButton3);
 		
 		cp.setBackground(new Color(0xFFC800));
 
@@ -77,6 +90,10 @@ public class Menu extends JFrame {
 	}
 	
 	public void jButton2_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
+		//System.exit(1);
+	}
+	
+	public void jButton3_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
 		System.exit(1);
 	}
 
