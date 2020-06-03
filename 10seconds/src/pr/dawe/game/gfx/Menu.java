@@ -25,6 +25,8 @@ public class Menu extends JFrame {
 
 		super(title);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		setUndecorated(true);
+		getGraphicsConfiguration().getDevice().setFullScreenWindow(this); 
 		int frameWidth = 650;
 		int frameHeight = 500;
 		setSize(frameWidth, frameHeight);
