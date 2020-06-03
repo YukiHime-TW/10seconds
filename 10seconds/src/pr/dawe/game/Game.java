@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
 	public static final int SCALE = 4;
 	public static final String NAME = "®É¶¡«iªÌ:Take a breath";
 
-	JFrame frame;
+	public static JFrame frame;
 	Random generator = new Random();
 
 	public static boolean running = false;
@@ -244,6 +244,10 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 
+	}
+	
+	public static void closeGame() {
+		frame.setVisible(false);
 	}
 
 	public static void main(String[] args) {

@@ -14,6 +14,7 @@ import pr.dawe.game.level.Level;
 public class Menu extends JFrame {
 
 	private JButton jButton1 = new JButton();
+	private JButton jButton2 = new JButton();
 	public static boolean enterLevel;
 	public static boolean enterDungeonForest;
 	public static boolean credtis;
@@ -23,7 +24,7 @@ public class Menu extends JFrame {
 	public Menu(String title) {
 
 		super(title);
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		int frameWidth = 650;
 		int frameHeight = 500;
 		setSize(frameWidth, frameHeight);
@@ -46,6 +47,19 @@ public class Menu extends JFrame {
 		jButton1.setBackground(Color.WHITE);
 		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton1);
+		
+		jButton2.setBounds(168, 160, 255, 50);
+		jButton2.setText("Close Game");
+		jButton2.setMargin(new Insets(2, 2, 2, 2));
+		jButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jButton2_ActionPerformed(evt);
+			}
+		});
+		jButton2.setBackground(Color.WHITE);
+		jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
+		cp.add(jButton2);
+		
 		cp.setBackground(new Color(0xFFC800));
 
 		setVisible(true);
@@ -54,11 +68,14 @@ public class Menu extends JFrame {
 	public void jButton1_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
 		if (running == false) {
 			Game.main(null);
-			running = true;
 			closeMenu();
 		} else {
 			System.out.println("Already running!");
 		}
+	}
+	
+	public void jButton2_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
+		System.exit(1);
 	}
 
 	public void closeMenu() {
