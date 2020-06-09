@@ -54,8 +54,8 @@ public class Setting extends JFrame {
 		controlPanel.setBackground(new Color(0xFFFFFF));
 		controlPanel.setBackground(null);
 		controlPanel.setOpaque(false);
-		controlPanel.setSize(500, 300);
-		controlPanel.setLocation(610, 100);
+		controlPanel.setSize(500, 50);
+		controlPanel.setLocation(540, 300);
 		volumeNow.setSize(100, 100);
 		controlPanel.add(volumeChange,BorderLayout.CENTER);
 		controlPanel.add(volumeNow,BorderLayout.EAST);
