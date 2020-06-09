@@ -1,10 +1,8 @@
-//進入點
 package pr.dawe.game.gfx;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.awt.font.*;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -12,9 +10,12 @@ import javax.swing.event.*;
 import pr.dawe.game.Game;
 import pr.dawe.game.level.Level;
 
-public class Menu extends JFrame {
+public class Setting extends JFrame {
 
-	private JButton jButton1 = new JButton();
+	private int difficulty = 0;
+	private JSlider volumeChange;
+	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
+	private JPanel controlPanel;
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	public static boolean enterLevel;
@@ -23,7 +24,7 @@ public class Menu extends JFrame {
 	public static boolean running = false;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
-	public Menu(String title) {
+	public Setting(String title) {
 
 		super(title);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -36,37 +37,25 @@ public class Menu extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-<<<<<<< HEAD
 
-		jButton1.setBounds(450, 280, 620, 114);
-		jButton1.setText("Start New Level");
-		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
-		jButton1.setForeground(Color.RED);
-=======
+		// Volume
+		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+		volumeChange.setMajorTickSpacing(1);
+		volumeChange.setPaintTicks(true);
+		ValueChangeListener myListener = new ValueChangeListener();
+		volumeChange.addChangeListener(myListener);
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new FlowLayout());
+		controlPanel.setBackground(new Color(0xFFC800));
+		controlPanel.setSize(350, 100);
+		volumeNow.setSize(350, 100);
+		controlPanel.add(volumeChange,BorderLayout.CENTER);
+		controlPanel.add(volumeNow,BorderLayout.CENTER);
+		cp.add(controlPanel);
 		
-		//Game Start
-		jButton1.setBounds(460, 150, 610, 114);
-		jButton1.setText("Start new Level");
->>>>>>> 838870a74319cd89408fe2213deb3321de1c32d0
-		jButton1.setMargin(new Insets(2, 2, 2, 2));
-		jButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				jButton1_ActionPerformed(evt);
-			}
-		});
-		jButton1.setBackground(Color.WHITE);
-		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
-		cp.add(jButton1);
-		
-<<<<<<< HEAD
-		jButton2.setBounds(520, 490, 490, 114);
-=======
-		//Setting
+		// Difficulty
 		jButton2.setBounds(520, 400, 490, 114);
->>>>>>> 838870a74319cd89408fe2213deb3321de1c32d0
-		jButton2.setText("Setting");
-		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
-		jButton2.setForeground(Color.RED);
+		jButton2.setText("Difficulty: Easy");
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -76,16 +65,10 @@ public class Menu extends JFrame {
 		jButton2.setBackground(Color.WHITE);
 		jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton2);
-		
-<<<<<<< HEAD
-		jButton3.setBounds(580, 700, 370, 114);
-=======
-		//Close Game
+
+		// Back to menu
 		jButton3.setBounds(580, 650, 370, 114);
->>>>>>> 838870a74319cd89408fe2213deb3321de1c32d0
-		jButton3.setText("Close Game");
-		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
-		jButton3.setForeground(Color.RED);
+		jButton3.setText("Back to menu");
 		jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -95,41 +78,56 @@ public class Menu extends JFrame {
 		jButton3.setBackground(Color.WHITE);
 		jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton3);
-		
+
 		cp.setBackground(new Color(0xFFC800));
 
 		setVisible(true);
 	}
 
-	public void jButton1_ActionPerformed(ActionEvent evt) { // GAME START
-		if (running == false) {
-			Game.main(null);
-			closeMenu();
-		} else {
-			System.out.println("Already running!");
+	class ValueChangeListener implements ChangeListener {
+		public void stateChanged(ChangeEvent e) {
+			if (e.getSource() == volumeChange) {
+				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+			}
 		}
-	}
-	
-	public void jButton2_ActionPerformed(ActionEvent evt) { // SETTING
-		if (running == false) {
-			Setting.main(null);
-			closeMenu();
-		} else {
-			System.out.println("Already running!");
-		}
-	}
-	
-	public void jButton3_ActionPerformed(ActionEvent evt) { // CLOSE　GAME
-		System.exit(1);
 	}
 
-	public void closeMenu() {
+	public void jButton1_ActionPerformed(ActionEvent evt) { // Volume
+
+	}
+
+	public void jButton2_ActionPerformed(ActionEvent evt) { // Setting difficulty
+		// initial = 0
+		// Easy = 0
+		// Normal = 1
+		// Hard = 2
+		if (difficulty == 0) {
+			difficulty = 1;
+			jButton2.setText("Difficulty: Normal");
+		} else if (difficulty == 1) {
+			difficulty = 2;
+			jButton2.setText("Difficulty: Hard");
+		} else if (difficulty == 2) {
+			difficulty = 0;
+			jButton2.setText("Difficulty: Easy");
+		}
+	}
+
+	public void jButton3_ActionPerformed(ActionEvent evt) { // Back to menu
+		if (running == false) {
+			Menu.main(null);
+			closeSetting();
+		} else {
+			System.out.println("Already running!");
+		}
+	}
+
+	public void closeSetting() {
 		WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
 	}
 
 	public static void main(String[] args) {
-		new Menu("時間勇者:Take a breath");
+		new Setting("時間勇者:Take a breath");
 	}
-
 }
