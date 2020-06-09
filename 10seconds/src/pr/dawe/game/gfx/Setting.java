@@ -45,24 +45,20 @@ public class Setting extends JFrame {
 
 		// Volume
 		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
-		volumeChange.setPaintTicks(true);
-		volumeChange.setPaintLabels(true);
 		volumeChange.setMajorTickSpacing(5);
 		ValueChangeListener myListener = new ValueChangeListener();
 		volumeChange.addChangeListener(myListener);
-		
+
 		controlPanel = new JPanel();
-		controlPanel.setPreferredSize(new Dimension(600, 400));
 		controlPanel.setLayout(new BorderLayout(5, 10));
 		controlPanel.setBackground(new Color(0xFFFFFF));
-		//controlPanel.setBackground(null);
-		//controlPanel.setOpaque(false);
-		controlPanel.setSize(600, 400);
+		controlPanel.setBackground(null);
+		controlPanel.setOpaque(false);
+		controlPanel.setSize(500, 300);
 		controlPanel.setLocation(610, 100);
 		volumeNow.setSize(100, 100);
 		controlPanel.add(volumeChange,BorderLayout.CENTER);
 		controlPanel.add(volumeNow,BorderLayout.EAST);
-		controlPanel.setLayout(new BorderLayout(5,10));
 		cp.add(controlPanel);
 
 		
@@ -184,6 +180,6 @@ public class Setting extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new Setting("�ɶ��i��:Take a breath");
+		new Setting("Time Brave:Take a breath");
 	}
 }
