@@ -14,7 +14,7 @@ public class Setting extends JFrame {
 
 	private int difficulty = 0;
 	private JSlider volumeChange;
-	private JLabel volumeNow = new JLabel("", JLabel.CENTER);
+	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
 	private JPanel controlPanel;
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
@@ -87,7 +87,7 @@ public class Setting extends JFrame {
 	class ValueChangeListener implements ChangeListener {
 		public void stateChanged(ChangeEvent e) {
 			if (e.getSource() == volumeChange) {
-				volumeNow.setText("Value : " + ((JSlider) e.getSource()).getValue());
+				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
 			}
 		}
 	}
