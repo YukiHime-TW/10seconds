@@ -17,6 +17,7 @@ public class GameEvents {
 	static boolean playerIsIndoor = false;
 	private long lastShot;
 	private long Time;
+	private int nowLevel=1;
 	public static boolean overItem = false;
 	public static boolean overCoin = false;
 
@@ -127,7 +128,7 @@ public class GameEvents {
 		if (Player.triggeredDOOR_LEAVE == true) { // FOREST/HOUSE_LEAVE
 			Font.render("LEAVE", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
 			if (input.enter.isPressed()) {
-				Game.startLevel("/levels/level_1.png", 505, 475);
+				Game.startLevel("/levels/level_"+nowLevel+".png", 505, 475);
 				playerIsIndoor = false;
 			}
 		}
