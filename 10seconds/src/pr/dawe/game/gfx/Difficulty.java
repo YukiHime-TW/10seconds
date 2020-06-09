@@ -18,7 +18,6 @@ public class Difficulty {
 
 	public static void writeIn(int diff) {
 		output.format("%d", diff);
-		
 	}
 
 	public static void closeFile() {
