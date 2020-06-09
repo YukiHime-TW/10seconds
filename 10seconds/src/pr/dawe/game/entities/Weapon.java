@@ -12,7 +12,7 @@ public class Weapon extends Mob {
 	public static boolean moving;
 
 	public Weapon(Level level, int x, int y) {
-		super(level, "Fireball", x, y, 1);
+		super(level, "Fireball", x, y, 2);
 	}
 
 	public void tick() {
