@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import java.io.*;
+import java.net.URL;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
 
@@ -28,7 +29,6 @@ public class Setting extends JFrame {
 	public static boolean credtis;
 	public static boolean running = false;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	private ImageIcon img = new ImageIcon("C:\\Users\\majik\\Documents\\GitHub\\10seconds\\10seconds\\res\\levels\\icon.png");
 	
 	public Setting(String title) {
 
@@ -39,7 +39,7 @@ public class Setting extends JFrame {
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (d.width - getSize().width) / 2;
 		int y = (d.height - getSize().height) / 2;
-		setIconImage(img.getImage());
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
 		setLocation(x, y);
 		setResizable(false);
 		Container cp = getContentPane();

@@ -19,6 +19,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.net.URL;
 import java.util.*;
 
 import javax.swing.*;
@@ -44,7 +45,6 @@ public class Game extends Canvas implements Runnable {
 	public static final String NAME = "時間勇者:Take a breath";
 
 	public static JFrame frame;
-	private ImageIcon img = new ImageIcon("C:\\Users\\majik\\Documents\\GitHub\\10seconds\\10seconds\\res\\levels\\icon.png");
 	Random generator = new Random();
 
 	public static boolean running = false;
@@ -71,14 +71,10 @@ public class Game extends Canvas implements Runnable {
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
 
 	public Game() {
-		//setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		//setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		//setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		
 
 		frame = new JFrame(NAME);
-		
-		frame.setIconImage(img.getImage());
-
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		frame.setUndecorated(true);
