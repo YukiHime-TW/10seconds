@@ -45,7 +45,6 @@ public class Setting extends JFrame {
 
 		// Volume
 		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
-		//volumeChange.setPreferredSize(new Dimension(300, 200));
 		volumeChange.setPaintTicks(true);
 		volumeChange.setPaintLabels(true);
 		volumeChange.setMajorTickSpacing(5);
@@ -56,7 +55,6 @@ public class Setting extends JFrame {
 		controlPanel.setPreferredSize(new Dimension(600, 400));
 		controlPanel.setLayout(new BorderLayout(5, 10));
 		controlPanel.setBackground(new Color(0xFFFFFF));
-		controlPanel.setLayout(new FlowLayout());
 		//controlPanel.setBackground(null);
 		//controlPanel.setOpaque(false);
 		controlPanel.setSize(600, 400);
@@ -65,8 +63,6 @@ public class Setting extends JFrame {
 		controlPanel.add(volumeChange,BorderLayout.CENTER);
 		controlPanel.add(volumeNow,BorderLayout.EAST);
 		controlPanel.setLayout(new BorderLayout(5,10));
-		//controlPanel.add(volumeChange, BorderLayout.CENTER);
-		//controlPanel.add(volumeNow, BorderLayout.EAST);
 		cp.add(controlPanel);
 
 		
@@ -79,14 +75,18 @@ public class Setting extends JFrame {
 		}
 		if(Difficulty.diff==0) {
 			jButton2.setText("Difficulty: Easy");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.CYAN);
 		}else if(Difficulty.diff==1) {
 			jButton2.setText("Difficulty: Normal");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.DARK_GRAY);
 		}else if(Difficulty.diff==2) {
 			jButton2.setText("Difficulty: Hard");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.RED);
 		}
 		difficulty = Difficulty.diff;
-		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
-		jButton2.setForeground(Color.LIGHT_GRAY);
 		jButton2.setBackground(null);
 		jButton2.setOpaque(false);
 		jButton2.setBorderPainted(false);
