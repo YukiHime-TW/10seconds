@@ -40,23 +40,28 @@ public class Setting extends JFrame {
 
 		// Volume
 		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
-		volumeChange.setMajorTickSpacing(1);
+		//volumeChange.setPreferredSize(new Dimension(300, 200));
 		volumeChange.setPaintTicks(true);
+		volumeChange.setPaintLabels(true);
+		volumeChange.setMajorTickSpacing(5);
 		ValueChangeListener myListener = new ValueChangeListener();
 		volumeChange.addChangeListener(myListener);
+		
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new BorderLayout(5,10));
+		controlPanel.setPreferredSize(new Dimension(600, 400));
 		controlPanel.setBackground(new Color(0xFFFFFF));
 		controlPanel.setLayout(new FlowLayout());
-		controlPanel.setBackground(null);
-		controlPanel.setOpaque(false);
-		controlPanel.setSize(350, 100);
+		//controlPanel.setBackground(null);
+		//controlPanel.setOpaque(false);
+		controlPanel.setSize(600, 400);
 		controlPanel.setLocation(610, 100);
 		volumeNow.setSize(100, 100);
 		controlPanel.add(volumeChange,BorderLayout.CENTER);
 		controlPanel.add(volumeNow,BorderLayout.EAST);
+		controlPanel.setLayout(new BorderLayout(5,10));
 		cp.add(controlPanel);
 
+		
 		// Difficulty
 		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Difficulty: Easy");
@@ -91,8 +96,8 @@ public class Setting extends JFrame {
 				jButton3_ActionPerformed(evt);
 			}
 		});
-		jButton3.setBackground(Color.WHITE);
-		jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
+		//jButton3.setBackground(Color.WHITE);
+		//jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton3);
 
 		cp.setBackground(new Color(0xFFC800));
