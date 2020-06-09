@@ -37,8 +37,10 @@ public class Menu extends JFrame {
 		cp.setLayout(null);
 		
 		//Game Start
-		jButton1.setBounds(460, 150, 610, 114);
-		jButton1.setText("Start new Level");
+		jButton1.setBounds(430, 280, 640, 114);
+		jButton1.setText("Start New Level");
+		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
+		jButton1.setForeground(Color.GREEN);
 		jButton1.setMargin(new Insets(2, 2, 2, 2));
 		jButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -50,8 +52,10 @@ public class Menu extends JFrame {
 		cp.add(jButton1);
 		
 		//Setting
-		jButton2.setBounds(520, 400, 490, 114);
+		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Setting");
+		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
+		jButton2.setForeground(Color.BLUE);
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -63,8 +67,10 @@ public class Menu extends JFrame {
 		cp.add(jButton2);
 		
 		//Close Game
-		jButton3.setBounds(580, 650, 370, 114);
+		jButton3.setBounds(550, 700, 400, 114);
 		jButton3.setText("Close Game");
+		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton3.setForeground(Color.RED);
 		jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {

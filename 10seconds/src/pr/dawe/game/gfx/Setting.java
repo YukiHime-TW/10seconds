@@ -13,7 +13,9 @@ import pr.dawe.game.level.Level;
 public class Setting extends JFrame {
 
 	private int difficulty = 0;
-	private JButton jButton1 = new JButton();
+	private JSlider volumeChange;
+	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
+	private JPanel controlPanel;
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	public static boolean enterLevel;
@@ -23,6 +25,7 @@ public class Setting extends JFrame {
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 	public Setting(String title) {
+
 		super(title);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setUndecorated(true);
@@ -36,21 +39,25 @@ public class Setting extends JFrame {
 		cp.setLayout(null);
 
 		// Volume
-		jButton1.setBounds(460, 150, 610, 114);
-		jButton1.setText("Volume	");
-		jButton1.setMargin(new Insets(2, 2, 2, 2));
-		jButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				jButton1_ActionPerformed(evt);
-			}
-		});
-		jButton1.setBackground(Color.WHITE);
-		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
-		cp.add(jButton1);
-
+		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+		volumeChange.setMajorTickSpacing(1);
+		volumeChange.setPaintTicks(true);
+		ValueChangeListener myListener = new ValueChangeListener();
+		volumeChange.addChangeListener(myListener);
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new FlowLayout());
+		controlPanel.setBackground(new Color(0xFFC800));
+		controlPanel.setSize(350, 100);
+		volumeNow.setSize(350, 100);
+		controlPanel.add(volumeChange,BorderLayout.CENTER);
+		controlPanel.add(volumeNow,BorderLayout.CENTER);
+		cp.add(controlPanel);
+		
 		// Difficulty
-		jButton2.setBounds(520, 400, 490, 114);
+		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Difficulty: Easy");
+		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton2.setForeground(Color.CYAN);
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -62,8 +69,10 @@ public class Setting extends JFrame {
 		cp.add(jButton2);
 
 		// Back to menu
-		jButton3.setBounds(580, 650, 370, 114);
-		jButton3.setText("Back to menu");
+		jButton3.setBounds(520, 700, 460, 114);
+		jButton3.setText("Back To Menu");
+		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton3.setForeground(Color.LIGHT_GRAY);
 		jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -73,9 +82,18 @@ public class Setting extends JFrame {
 		jButton3.setBackground(Color.WHITE);
 		jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton3);
+
 		cp.setBackground(new Color(0xFFC800));
 
 		setVisible(true);
+	}
+
+	class ValueChangeListener implements ChangeListener {
+		public void stateChanged(ChangeEvent e) {
+			if (e.getSource() == volumeChange) {
+				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+			}
+		}
 	}
 
 	public void jButton1_ActionPerformed(ActionEvent evt) { // Volume
@@ -83,19 +101,25 @@ public class Setting extends JFrame {
 	}
 
 	public void jButton2_ActionPerformed(ActionEvent evt) { // Setting difficulty
-		//initial = 0
-		//Easy = 0
-		//Normal = 1
-		//Hard = 2
+		// initial = 0
+		// Easy = 0
+		// Normal = 1
+		// Hard = 2
 		if (difficulty == 0) {
 			difficulty = 1;
 			jButton2.setText("Difficulty: Normal");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.DARK_GRAY);
 		} else if (difficulty == 1) {
 			difficulty = 2;
 			jButton2.setText("Difficulty: Hard");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.RED);
 		} else if (difficulty == 2) {
 			difficulty = 0;
 			jButton2.setText("Difficulty: Easy");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.CYAN);
 		}
 	}
 
