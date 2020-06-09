@@ -16,6 +16,7 @@ public class Menu extends JFrame {
 	private JButton jButton1 = new JButton();
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
+	private ImageIcon img = new ImageIcon("C:\\Users\\majik\\Documents\\GitHub\\10seconds\\10seconds\\res\\levels\\icon.png");
 	public static boolean enterLevel;
 	public static boolean enterDungeonForest;
 	public static boolean credtis;
@@ -26,6 +27,7 @@ public class Menu extends JFrame {
 
 		super(title);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		setIconImage(img.getImage());
 		setUndecorated(true);
 		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
