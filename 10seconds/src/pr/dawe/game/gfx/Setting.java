@@ -46,9 +46,11 @@ public class Setting extends JFrame {
 		volumeChange.addChangeListener(myListener);
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new FlowLayout());
-		controlPanel.setBackground(new Color(0xFFC800));
+		controlPanel.setBackground(null);
+		controlPanel.setOpaque(false);
 		controlPanel.setSize(350, 100);
-		volumeNow.setSize(350, 100);
+		controlPanel.setLocation(610, 100);
+		volumeNow.setSize(100, 100);
 		controlPanel.add(volumeChange,BorderLayout.CENTER);
 		controlPanel.add(volumeNow,BorderLayout.CENTER);
 		cp.add(controlPanel);
@@ -57,8 +59,12 @@ public class Setting extends JFrame {
 		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Difficulty: Easy");
 		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
-		jButton2.setForeground(Color.CYAN);
-		jButton2.setMargin(new Insets(2, 2, 2, 2));
+		jButton2.setForeground(Color.LIGHT_GRAY);
+		jButton2.setBackground(null);
+		jButton2.setOpaque(false);
+		jButton2.setBorderPainted(false);
+		jButton2.setFocusPainted(false);
+		//jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton2_ActionPerformed(evt);
@@ -73,7 +79,11 @@ public class Setting extends JFrame {
 		jButton3.setText("Back To Menu");
 		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 		jButton3.setForeground(Color.LIGHT_GRAY);
-		jButton3.setMargin(new Insets(2, 2, 2, 2));
+		jButton3.setBackground(null);
+		jButton3.setOpaque(false);
+		jButton3.setBorderPainted(false);
+		jButton3.setFocusPainted(false);
+		//jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton3_ActionPerformed(evt);
