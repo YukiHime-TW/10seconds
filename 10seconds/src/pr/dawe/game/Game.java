@@ -68,7 +68,7 @@ public class Game extends Canvas implements Runnable {
 
 	// ENTITIES
 	public static Player player;
-	public static NPC npc;
+	public static NPC monster;
 	public static Weapon FireBall;
 
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
@@ -116,9 +116,9 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel(String levelPath, int x, int y) {
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		npc = new NPC(level, 270, 270);
+		monster = new NPC(level, 270, 270);
 		level.addEntity(player);
-		level.addEntity(npc);
+		level.addEntity(monster);
 		gameEvents = new GameEvents();
 		// ADD ENTITIES
 	}

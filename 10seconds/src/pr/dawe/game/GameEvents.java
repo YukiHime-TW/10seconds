@@ -105,7 +105,7 @@ public class GameEvents {
 			int randomcolour1 = generator.nextInt(5) + 1;
 			int randomcolour2 = generator.nextInt(5) + 1;
 			int randomcolour3 = generator.nextInt(5) + 1;
-			level.removeEntity(Game.npc);
+			level.removeEntity(Game.monster);
 
 			Font.render("b", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
 			if (input.investigate.isPressed()) {

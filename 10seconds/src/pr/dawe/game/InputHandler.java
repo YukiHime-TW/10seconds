@@ -117,10 +117,6 @@ public class InputHandler implements KeyListener {
 		if (keyCode == KeyEvent.VK_I) {
 			investigate.toggle(isPressed);
 		}
-		// RESET LEVEL
-		if (keyCode == KeyEvent.VK_R) {
-			Game.startLevel("/levels/level_1.png", 390, 390);
-		}
 		// MENU / ESCAPE
 		if (keyCode == KeyEvent.VK_ESCAPE) {
 			Menu.main(null);
