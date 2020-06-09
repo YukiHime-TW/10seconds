@@ -54,8 +54,10 @@ public class Setting extends JFrame {
 		cp.add(controlPanel);
 		
 		// Difficulty
-		jButton2.setBounds(520, 400, 490, 114);
+		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Difficulty: Easy");
+		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton2.setForeground(Color.CYAN);
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -67,8 +69,10 @@ public class Setting extends JFrame {
 		cp.add(jButton2);
 
 		// Back to menu
-		jButton3.setBounds(580, 650, 370, 114);
-		jButton3.setText("Back to menu");
+		jButton3.setBounds(520, 700, 460, 114);
+		jButton3.setText("Back To Menu");
+		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton3.setForeground(Color.LIGHT_GRAY);
 		jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -104,12 +108,18 @@ public class Setting extends JFrame {
 		if (difficulty == 0) {
 			difficulty = 1;
 			jButton2.setText("Difficulty: Normal");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.DARK_GRAY);
 		} else if (difficulty == 1) {
 			difficulty = 2;
 			jButton2.setText("Difficulty: Hard");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.RED);
 		} else if (difficulty == 2) {
 			difficulty = 0;
 			jButton2.setText("Difficulty: Easy");
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setForeground(Color.CYAN);
 		}
 	}
 
