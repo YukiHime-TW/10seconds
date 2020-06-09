@@ -53,7 +53,6 @@ public class Setting extends JFrame {
 
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new BorderLayout(5, 10));
-		controlPanel.setBackground(new Color(0xFFFFFF));
 		controlPanel.setBackground(null);
 		controlPanel.setOpaque(false);
 		controlPanel.setSize(500, 50);
@@ -89,7 +88,6 @@ public class Setting extends JFrame {
 		jButton2.setOpaque(false);
 		jButton2.setBorderPainted(false);
 		jButton2.setFocusPainted(false);
-		// jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				try {
@@ -99,8 +97,6 @@ public class Setting extends JFrame {
 				}
 			}
 		});
-		jButton2.setBackground(Color.WHITE);
-		jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton2);
 
 		// Back to menu
@@ -112,14 +108,11 @@ public class Setting extends JFrame {
 		jButton3.setOpaque(false);
 		jButton3.setBorderPainted(false);
 		jButton3.setFocusPainted(false);
-		// jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton3_ActionPerformed(evt);
 			}
 		});
-		//jButton3.setBackground(Color.WHITE);
-		//jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton3);
 
 		cp.setBackground(new Color(0xFFC800));
