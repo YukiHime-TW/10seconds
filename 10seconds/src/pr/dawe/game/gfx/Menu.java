@@ -4,6 +4,7 @@ package pr.dawe.game.gfx;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -16,7 +17,6 @@ public class Menu extends JFrame {
 	private JButton jButton1 = new JButton();
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
-	private ImageIcon img = new ImageIcon("C:\\Users\\majik\\Documents\\GitHub\\10seconds\\10seconds\\res\\levels\\icon.png");
 	public static boolean enterLevel;
 	public static boolean enterDungeonForest;
 	public static boolean credtis;
@@ -27,7 +27,7 @@ public class Menu extends JFrame {
 
 		super(title);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		setIconImage(img.getImage());
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
 		setUndecorated(true);
 		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,14 +47,11 @@ public class Menu extends JFrame {
 		jButton1.setOpaque(false);
 		jButton1.setBorderPainted(false);
 		jButton1.setFocusPainted(false);
-		//jButton1.setMargin(new Insets(2, 2, 2, 2));
 		jButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton1_ActionPerformed(evt);
 			}
 		});
-		//jButton1.setBackground(Color.WHITE);
-		//jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton1);
 		
 		//Setting
@@ -66,14 +63,11 @@ public class Menu extends JFrame {
 		jButton2.setOpaque(false);
 		jButton2.setBorderPainted(false);
 		jButton2.setFocusPainted(false);
-		//jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton2_ActionPerformed(evt);
 			}
 		});
-		//jButton2.setBackground(Color.WHITE);
-		//jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton2);
 		
 		//Close Game
@@ -85,14 +79,11 @@ public class Menu extends JFrame {
 		jButton3.setOpaque(false);
 		jButton3.setBorderPainted(false);
 		jButton3.setFocusPainted(false);
-		//jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton3_ActionPerformed(evt);
 			}
 		});
-		//jButton3.setBackground(Color.WHITE);
-		//jButton3.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton3);
 		
 		cp.setBackground(new Color(0xFFC800));
