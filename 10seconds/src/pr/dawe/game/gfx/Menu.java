@@ -4,7 +4,6 @@ package pr.dawe.game.gfx;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.awt.font.*;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -36,18 +35,10 @@ public class Menu extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-<<<<<<< HEAD
-
-		jButton1.setBounds(450, 280, 620, 114);
-		jButton1.setText("Start New Level");
-		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
-		jButton1.setForeground(Color.RED);
-=======
 		
 		//Game Start
 		jButton1.setBounds(460, 150, 610, 114);
 		jButton1.setText("Start new Level");
->>>>>>> 838870a74319cd89408fe2213deb3321de1c32d0
 		jButton1.setMargin(new Insets(2, 2, 2, 2));
 		jButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -58,15 +49,9 @@ public class Menu extends JFrame {
 		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton1);
 		
-<<<<<<< HEAD
-		jButton2.setBounds(520, 490, 490, 114);
-=======
 		//Setting
 		jButton2.setBounds(520, 400, 490, 114);
->>>>>>> 838870a74319cd89408fe2213deb3321de1c32d0
 		jButton2.setText("Setting");
-		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
-		jButton2.setForeground(Color.RED);
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -77,15 +62,9 @@ public class Menu extends JFrame {
 		jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton2);
 		
-<<<<<<< HEAD
-		jButton3.setBounds(580, 700, 370, 114);
-=======
 		//Close Game
 		jButton3.setBounds(580, 650, 370, 114);
->>>>>>> 838870a74319cd89408fe2213deb3321de1c32d0
 		jButton3.setText("Close Game");
-		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
-		jButton3.setForeground(Color.RED);
 		jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
