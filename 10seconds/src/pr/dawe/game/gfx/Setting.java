@@ -45,14 +45,14 @@ public class Setting extends JFrame {
 		ValueChangeListener myListener = new ValueChangeListener();
 		volumeChange.addChangeListener(myListener);
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new FlowLayout());
-		controlPanel.setBackground(new Color(0xFFC800));
+		controlPanel.setLayout(new BorderLayout(5,10));
+		controlPanel.setBackground(new Color(0xFFFFFF));
 		controlPanel.setSize(350, 100);
 		volumeNow.setSize(350, 100);
 		controlPanel.add(volumeChange,BorderLayout.CENTER);
-		controlPanel.add(volumeNow,BorderLayout.CENTER);
+		controlPanel.add(volumeNow,BorderLayout.EAST);
 		cp.add(controlPanel);
-		
+
 		// Difficulty
 		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Difficulty: Easy");
