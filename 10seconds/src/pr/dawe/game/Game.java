@@ -23,10 +23,6 @@ import java.util.*;
 
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 import pr.dawe.game.entities.NPC;
 import pr.dawe.game.entities.PickableItem;
@@ -48,6 +44,7 @@ public class Game extends Canvas implements Runnable {
 	public static final String NAME = "時間勇者:Take a breath";
 
 	public static JFrame frame;
+	private ImageIcon img = new ImageIcon("C:\\Users\\majik\\Documents\\GitHub\\10seconds\\10seconds\\res\\levels\\icon.png");
 	Random generator = new Random();
 
 	public static boolean running = false;
@@ -79,6 +76,8 @@ public class Game extends Canvas implements Runnable {
 		//setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 
 		frame = new JFrame(NAME);
+		
+		frame.setIconImage(img.getImage());
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
