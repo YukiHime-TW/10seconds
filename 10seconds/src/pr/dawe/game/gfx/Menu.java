@@ -27,10 +27,7 @@ public class Menu extends JFrame {
 		super(title);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setUndecorated(true);
-		getGraphicsConfiguration().getDevice().setFullScreenWindow(this); 
-		/*int frameWidth = 650;
-		int frameHeight = 500;
-		setSize(frameWidth, frameHeight);*/
+		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (d.width - getSize().width) / 2;
 		int y = (d.height - getSize().height) / 2;
@@ -38,7 +35,8 @@ public class Menu extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-
+		
+		//Game Start
 		jButton1.setBounds(460, 150, 610, 114);
 		jButton1.setText("Start new Level");
 		jButton1.setMargin(new Insets(2, 2, 2, 2));
@@ -51,6 +49,7 @@ public class Menu extends JFrame {
 		jButton1.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton1);
 		
+		//Setting
 		jButton2.setBounds(520, 400, 490, 114);
 		jButton2.setText("Setting");
 		jButton2.setMargin(new Insets(2, 2, 2, 2));
@@ -63,6 +62,7 @@ public class Menu extends JFrame {
 		jButton2.setBorder(BorderFactory.createEtchedBorder(0, Color.GREEN, Color.BLACK));
 		cp.add(jButton2);
 		
+		//Close Game
 		jButton3.setBounds(580, 650, 370, 114);
 		jButton3.setText("Close Game");
 		jButton3.setMargin(new Insets(2, 2, 2, 2));
@@ -80,7 +80,7 @@ public class Menu extends JFrame {
 		setVisible(true);
 	}
 
-	public void jButton1_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
+	public void jButton1_ActionPerformed(ActionEvent evt) { // GAME START
 		if (running == false) {
 			Game.main(null);
 			closeMenu();
@@ -89,11 +89,16 @@ public class Menu extends JFrame {
 		}
 	}
 	
-	public void jButton2_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
-		//System.exit(1);
+	public void jButton2_ActionPerformed(ActionEvent evt) { // SETTING
+		if (running == false) {
+			Setting.main(null);
+			closeMenu();
+		} else {
+			System.out.println("Already running!");
+		}
 	}
 	
-	public void jButton3_ActionPerformed(ActionEvent evt) { // ENTER LEVEL
+	public void jButton3_ActionPerformed(ActionEvent evt) { // CLOSE¡@GAME
 		System.exit(1);
 	}
 
