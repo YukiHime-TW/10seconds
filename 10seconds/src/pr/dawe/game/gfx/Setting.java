@@ -7,12 +7,17 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import java.io.*;
+import java.util.Formatter;
+import java.util.FormatterClosedException;
+
 import pr.dawe.game.Game;
 import pr.dawe.game.level.Level;
 
 public class Setting extends JFrame {
 
-	private int difficulty = 0;
+	public int difficulty = 0;
+	private Difficulty di = new Difficulty();
 	private JSlider volumeChange;
 	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
 	private JPanel controlPanel;
@@ -23,7 +28,7 @@ public class Setting extends JFrame {
 	public static boolean credtis;
 	public static boolean running = false;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-
+	
 	public Setting(String title) {
 
 		super(title);
@@ -45,7 +50,7 @@ public class Setting extends JFrame {
 		ValueChangeListener myListener = new ValueChangeListener();
 		volumeChange.addChangeListener(myListener);
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new BorderLayout(5,10));
+		controlPanel.setLayout(new BorderLayout(5, 10));
 		controlPanel.setBackground(new Color(0xFFFFFF));
 		controlPanel.setLayout(new FlowLayout());
 		controlPanel.setBackground(null);
@@ -53,23 +58,43 @@ public class Setting extends JFrame {
 		controlPanel.setSize(350, 100);
 		controlPanel.setLocation(610, 100);
 		volumeNow.setSize(100, 100);
-		controlPanel.add(volumeChange,BorderLayout.CENTER);
-		controlPanel.add(volumeNow,BorderLayout.EAST);
+		controlPanel.add(volumeChange, BorderLayout.CENTER);
+		controlPanel.add(volumeNow, BorderLayout.EAST);
 		cp.add(controlPanel);
 
 		// Difficulty
 		jButton2.setBounds(490, 490, 520, 114);
-		jButton2.setText("Difficulty: Easy");
+		try {
+			Difficulty.openFile();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		if(Difficulty.diff==0) {
+			jButton2.setText("Difficulty: Easy");
+			System.out.printf("%d%n",Difficulty.diff);
+		}else if(Difficulty.diff==1) {
+			jButton2.setText("Difficulty: Normal");
+			System.out.printf("%d%n",Difficulty.diff);
+		}else if(Difficulty.diff==2) {
+			jButton2.setText("Difficulty: Hard");
+			System.out.printf("%d%n",Difficulty.diff);
+		}
+		difficulty = Difficulty.diff;
 		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 		jButton2.setForeground(Color.LIGHT_GRAY);
 		jButton2.setBackground(null);
 		jButton2.setOpaque(false);
 		jButton2.setBorderPainted(false);
 		jButton2.setFocusPainted(false);
-		//jButton2.setMargin(new Insets(2, 2, 2, 2));
+		// jButton2.setMargin(new Insets(2, 2, 2, 2));
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButton2_ActionPerformed(evt);
+				try {
+					jButton2_ActionPerformed(evt);
+				} catch (FileNotFoundException e) {
+					// TODO 自動產生的 catch 區塊
+					e.printStackTrace();
+				}
 			}
 		});
 		jButton2.setBackground(Color.WHITE);
@@ -85,7 +110,7 @@ public class Setting extends JFrame {
 		jButton3.setOpaque(false);
 		jButton3.setBorderPainted(false);
 		jButton3.setFocusPainted(false);
-		//jButton3.setMargin(new Insets(2, 2, 2, 2));
+		// jButton3.setMargin(new Insets(2, 2, 2, 2));
 		jButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButton3_ActionPerformed(evt);
@@ -108,31 +133,39 @@ public class Setting extends JFrame {
 		}
 	}
 
-	public void jButton1_ActionPerformed(ActionEvent evt) { // Volume
-
-	}
-
-	public void jButton2_ActionPerformed(ActionEvent evt) { // Setting difficulty
+	public void jButton2_ActionPerformed(ActionEvent evt) throws FileNotFoundException { // Setting difficulty
 		// initial = 0
 		// Easy = 0
 		// Normal = 1
 		// Hard = 2
+		Difficulty.openFile();
 		if (difficulty == 0) {
 			difficulty = 1;
+			Difficulty.writeIn(difficulty);
+			Difficulty.diff = difficulty;
+			System.out.printf("%d%n",Difficulty.diff);
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.DARK_GRAY);
 		} else if (difficulty == 1) {
 			difficulty = 2;
+			Difficulty.writeIn(difficulty);
+			Difficulty.diff = difficulty;
+			System.out.printf("%d%n",Difficulty.diff);
 			jButton2.setText("Difficulty: Hard");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.RED);
 		} else if (difficulty == 2) {
 			difficulty = 0;
+			Difficulty.writeIn(difficulty);
+			Difficulty.diff = difficulty;
+			System.out.printf("%d%n",Difficulty.diff);
 			jButton2.setText("Difficulty: Easy");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.CYAN);
 		}
+		
+		Difficulty.closeFile();
 	}
 
 	public void jButton3_ActionPerformed(ActionEvent evt) { // Back to menu
@@ -150,6 +183,6 @@ public class Setting extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new Setting("嚙褕塚蕭嚙箠嚙踝蕭:Take a breath");
+		new Setting("時間勇者:Take a breath");
 	}
 }
