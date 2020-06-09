@@ -71,13 +71,10 @@ public class Setting extends JFrame {
 		}
 		if(Difficulty.diff==0) {
 			jButton2.setText("Difficulty: Easy");
-			System.out.printf("%d%n",Difficulty.diff);
 		}else if(Difficulty.diff==1) {
 			jButton2.setText("Difficulty: Normal");
-			System.out.printf("%d%n",Difficulty.diff);
 		}else if(Difficulty.diff==2) {
 			jButton2.setText("Difficulty: Hard");
-			System.out.printf("%d%n",Difficulty.diff);
 		}
 		difficulty = Difficulty.diff;
 		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
@@ -92,7 +89,6 @@ public class Setting extends JFrame {
 				try {
 					jButton2_ActionPerformed(evt);
 				} catch (FileNotFoundException e) {
-					// TODO 自動產生的 catch 區塊
 					e.printStackTrace();
 				}
 			}
@@ -143,7 +139,6 @@ public class Setting extends JFrame {
 			difficulty = 1;
 			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
-			System.out.printf("%d%n",Difficulty.diff);
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.DARK_GRAY);
@@ -151,7 +146,6 @@ public class Setting extends JFrame {
 			difficulty = 2;
 			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
-			System.out.printf("%d%n",Difficulty.diff);
 			jButton2.setText("Difficulty: Hard");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.RED);
@@ -159,7 +153,6 @@ public class Setting extends JFrame {
 			difficulty = 0;
 			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
-			System.out.printf("%d%n",Difficulty.diff);
 			jButton2.setText("Difficulty: Easy");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.CYAN);
