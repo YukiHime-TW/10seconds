@@ -38,7 +38,7 @@ public class Menu extends JFrame {
 
 		// Game Start
 		jButton1.setBounds(430, 280, 640, 114);
-		jButton1.setText("Start New Level");
+		jButton1.setText("Game Start");
 		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
 		jButton1.setForeground(Color.DARK_GRAY);
 		jButton1.setBackground(null);
