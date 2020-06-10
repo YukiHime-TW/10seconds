@@ -49,14 +49,15 @@ public class Setting extends JFrame {
 		controlPanel.setBackground(null);
 		controlPanel.setOpaque(false);
 		controlPanel.setSize(500, 50);
-		controlPanel.setLocation(540, 300);
-		volumeNow.setSize(100, 100);
+		controlPanel.setLocation(540, 450);
+		//volumeNow.setSize(100, 100);
+		volumeNow.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 20));
 		controlPanel.add(volumeChange, BorderLayout.CENTER);
 		controlPanel.add(volumeNow, BorderLayout.EAST);
 		cp.add(controlPanel);
 
 		// Difficulty
-		jButton2.setBounds(490, 490, 570, 114);
+		jButton2.setBounds(490, 550, 570, 114);
 		try {
 			Difficulty.openFile();
 		} catch (FileNotFoundException e1) {
@@ -64,15 +65,15 @@ public class Setting extends JFrame {
 		}
 		if (Difficulty.diff == 0) {
 			jButton2.setText("Difficulty: Easy");
-			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.CYAN);
 		} else if (Difficulty.diff == 1) {
 			jButton2.setText("Difficulty: Normal");
-			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.DARK_GRAY);
 		} else if (Difficulty.diff == 2) {
 			jButton2.setText("Difficulty: Hard");
-			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.RED);
 		}
 		difficulty = Difficulty.diff;
@@ -92,9 +93,9 @@ public class Setting extends JFrame {
 		cp.add(jButton2);
 
 		// Back to menu
-		jButton3.setBounds(520, 700, 460, 114);
+		jButton3.setBounds(540, 750, 480, 114);
 		jButton3.setText("Back To Menu");
-		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 		jButton3.setForeground(Color.LIGHT_GRAY);
 		jButton3.setBackground(null);
 		jButton3.setOpaque(false);
@@ -119,20 +120,30 @@ public class Setting extends JFrame {
 		cheatPanel.setBackground(null);
 		cheatPanel.setOpaque(false);
 		cheatPanel.setSize(500, 50);
+		cheatPanel.setLocation(540, 300);
 		cheatPanel.add(cheat, BorderLayout.CENTER);
 		cheatPanel.add(cheatSubmit, BorderLayout.EAST);
 		cp.add(cheatPanel);
 
 		cp.setBackground(new Color(0xFFC800));
-
+		
 		setVisible(true);
 	}
 
 	class ValueChangeListener implements ChangeListener {
 		public void stateChanged(ChangeEvent e) {
-			if (e.getSource() == volumeChange) {
-				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+			try {
+				Volume.openFile();
+				if (e.getSource() == volumeChange) {
+					volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+					//music.setVolume(((JSlider) e.getSource()).getValue());
+					Volume.writeIn(((JSlider) e.getSource()).getValue());
+				}
+				Volume.closeFile();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
 			}
+
 		}
 	}
 
@@ -147,21 +158,21 @@ public class Setting extends JFrame {
 			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Normal");
-			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.DARK_GRAY);
 		} else if (difficulty == 1) {
 			difficulty = 2;
 			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Hard");
-			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.RED);
 		} else if (difficulty == 2) {
 			difficulty = 0;
 			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Easy");
-			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.CYAN);
 		}
 
@@ -179,14 +190,18 @@ public class Setting extends JFrame {
 
 	public void cheat_ActionPerformed(ActionEvent evt) {
 		String cheatText = cheat.getText();
-		if (cheatText.equals("C8763")) {
+		if (cheatText.equals("C8763")||cheatText.equals("c8763")) {
 			cheatPanel.removeAll();
 			JLabel sucessLabel = new JLabel("Star Burst Stream!");
+			sucessLabel.setForeground(Color.BLACK);
+			sucessLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
 			cheatPanel.add(sucessLabel);
 			setVisible(true);
 		} else {
 			cheatPanel.removeAll();
 			JLabel failLabel = new JLabel("KIRITO!!!!!!!");
+			failLabel.setForeground(Color.RED);
+			failLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			cheatPanel.add(failLabel);
 			setVisible(true);
 		}

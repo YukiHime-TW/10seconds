@@ -73,23 +73,6 @@ public class NPC extends Mob {
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;
 		int yOffset = y - modifier / 2 - 4;
-		if (isSwimming) {
-			int waterColour = 0;
-			yOffset += 4;
-			if (tickCount % 60 < 15) {
-				waterColour = Colours.get(-1, -1, 225, -1);
-			} else if (15 <= tickCount % 60 && tickCount % 60 < 30) {
-				yOffset -= 1;
-				waterColour = Colours.get(-1, 225, 115, -1);
-			} else if (30 <= tickCount % 60 && tickCount % 60 < 45) {
-				waterColour = Colours.get(-1, 115, -1, 225);
-			} else {
-				yOffset -= 1;
-				waterColour = Colours.get(-1, 225, 115, -1);
-			}
-			screen.render(xOffset, yOffset + 3, 0 + 27 * 32, waterColour, 0x00, 1);
-			screen.render(xOffset + 8, yOffset + 3, 0 + 27 * 32, waterColour, 0x01, 1);
-		}
 
 		screen.render(xOffset + (modifier * flipTop), yOffset, xTile + yTile * 32, colour, flipTop, scale);
 		screen.render(xOffset + modifier - (modifier * flipTop), yOffset, xTile + 1 + yTile * 32, colour, flipTop,
