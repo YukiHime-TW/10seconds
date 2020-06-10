@@ -131,6 +131,9 @@ public class Player extends Mob {
 			xTile += 4 + ((numSteps >> walkingSpeed) & 1) * 2;
 			flipTop = (movingDir - 1) % 2;
 		}
+		
+		//System.out.printf("flipTop = %d, flipBottom = %d%n", flipTop, flipBottom);
+		
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;
 		int yOffset = y - modifier / 2 - 4;
