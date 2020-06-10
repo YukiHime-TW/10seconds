@@ -202,7 +202,7 @@ public class Setting extends JFrame {
 		String cheatText = cheat.getText();
 		if (cheatText.equals("C8763")||cheatText.equals("c8763")) {
 			cheatPanel.removeAll();
-			JLabel sucessLabel = new JLabel("Star Burst Stream!");
+			JLabel sucessLabel = new JLabel("Star Burst Stream!!!!!!!");
 			sucessLabel.setForeground(Color.BLACK);
 			sucessLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
 			cheatPanel.add(sucessLabel);
