@@ -133,7 +133,7 @@ public class Menu extends JFrame {
 	
 	class BackgroundPanel extends JPanel{
 		Image img;
-		public BackgroundPanel(Image im)
+		public BackgroundPanel(Image img)
 		{
 		   this.img=img;
 		   this.setOpaque(true);
