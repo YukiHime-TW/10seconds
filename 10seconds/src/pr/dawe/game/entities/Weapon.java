@@ -95,10 +95,8 @@ public class Weapon extends Mob {
 		for (int y = yMin; y < yMax; y++) {
 			if (isSolidTile(xa, ya, xMax, y)) {
 				return true;
-
 			}
 		}
-
 		return false;
 	}
 

@@ -3,12 +3,11 @@ package pr.dawe.game.gfx;
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.Formatter;
-import java.util.FormatterClosedException;
 import java.util.Scanner;
 
 public class Volume {
 
-	public static int volume;
+	public static int volume = 50;
 	private static Formatter output;
 	private static Scanner input;
 
