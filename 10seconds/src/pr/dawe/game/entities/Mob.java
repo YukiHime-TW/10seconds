@@ -25,6 +25,7 @@ public abstract class Mob extends Entity {
 	}
 
 	public void move(int xa, int ya) {
+		//System.out.printf("speed = %d%n", speed);
 		if (xa != 0 && ya != 0) {
 			move(xa, 0);
 			move(0, ya);
