@@ -12,6 +12,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/majik/Documents/GitHub/10seconds/10seconds/res/MagicAudioPlayer.jar"/>
+	<classpathentry kind="lib" path="D:/github/10seconds/10seconds/res/MagicAudioPlayer.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
