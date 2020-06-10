@@ -53,7 +53,7 @@ public class Player extends Mob {
 			}
 		if (!hasCollided(xa, ya))
 
-			System.out.println(x + " " + y);
+			//System.out.println(x + " " + y);
 
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
