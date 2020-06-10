@@ -6,6 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import pr.dawe.game.gfx.Menu.BackgroundPanel;
+
 import java.io.*;
 
 public class Setting extends JFrame {
@@ -39,6 +41,7 @@ public class Setting extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
+		BackgroundPanel bgp;
 
 		// Volume
 		volumeNow = new JLabel();
@@ -146,7 +149,10 @@ public class Setting extends JFrame {
 
 		cp.add(cheatPanel);
 
-		cp.setBackground(new Color(0xFFC800));
+		//BackGround
+		bgp = new BackgroundPanel((new ImageIcon(".\\res\\backGround\\BG.png")).getImage());
+		bgp.setBounds(0,0,d.width-1,d.height-1);
+		cp.add(bgp);
 
 		setVisible(true);
 	}
@@ -223,6 +229,22 @@ public class Setting extends JFrame {
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
 	}
 
+	class BackgroundPanel extends JPanel{
+		Image im;
+		public BackgroundPanel(Image im)
+		{
+		   this.im=im;
+		   this.setOpaque(true);
+		}
+		//Draw the back ground.
+		public void paintComponent(Graphics g)
+		{
+		   super.paintComponents(g);
+		   g.drawImage(im,0,0,this.getWidth(),this.getHeight(),this);
+	
+		}
+	}
+	
 	public static void main(String[] args) {
 		new Setting("Time Brave:Take a breath");
 	}
