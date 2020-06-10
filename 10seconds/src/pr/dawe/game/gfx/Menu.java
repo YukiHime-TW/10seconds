@@ -36,7 +36,7 @@ public class Menu extends JFrame {
 		//Game Start
 		jButton1.setBounds(430, 280, 640, 114);
 		jButton1.setText("Start New Level");
-		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
+		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
 		jButton1.setForeground(Color.LIGHT_GRAY);
 		jButton1.setBackground(null);
 		jButton1.setOpaque(false);
@@ -52,7 +52,7 @@ public class Menu extends JFrame {
 		//Setting
 		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Setting");
-		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 80));
+		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
 		jButton2.setForeground(Color.LIGHT_GRAY);
 		jButton2.setBackground(null);
 		jButton2.setOpaque(false);
@@ -68,7 +68,7 @@ public class Menu extends JFrame {
 		//Close Game
 		jButton3.setBounds(550, 700, 400, 114);
 		jButton3.setText("Close Game");
-		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
+		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 		jButton3.setForeground(Color.LIGHT_GRAY);
 		jButton3.setBackground(null);
 		jButton3.setOpaque(false);
