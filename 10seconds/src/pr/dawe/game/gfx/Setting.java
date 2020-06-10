@@ -33,8 +33,8 @@ public class Setting extends JFrame {
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 	public Setting(String title) {
-
 		super(title);
+		Menu.player.playOver();
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setUndecorated(true);
 		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
@@ -141,6 +141,7 @@ public class Setting extends JFrame {
 		public void stateChanged(ChangeEvent e) {
 			if (e.getSource() == volumeChange) {
 				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+				Menu.player.setVolume(((JSlider) e.getSource()).getValue());
 			}
 		}
 	}
