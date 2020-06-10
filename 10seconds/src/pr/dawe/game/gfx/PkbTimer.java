@@ -1,15 +1,9 @@
 package pr.dawe.game.gfx;
 
-import java.util.ArrayList;
-import java.awt.Image;
-import java.awt.Rectangle;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import java.awt.Point;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Date;
 import java.awt.Toolkit;
 
 public class PkbTimer {
@@ -17,7 +11,6 @@ public class PkbTimer {
 	public int num = 0, t;
 	public Timer time2;
 	public boolean run = true;
-	public JFrame gf;
 	public long midTime = 20000; // second*100
 	public long hh = 0, mm = 0, ss = 0;
 
