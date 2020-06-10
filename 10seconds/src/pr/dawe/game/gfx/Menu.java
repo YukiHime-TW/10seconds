@@ -3,34 +3,24 @@ package pr.dawe.game.gfx;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 import javax.swing.*;
-import javax.swing.event.*;
-
-import org.magiclen.magicaudioplayer.AudioPlayer;
 
 import pr.dawe.game.Game;
-import pr.dawe.game.level.Level;
 
 public class Menu extends JFrame {
 
+	private static final long serialVersionUID = 6153436629361090300L;
 	private JButton jButton1 = new JButton();
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
-	public static AudioPlayer player;
-	public static boolean enterLevel;
-	public static boolean enterDungeonForest;
-	public static boolean credtis;
+	private Music music = new Music("/music/BGM_Menu.wav");
 	public static boolean running = false;
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 	public Menu(String title) {
 
 		super(title);
+		music.play();
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
 		setUndecorated(true);
@@ -117,14 +107,9 @@ public class Menu extends JFrame {
 	public void jButton3_ActionPerformed(ActionEvent evt) { // CLOSE¡@GAME
 		System.exit(1);
 	}
-	
-	public static void music() {
-		File audioFile = new File("/res/music/BGM_Menu(1).mp3");
-		player = AudioPlayer.createPlayer(audioFile);
-		player.playOver();
-	}
 
 	public void closeMenu() {
+		music.stop();
 		WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
 	}

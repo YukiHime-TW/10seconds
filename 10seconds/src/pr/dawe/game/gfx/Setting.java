@@ -2,39 +2,30 @@ package pr.dawe.game.gfx;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 import javax.swing.event.*;
 
 import java.io.*;
-import java.net.URL;
-import java.util.Formatter;
-import java.util.FormatterClosedException;
-
-import pr.dawe.game.Game;
-import pr.dawe.game.level.Level;
 
 public class Setting extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	public int difficulty = 0;
 	private JSlider volumeChange;
 	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
 	private JPanel controlPanel;
 	private JPanel cheatPanel = new JPanel();
-	private JTextField cheat= new JTextField();
+	private JTextField cheat = new JTextField();
 	private JButton cheatSubmit = new JButton();
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
-	public static boolean enterLevel;
-	public static boolean enterDungeonForest;
-	public static boolean credtis;
+	private Music music = new Music("/music/BGM_Menu.wav");
 	public static boolean running = false;
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 	public Setting(String title) {
 		super(title);
-		Menu.player.playOver();
+		music.play();
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setUndecorated(true);
 		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
@@ -141,7 +132,6 @@ public class Setting extends JFrame {
 		public void stateChanged(ChangeEvent e) {
 			if (e.getSource() == volumeChange) {
 				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
-				Menu.player.setVolume(((JSlider) e.getSource()).getValue());
 			}
 		}
 	}
@@ -203,6 +193,7 @@ public class Setting extends JFrame {
 	}
 
 	public void closeSetting() {
+		music.stop();
 		WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
 	}
