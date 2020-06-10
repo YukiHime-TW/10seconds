@@ -130,9 +130,18 @@ public class Setting extends JFrame {
 
 	class ValueChangeListener implements ChangeListener {
 		public void stateChanged(ChangeEvent e) {
-			if (e.getSource() == volumeChange) {
-				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+			try {
+				Volume.openFile();
+				if (e.getSource() == volumeChange) {
+					volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+					//music.setVolume(((JSlider) e.getSource()).getValue());
+					Volume.writeIn(((JSlider) e.getSource()).getValue());
+				}
+				Volume.closeFile();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
 			}
+
 		}
 	}
 
