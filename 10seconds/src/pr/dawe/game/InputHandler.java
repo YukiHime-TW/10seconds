@@ -1,15 +1,10 @@
 package pr.dawe.game;
 
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
 
-import pr.dawe.game.entities.PickableItem;
-import pr.dawe.game.entities.Player;
 import pr.dawe.game.entities.Weapon;
 import pr.dawe.game.gfx.Menu;
-import pr.dawe.game.level.Level;
 
 public class InputHandler implements KeyListener {
 	public static int lookDir;
