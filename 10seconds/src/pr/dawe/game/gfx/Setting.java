@@ -18,10 +18,12 @@ import pr.dawe.game.level.Level;
 public class Setting extends JFrame {
 
 	public int difficulty = 0;
-	private Difficulty di = new Difficulty();
 	private JSlider volumeChange;
 	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
 	private JPanel controlPanel;
+	private JPanel cheatPanel = new JPanel();
+	private JTextField cheat= new JTextField();
+	private JButton cheatSubmit = new JButton();
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	public static boolean enterLevel;
@@ -29,7 +31,7 @@ public class Setting extends JFrame {
 	public static boolean credtis;
 	public static boolean running = false;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	
+
 	public Setting(String title) {
 
 		super(title);
@@ -58,11 +60,10 @@ public class Setting extends JFrame {
 		controlPanel.setSize(500, 50);
 		controlPanel.setLocation(540, 300);
 		volumeNow.setSize(100, 100);
-		controlPanel.add(volumeChange,BorderLayout.CENTER);
-		controlPanel.add(volumeNow,BorderLayout.EAST);
+		controlPanel.add(volumeChange, BorderLayout.CENTER);
+		controlPanel.add(volumeNow, BorderLayout.EAST);
 		cp.add(controlPanel);
 
-		
 		// Difficulty
 		jButton2.setBounds(490, 490, 520, 114);
 		try {
@@ -70,15 +71,15 @@ public class Setting extends JFrame {
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		if(Difficulty.diff==0) {
+		if (Difficulty.diff == 0) {
 			jButton2.setText("Difficulty: Easy");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.CYAN);
-		}else if(Difficulty.diff==1) {
+		} else if (Difficulty.diff == 1) {
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.DARK_GRAY);
-		}else if(Difficulty.diff==2) {
+		} else if (Difficulty.diff == 2) {
 			jButton2.setText("Difficulty: Hard");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.RED);
@@ -114,6 +115,22 @@ public class Setting extends JFrame {
 			}
 		});
 		cp.add(jButton3);
+
+		// Cheat Code: C8763
+		cheatSubmit.setText("Link Start!");
+		cheatSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				cheat_ActionPerformed(evt);
+			}
+		});
+		cheatSubmit.setSize(100, 50);
+		cheatPanel.setLayout(new BorderLayout(5, 10));
+		cheatPanel.setBackground(null);
+		cheatPanel.setOpaque(false);
+		cheatPanel.setSize(500, 50);
+		cheatPanel.add(cheat, BorderLayout.CENTER);
+		cheatPanel.add(cheatSubmit, BorderLayout.EAST);
+		cp.add(cheatPanel);
 
 		cp.setBackground(new Color(0xFFC800));
 
@@ -156,7 +173,7 @@ public class Setting extends JFrame {
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 60));
 			jButton2.setForeground(Color.CYAN);
 		}
-		
+
 		Difficulty.closeFile();
 	}
 
@@ -166,6 +183,21 @@ public class Setting extends JFrame {
 			closeSetting();
 		} else {
 			System.out.println("Already running!");
+		}
+	}
+
+	public void cheat_ActionPerformed(ActionEvent evt) {
+		String cheatText = cheat.getText();
+		if (cheatText.equals("C8763")) {
+			cheatPanel.removeAll();
+			JLabel sucessLabel = new JLabel("Star Burst Stream!");
+			cheatPanel.add(sucessLabel);
+			setVisible(true);
+		} else {
+			cheatPanel.removeAll();
+			JLabel failLabel = new JLabel("KIRITO!!!!!!!");
+			cheatPanel.add(failLabel);
+			setVisible(true);
 		}
 	}
 
