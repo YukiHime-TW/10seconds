@@ -3,6 +3,8 @@ package pr.dawe.game.gfx;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -15,7 +17,8 @@ public class Menu extends JFrame {
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	private Music music = new Music("/music/BGM_Menu.wav");
-	//private Image backGround = Toolkit.getDefaultToolkit().getImage(".\\res\\backGround\\BG.png");
+	// private Image backGround =
+	// Toolkit.getDefaultToolkit().getImage(".\\res\\backGround\\BG.png");
 	public static boolean running = false;
 
 	public Menu(String title) {
@@ -33,12 +36,11 @@ public class Menu extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-		
-		
+
 		JLabel background = new JLabel(new ImageIcon(".\\res\\backGround\\BG.png"));
 		cp.add(background);
-		
-		//Game Start
+
+		// Game Start
 		jButton1.setBounds(430, 280, 640, 114);
 		jButton1.setText("Start New Level");
 		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
@@ -53,8 +55,8 @@ public class Menu extends JFrame {
 			}
 		});
 		cp.add(jButton1);
-		
-		//Setting
+
+		// Setting
 		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Setting");
 		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
@@ -69,8 +71,8 @@ public class Menu extends JFrame {
 			}
 		});
 		cp.add(jButton2);
-		
-		//Close Game
+
+		// Close Game
 		jButton3.setBounds(550, 700, 400, 114);
 		jButton3.setText("Close Game");
 		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
@@ -85,7 +87,7 @@ public class Menu extends JFrame {
 			}
 		});
 		cp.add(jButton3);
-		
+
 		cp.setBackground(new Color(0xFFC800));
 
 		setVisible(true);
@@ -99,7 +101,7 @@ public class Menu extends JFrame {
 			System.out.println("Already running!");
 		}
 	}
-	
+
 	public void jButton2_ActionPerformed(ActionEvent evt) { // SETTING
 		if (running == false) {
 			Setting.main(null);
@@ -108,8 +110,16 @@ public class Menu extends JFrame {
 			System.out.println("Already running!");
 		}
 	}
-	
-	public void jButton3_ActionPerformed(ActionEvent evt) { // CLOSE¡@GAME
+
+	public void jButton3_ActionPerformed(ActionEvent evt) { // CLOSE GAME
+
+		try {
+			Cheat.openFile();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Cheat.cheat = 0;
+		Cheat.writeIn();
 		System.exit(1);
 	}
 
@@ -118,7 +128,7 @@ public class Menu extends JFrame {
 		WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
 	}
-	
+
 	public static void main(String[] args) {
 		new Menu("®É¶¡«iªÌ:Take a breath");
 	}
