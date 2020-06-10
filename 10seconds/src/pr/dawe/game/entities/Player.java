@@ -4,11 +4,8 @@ import pr.dawe.game.Game;
 import pr.dawe.game.GameEvents;
 import pr.dawe.game.InputHandler;
 import pr.dawe.game.gfx.Colours;
-import pr.dawe.game.gfx.Font;
 import pr.dawe.game.gfx.Screen;
 import pr.dawe.game.level.Level;
-import pr.dawe.game.level.tiles.Tile;
-import pr.dawe.game.entities.Entity.*;
 
 public class Player extends Mob {
 
