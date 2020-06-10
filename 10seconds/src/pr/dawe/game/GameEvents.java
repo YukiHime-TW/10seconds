@@ -9,6 +9,7 @@ import pr.dawe.game.entities.Weapon;
 import pr.dawe.game.gfx.Colours;
 import pr.dawe.game.gfx.Font;
 import pr.dawe.game.gfx.Screen;
+import pr.dawe.game.gfx.StageTimer;
 import pr.dawe.game.level.Level;
 
 public class GameEvents {
@@ -17,7 +18,7 @@ public class GameEvents {
 	static boolean playerIsIndoor = false;
 	private long lastShot;
 	private long Time;
-	private int nowLevel=1;
+	private int nowLevel = 1;
 	public static boolean overItem = false;
 	public static boolean overCoin = false;
 
@@ -128,7 +129,10 @@ public class GameEvents {
 		if (Player.triggeredDOOR_LEAVE == true) { // FOREST/HOUSE_LEAVE
 			Font.render("LEAVE", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
 			if (input.enter.isPressed()) {
-				Game.startLevel("/levels/level_"+nowLevel+".png", 505, 475);
+				if (nowLevel == 1) {
+					Game.startLevel1("/levels/level_" + nowLevel + ".png", 505, 475);
+				}
+
 				playerIsIndoor = false;
 			}
 		}
@@ -151,7 +155,7 @@ public class GameEvents {
 			}
 		}
 
-		if (playerHealth <= 0) { // PLAYER DEAD
+		if (!StageTimer.run) { // Time up
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 		}
