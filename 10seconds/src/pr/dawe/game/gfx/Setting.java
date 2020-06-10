@@ -80,7 +80,7 @@ public class Setting extends JFrame {
 		} else if (Difficulty.diff == 1) {
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
-			jButton2.setForeground(Color.GREEN);
+			jButton2.setForeground(Color.ORANGE);
 		} else if (Difficulty.diff == 2) {
 			jButton2.setText("Difficulty: Hard");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
@@ -121,6 +121,7 @@ public class Setting extends JFrame {
 		cp.add(jButton3);
 
 		// Cheat Code: C8763
+		cheat.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 50));
 		if (Cheat.cheat == 1) {
 			cheatPanel.removeAll();
 			successLabel.setText("Star Burst Stream!");
