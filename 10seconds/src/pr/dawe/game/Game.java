@@ -71,7 +71,6 @@ public class Game extends Canvas implements Runnable {
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
 
 	public Game() {
-		
 
 		frame = new JFrame(NAME);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
