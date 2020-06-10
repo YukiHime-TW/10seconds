@@ -15,6 +15,7 @@ public class Menu extends JFrame {
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	private Music music = new Music("/music/BGM_Menu.wav");
+	private Image backGround = Toolkit.getDefaultToolkit().getImage(".\\res\\backGround\\newmenu.png");
 	public static boolean running = false;
 
 	public Menu(String title) {
@@ -32,6 +33,16 @@ public class Menu extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
+		
+		// BackGround
+		this.setContentPane(new JPanel() {
+	         @Override
+	         public void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            g.drawImage(img, 0, 0, null);
+	         }
+	      });
+	    pack();
 		
 		//Game Start
 		jButton1.setBounds(430, 280, 640, 114);
@@ -113,7 +124,7 @@ public class Menu extends JFrame {
 		WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
 	}
-
+	
 	public static void main(String[] args) {
 		new Menu("®É¶¡«iªÌ:Take a breath");
 	}
