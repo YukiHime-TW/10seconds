@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Volume {
 
-	public static int volume;
+	public static int volume = 50;
 	private static Formatter output;
 	private static Scanner input;
 
