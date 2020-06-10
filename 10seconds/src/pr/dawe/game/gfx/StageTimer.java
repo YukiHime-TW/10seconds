@@ -23,7 +23,7 @@ public class StageTimer {
 			public void run() {
 				if (midTime > 0) {
 					midTime--;
-					System.out.printf("%d\n", midTime);
+					System.out.printf("midTime = %d\n", midTime);
 				} else {
 					stop();
 				}
