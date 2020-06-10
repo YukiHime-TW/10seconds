@@ -3,7 +3,6 @@ package pr.dawe.game.gfx;
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.Formatter;
-import java.util.FormatterClosedException;
 import java.util.Scanner;
 
 public class Volume {
