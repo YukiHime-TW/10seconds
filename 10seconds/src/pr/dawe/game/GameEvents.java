@@ -34,7 +34,7 @@ public class GameEvents {
 	private int food = 100;
 
 	public GameEvents() {
-
+		
 	}
 
 	public void renderInterface(Screen screen, int x, int y) {
