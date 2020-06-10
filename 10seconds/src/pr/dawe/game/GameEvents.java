@@ -1,6 +1,8 @@
 package pr.dawe.game;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import pr.dawe.game.entities.Mob;
 import pr.dawe.game.entities.PickableItem;
@@ -158,6 +160,16 @@ public class GameEvents {
 		if (!StageTimer.run) { // Time up
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
+			Timer timergame = new Timer();
+			TimerTask gametest = new TimerTask() {
+				@Override
+				public void run() {
+					System.exit(1);
+				}
+
+			};
+
+			timergame.schedule(gametest, 3000);
 		}
 
 	}
