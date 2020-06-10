@@ -15,7 +15,7 @@ public class Menu extends JFrame {
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	private Music music = new Music("/music/BGM_Menu.wav");
-	private Image backGround = Toolkit.getDefaultToolkit().getImage(".\\res\\backGround\\newmenu.png");
+	//private Image backGround = Toolkit.getDefaultToolkit().getImage(".\\res\\backGround\\BG.png");
 	public static boolean running = false;
 
 	public Menu(String title) {
@@ -34,15 +34,9 @@ public class Menu extends JFrame {
 		Container cp = getContentPane();
 		cp.setLayout(null);
 		
-		// BackGround
-		this.setContentPane(new JPanel() {
-	         @Override
-	         public void paintComponent(Graphics g) {
-	            super.paintComponent(g);
-	            g.drawImage(img, 0, 0, null);
-	         }
-	      });
-	    pack();
+		
+		JLabel background = new JLabel(new ImageIcon(".\\res\\backGround\\BG.png"));
+		cp.add(background);
 		
 		//Game Start
 		jButton1.setBounds(430, 280, 640, 114);
