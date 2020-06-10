@@ -13,7 +13,7 @@ public class Setting extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public int difficulty = 0;
 	private JSlider volumeChange;
-	private JLabel volumeNow = new JLabel("Volume : 50", JLabel.CENTER);
+	private JLabel volumeNow;
 	private JPanel controlPanel;
 	private JPanel cheatPanel = new JPanel();
 	private JTextField cheat = new JTextField();
@@ -39,10 +39,20 @@ public class Setting extends JFrame {
 		cp.setLayout(null);
 
 		// Volume
-		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+		volumeNow = new JLabel();
+		try {
+			Volume.openFileR();
+			Volume.readOut();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+
+		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, Volume.volume);
 		volumeChange.setMajorTickSpacing(5);
 		ValueChangeListener myListener = new ValueChangeListener();
 		volumeChange.addChangeListener(myListener);
+
+		volumeNow.setText(String.format("Volume : %d", Volume.volume));
 
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new BorderLayout(5, 10));
@@ -134,7 +144,7 @@ public class Setting extends JFrame {
 				Volume.openFile();
 				if (e.getSource() == volumeChange) {
 					volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
-					//music.setVolume(((JSlider) e.getSource()).getValue());
+					// music.setVolume(((JSlider) e.getSource()).getValue());
 					Volume.writeIn(((JSlider) e.getSource()).getValue());
 				}
 				Volume.closeFile();
@@ -190,7 +200,7 @@ public class Setting extends JFrame {
 		String cheatText = cheat.getText();
 		if (cheatText.equals("C8763")) {
 			cheatPanel.removeAll();
-			JLabel sucessLabel = new JLabel("Star Burst Stream!");
+			JLabel sucessLabel = new JLabel("Star Burst Stream!!!!!!!");
 			cheatPanel.add(sucessLabel);
 			setVisible(true);
 		} else {
