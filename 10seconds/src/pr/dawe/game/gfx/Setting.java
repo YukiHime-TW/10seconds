@@ -30,6 +30,7 @@ public class Setting extends JFrame {
 	public Setting(String title) {
 		super(title);
 		music.play();
+		music.setVolume(Volume.volume);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setUndecorated(true);
 		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
