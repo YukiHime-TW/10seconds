@@ -134,17 +134,24 @@ public class Setting extends JFrame {
 		} else {
 			cheatPanel.removeAll();
 			cheatSubmit.setText("Link Start!");
+			cheatSubmit.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 40));
+			cheatSubmit.setForeground(Color.DARK_GRAY);
+			cheatSubmit.setBackground(null);
+			//cheatSubmit.setOpaque(false);
+			cheatSubmit.setContentAreaFilled(false);
+			cheatSubmit.setBorderPainted(false);
+			cheatSubmit.setFocusPainted(false);
+			cheatSubmit.setSize(100, 50);
 			cheatSubmit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
 					cheat_ActionPerformed(evt);
 				}
 			});
-			cheatSubmit.setSize(100, 50);
 			cheatPanel.setLayout(new BorderLayout(5, 10));
 			cheatPanel.setBackground(null);
 			cheatPanel.setOpaque(false);
 			cheatPanel.setSize(500, 50);
-			cheatPanel.setLocation(540, 300);
+			cheatPanel.setLocation(580, 300);
 			cheatPanel.add(cheat, BorderLayout.CENTER);
 			cheatPanel.add(cheatSubmit, BorderLayout.EAST);
 			setVisible(true);
