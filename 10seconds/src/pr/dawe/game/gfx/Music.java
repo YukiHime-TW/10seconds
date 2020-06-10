@@ -20,7 +20,6 @@ public class Music {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 
 	}
@@ -46,13 +45,9 @@ public class Music {
 
 	public void setVolume(int volume) {
 		FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-		float dB = (float) (Math.log(volume) / Math.log(10.0) * 20.0);
+		double gain = (double) volume / 100;
+		float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
 		gainControl.setValue(dB);
-
-		BooleanControl muteControl = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
-		muteControl.setValue(true);
-
-		muteControl.setValue(false);
 	}
 
 	public boolean isPlaying() {
