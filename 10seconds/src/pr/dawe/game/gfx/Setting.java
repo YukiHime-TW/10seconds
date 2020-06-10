@@ -53,20 +53,22 @@ public class Setting extends JFrame {
 		}
 		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, Volume.volume);
 		volumeChange.setMajorTickSpacing(5);
+		volumeChange.setOpaque(false);
 		ValueChangeListener myListener = new ValueChangeListener();
 		volumeChange.addChangeListener(myListener);
 
 		volumeNow.setText(String.format("Volume : %d", Volume.volume));
+		volumeNow.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 40));
+		volumeNow.setForeground(Color.DARK_GRAY);
 
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new BorderLayout(5, 10));
 		controlPanel.setBackground(null);
 		controlPanel.setOpaque(false);
-		controlPanel.setSize(500, 50);
-		controlPanel.setLocation(540, 450);
-		volumeNow.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 20));
-		controlPanel.add(volumeChange, BorderLayout.CENTER);
-		controlPanel.add(volumeNow, BorderLayout.EAST);
+		controlPanel.setSize(500, 100);
+		controlPanel.setLocation(560, 400);
+		controlPanel.add(volumeChange, BorderLayout.WEST);
+		controlPanel.add(volumeNow, BorderLayout.CENTER);
 		cp.add(controlPanel);
 
 		// Difficulty
@@ -78,7 +80,7 @@ public class Setting extends JFrame {
 		} else if (Difficulty.diff == 1) {
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
-			jButton2.setForeground(Color.DARK_GRAY);
+			jButton2.setForeground(Color.GREEN);
 		} else if (Difficulty.diff == 2) {
 			jButton2.setText("Difficulty: Hard");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
@@ -187,7 +189,7 @@ public class Setting extends JFrame {
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
-			jButton2.setForeground(Color.DARK_GRAY);
+			jButton2.setForeground(Color.ORANGE);
 		} else if (difficulty == 1) {
 			difficulty = 2;
 			Difficulty.diff = difficulty;
