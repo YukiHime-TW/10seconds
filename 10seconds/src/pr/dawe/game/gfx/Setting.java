@@ -14,6 +14,8 @@ public class Setting extends JFrame {
 	public int difficulty = 0;
 	private JSlider volumeChange;
 	private JLabel volumeNow;
+	private JLabel successLabel;
+	private JLabel failLabel;
 	private JPanel controlPanel;
 	private JPanel cheatPanel = new JPanel();
 	private JTextField cheat = new JTextField();
@@ -25,7 +27,7 @@ public class Setting extends JFrame {
 
 	public Setting(String title) {
 		super(title);
-		music.play();
+		// music.play();
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setUndecorated(true);
 		getGraphicsConfiguration().getDevice().setFullScreenWindow(this);
@@ -41,12 +43,10 @@ public class Setting extends JFrame {
 		// Volume
 		volumeNow = new JLabel();
 		try {
-			Volume.openFileR();
-			Volume.readOut();
-		} catch (IOException e2) {
+			Volume.openFile();
+		} catch (FileNotFoundException e2) {
 			e2.printStackTrace();
 		}
-
 		volumeChange = new JSlider(JSlider.HORIZONTAL, 0, 100, Volume.volume);
 		volumeChange.setMajorTickSpacing(5);
 		ValueChangeListener myListener = new ValueChangeListener();
@@ -60,7 +60,6 @@ public class Setting extends JFrame {
 		controlPanel.setOpaque(false);
 		controlPanel.setSize(500, 50);
 		controlPanel.setLocation(540, 450);
-		//volumeNow.setSize(100, 100);
 		volumeNow.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 20));
 		controlPanel.add(volumeChange, BorderLayout.CENTER);
 		controlPanel.add(volumeNow, BorderLayout.EAST);
@@ -68,11 +67,6 @@ public class Setting extends JFrame {
 
 		// Difficulty
 		jButton2.setBounds(490, 550, 570, 114);
-		try {
-			Difficulty.openFile();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
 		if (Difficulty.diff == 0) {
 			jButton2.setText("Difficulty: Easy");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
@@ -119,41 +113,46 @@ public class Setting extends JFrame {
 		cp.add(jButton3);
 
 		// Cheat Code: C8763
-		cheatSubmit.setText("Link Start!");
-		cheatSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				cheat_ActionPerformed(evt);
-			}
-		});
-		cheatSubmit.setSize(100, 50);
-		cheatPanel.setLayout(new BorderLayout(5, 10));
-		cheatPanel.setBackground(null);
-		cheatPanel.setOpaque(false);
-		cheatPanel.setSize(500, 50);
-		cheatPanel.setLocation(540, 300);
-		cheatPanel.add(cheat, BorderLayout.CENTER);
-		cheatPanel.add(cheatSubmit, BorderLayout.EAST);
+		if (Cheat.cheat == 1) {
+			System.out.printf("Cheat success\n");
+			successLabel = new JLabel("Star Burst Stream!");
+			successLabel.setForeground(Color.BLACK);
+			successLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
+			cheatPanel.add(successLabel);
+			setVisible(true);
+		} else {
+			System.out.printf("Cheat failed\n");
+			cheatSubmit.setText("Link Start!");
+			cheatSubmit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evt) {
+					cheat_ActionPerformed(evt);
+				}
+			});
+			cheatSubmit.setSize(100, 50);
+			cheatPanel.setLayout(new BorderLayout(5, 10));
+			cheatPanel.setBackground(null);
+			cheatPanel.setOpaque(false);
+			cheatPanel.setSize(500, 50);
+			cheatPanel.setLocation(540, 300);
+			cheatPanel.add(cheat, BorderLayout.CENTER);
+			cheatPanel.add(cheatSubmit, BorderLayout.EAST);
+			setVisible(true);
+		}
+
 		cp.add(cheatPanel);
 
 		cp.setBackground(new Color(0xFFC800));
-		
+
 		setVisible(true);
 	}
 
 	class ValueChangeListener implements ChangeListener {
 		public void stateChanged(ChangeEvent e) {
-			try {
-				Volume.openFile();
-				if (e.getSource() == volumeChange) {
-					volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
-					// music.setVolume(((JSlider) e.getSource()).getValue());
-					Volume.writeIn(((JSlider) e.getSource()).getValue());
-				}
-				Volume.closeFile();
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
+			if (e.getSource() == volumeChange) {
+				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
+				// music.setVolume(((JSlider) e.getSource()).getValue());
+				Volume.writeIn(((JSlider) e.getSource()).getValue());
 			}
-
 		}
 	}
 
@@ -162,31 +161,25 @@ public class Setting extends JFrame {
 		// Easy = 0
 		// Normal = 1
 		// Hard = 2
-		Difficulty.openFile();
 		if (difficulty == 0) {
 			difficulty = 1;
-			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Normal");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.DARK_GRAY);
 		} else if (difficulty == 1) {
 			difficulty = 2;
-			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Hard");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.RED);
 		} else if (difficulty == 2) {
 			difficulty = 0;
-			Difficulty.writeIn(difficulty);
 			Difficulty.diff = difficulty;
 			jButton2.setText("Difficulty: Easy");
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			jButton2.setForeground(Color.CYAN);
 		}
-
-		Difficulty.closeFile();
 	}
 
 	public void jButton3_ActionPerformed(ActionEvent evt) { // Back to menu
@@ -200,20 +193,22 @@ public class Setting extends JFrame {
 
 	public void cheat_ActionPerformed(ActionEvent evt) {
 		String cheatText = cheat.getText();
-		if (cheatText.equals("C8763")||cheatText.equals("c8763")) {
+		if (cheatText.equals("C8763") || cheatText.equals("c8763")) {
 			cheatPanel.removeAll();
-			JLabel sucessLabel = new JLabel("Star Burst Stream!!!!!!!");
-			sucessLabel.setForeground(Color.BLACK);
-			sucessLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
-			cheatPanel.add(sucessLabel);
+			successLabel = new JLabel("Star Burst Stream!");
+			successLabel.setForeground(Color.BLACK);
+			successLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
+			cheatPanel.add(successLabel);
 			setVisible(true);
+			Cheat.cheat = 1;
 		} else {
 			cheatPanel.removeAll();
-			JLabel failLabel = new JLabel("KIRITO!!!!!!!");
+			failLabel = new JLabel("KIRITO!!!!!!!");
 			failLabel.setForeground(Color.RED);
 			failLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			cheatPanel.add(failLabel);
 			setVisible(true);
+			Cheat.cheat = 0;
 		}
 	}
 
