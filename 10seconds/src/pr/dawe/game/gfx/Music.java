@@ -5,6 +5,7 @@ import javax.sound.sampled.*;
 public class Music {
 
 	private Clip clip;
+	public FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
 	public Music(String path) {
 		try {
@@ -42,5 +43,17 @@ public class Music {
 		if (clip.isRunning())
 			clip.stop();
 
+	}
+
+	public void setVolume(int volume) {
+		
+	}
+
+	public boolean isPlaying() {
+		if (clip.isRunning()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
