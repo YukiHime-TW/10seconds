@@ -37,7 +37,7 @@ public class GameEvents {
 	private int food = 100;
 
 	public GameEvents() {
-		
+
 	}
 
 	public void renderInterface(Screen screen, int x, int y) {
@@ -49,42 +49,12 @@ public class GameEvents {
 		if (playerHealth == 1)
 			Font.render("c", screen, x + 1, y, Colours.get(-1, 555, -1, 400), 1);
 
-		if (water <= 100 && water > 50) // WATER
-			Font.render("w", screen, x + 24, y, blue, 1);
-		if (water <= 50 && water > 15)
-			Font.render("w", screen, x + 24, y, orange, 1);
-		if (water <= 15 && water > 0)
-			Font.render("w", screen, x + 24, y, red, 1);
-		if (water <= 0)
-			Font.render("w", screen, x + 24, y, black, 1);
-
-		if (food <= 100 && food > 50) // FOOD
-			Font.render("f", screen, x + 31, y, green, 1);
-		if (food <= 50 && food > 15)
-			Font.render("f", screen, x + 31, y, orange, 1);
-		if (food <= 15 && food > 0)
-			Font.render("f", screen, x + 31, y, red, 1);
-		if (food <= 0)
-			Font.render("f", screen, x + 31, y, black, 1);
+		Font.render(String.format("%d", Game.Time.midTime), screen, x + 25, y, Colours.get(-1, 255, 255, 255), 1);
 
 		Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540, 111), 1);
 	}
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, Level level) {
-
-		if (Player.triggeredCHEST == true) { // CHEST TRIGGER
-			Font.render("a", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
-			if (input.chest.isPressed()) {
-				Font.render("INVENTORY", screen, x + 55, y + 37, Colours.get(-1, -1, -1, 000), 1);
-			}
-		}
-
-		if (Player.triggeredKEY == true) { // INVESTIGATE FLOWER
-			Font.render("b", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
-			if (input.investigate.isPressed()) {
-				Font.render("FLOWER!", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
-			}
-		}
 
 		if (input.shoot.isPressed() == true && bullets > 0 && shotbullet == 0) { // SHOOT
 			Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55);
@@ -156,8 +126,8 @@ public class GameEvents {
 				playerHealth++;
 			}
 		}
-		
-		if (!StageTimer.run) { // Time up
+
+		if (!StageTimer.run || playerHealth == 0) { // Time up or Dead
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 			Timer timergame = new Timer();
