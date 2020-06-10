@@ -33,25 +33,23 @@ public class Player extends Mob {
 		int xa = 0;
 		int ya = 0;
 
-		if (input.up.isPressed()) {
-			ya--;
-		}
 		if (!hasCollided(xa, ya))
-
+			if (input.up.isPressed()) {
+				ya--;
+			}
+		if (!hasCollided(xa, ya))
 			if (input.down.isPressed()) {
 				ya++;
 			}
 		if (!hasCollided(xa, ya))
-
 			if (input.left.isPressed()) {
 				xa--;
 			}
 		if (!hasCollided(xa, ya))
-
 			if (input.right.isPressed()) {
 				xa++;
 			}
-		if (!hasCollided(xa, ya))
+		//if (!hasCollided(xa, ya))
 
 			//System.out.println(x + " " + y);
 
