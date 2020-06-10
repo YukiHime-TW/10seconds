@@ -89,7 +89,7 @@ public class Menu extends JFrame {
 
 		//BackGround
 		bgp = new BackgroundPanel((new ImageIcon(".\\res\\backGround\\BG.png")).getImage());
-		bgp.setBounds(0,0,d.width-1,d.height-1);
+		bgp.setBounds(0,0,d.width,d.height);
 		cp.add(bgp);
 
 		setVisible(true);

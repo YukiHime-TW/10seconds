@@ -86,7 +86,8 @@ public class Setting extends JFrame {
 		}
 		difficulty = Difficulty.diff;
 		jButton2.setBackground(null);
-		jButton2.setOpaque(false);
+		//jButton2.setOpaque(false);
+		jButton2.setContentAreaFilled(false);
 		jButton2.setBorderPainted(false);
 		jButton2.setFocusPainted(false);
 		jButton2.addActionListener(new ActionListener() {
@@ -106,7 +107,8 @@ public class Setting extends JFrame {
 		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 		jButton3.setForeground(Color.LIGHT_GRAY);
 		jButton3.setBackground(null);
-		jButton3.setOpaque(false);
+		//jButton3.setOpaque(false);
+		jButton3.setContentAreaFilled(false);
 		jButton3.setBorderPainted(false);
 		jButton3.setFocusPainted(false);
 		jButton3.addActionListener(new ActionListener() {
@@ -132,17 +134,24 @@ public class Setting extends JFrame {
 		} else {
 			cheatPanel.removeAll();
 			cheatSubmit.setText("Link Start!");
+			cheatSubmit.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 40));
+			cheatSubmit.setForeground(Color.DARK_GRAY);
+			cheatSubmit.setBackground(null);
+			//cheatSubmit.setOpaque(false);
+			cheatSubmit.setContentAreaFilled(false);
+			cheatSubmit.setBorderPainted(false);
+			cheatSubmit.setFocusPainted(false);
+			cheatSubmit.setSize(100, 50);
 			cheatSubmit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
 					cheat_ActionPerformed(evt);
 				}
 			});
-			cheatSubmit.setSize(100, 50);
 			cheatPanel.setLayout(new BorderLayout(5, 10));
 			cheatPanel.setBackground(null);
 			cheatPanel.setOpaque(false);
 			cheatPanel.setSize(500, 50);
-			cheatPanel.setLocation(540, 300);
+			cheatPanel.setLocation(580, 300);
 			cheatPanel.add(cheat, BorderLayout.CENTER);
 			cheatPanel.add(cheatSubmit, BorderLayout.EAST);
 			setVisible(true);
@@ -152,7 +161,7 @@ public class Setting extends JFrame {
 
 		//BackGround
 		bgp = new BackgroundPanel((new ImageIcon(".\\res\\backGround\\BG.png")).getImage());
-		bgp.setBounds(0,0,d.width-1,d.height-1);
+		bgp.setBounds(0,0,d.width,d.height);
 		cp.add(bgp);
 
 		setVisible(true);
