@@ -151,17 +151,4 @@ public class Level {
 		this.entities.remove(entity);
 	}
 
-	public static void generateForest() {
-		Game.startLevel("/levels/forest.png", 15, 15);
-		for (int y = 0; y < height; y++) {
-			int randomForest = generator.nextInt(10) + 7;
-			for (int x = 0; x < width; x++) {
-				if (x * y % 10 < randomForest) {
-					tiles[x + y * width] = Tile.GRASS.getId();
-					// } else {
-					tiles[randomForest + y * width] = Tile.STONE.getId();
-				}
-			}
-		}
-	}
 }

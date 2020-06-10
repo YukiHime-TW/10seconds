@@ -16,7 +16,7 @@ public class NPC extends Mob {
 	private int move;
 
 	public NPC(Level level, int x, int y) {
-		super(level, "Zombie", x, y, 1);
+		super(level, "Slime", x, y, 1);
 	}
 
 	public void tick() {

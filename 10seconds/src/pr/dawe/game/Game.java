@@ -33,6 +33,7 @@ import pr.dawe.game.gfx.Colours;
 import pr.dawe.game.gfx.Menu;
 import pr.dawe.game.gfx.Screen;
 import pr.dawe.game.gfx.SpriteSheet;
+import pr.dawe.game.gfx.StageTimer;
 import pr.dawe.game.level.Level;
 
 public class Game extends Canvas implements Runnable {
@@ -67,6 +68,7 @@ public class Game extends Canvas implements Runnable {
 	public static Player player;
 	public static NPC monster;
 	public static Weapon FireBall;
+	public static StageTimer Time;
 
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
 
@@ -74,11 +76,11 @@ public class Game extends Canvas implements Runnable {
 
 		frame = new JFrame(NAME);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		frame.setUndecorated(true);
 		frame.add(this, BorderLayout.CENTER);
-		frame.getGraphicsConfiguration().getDevice() .setFullScreenWindow(frame); 
+		frame.getGraphicsConfiguration().getDevice().setFullScreenWindow(frame); 
 		frame.pack();
 
 		frame.setResizable(true);
@@ -103,17 +105,20 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
-		startLevel("/levels/level_1.png", 390, 390);
+		startLevel1("/levels/level_1.png", 390, 390);
 		addEntities();
+		
 	}
 
-	public static void startLevel(String levelPath, int x, int y) {
+	public static void startLevel1(String levelPath, int x, int y) {
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 270, 270);
+		Time = new StageTimer(frame,10);
 		level.addEntity(player);
 		level.addEntity(monster);
 		gameEvents = new GameEvents();
+		Time.TimeGame();
 		// ADD ENTITIES
 	}
 
@@ -143,12 +148,12 @@ public class Game extends Canvas implements Runnable {
 		new Thread(this).start();
 	}
 
-	public synchronized void stop() {
+	public void stop() {
 		running = false;
 		menuRunning = true;
 	}
 
-	public void close() {
+	public static void close() {
 		frame.dispose();
 	}
 
@@ -189,7 +194,7 @@ public class Game extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - lastTimer >= 1000) {
 				lastTimer += 1000;
-				System.out.println("" + ticks + " ticks, " + frames + " frames");
+				//System.out.println("" + ticks + " ticks, " + frames + " frames");
 				frames = 0;
 				ticks = 0;
 			}
@@ -245,7 +250,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public static void closeGame() {
-		frame.setVisible(false);
+		close();
 	}
 
 	public static void main(String[] args) {

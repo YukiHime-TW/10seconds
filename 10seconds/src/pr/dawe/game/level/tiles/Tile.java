@@ -12,7 +12,7 @@ public abstract class Tile {
 	public static final Tile STONE = new BasicSolidTile(1, 1, 0, Colours.get(222, 333, 444, 333), 0xFF555555);
 	public static final Tile GRASS = new BasicTile(2, 2, 0, Colours.get(-1, 131, 141, -1), 0x0FF00FF00);
 	public static final Tile TREE = new BasicSolidTile(4, 4, 0, Colours.get(-1, 170, 320, 170), 0x0FF523000);
-	public static final Tile TREETOP = new BasicTile(5, 5, 0, Colours.get(-1, 170, 320, 170), 0x0FF423000);
+	public static final Tile TREETOP = new BasicSolidTile(5, 5, 0, Colours.get(-1, 170, 320, 170), 0x0FF423000);
 	public static final Tile SAND = new BasicTile(6, 3, 0, Colours.get(-1, 542, 555, -1), 0x0FFFFF000);
 	public static final Tile STONEWALL = new BasicSolidTile(8, 6, 0, Colours.get(333, 222, 333, 444), 0xFFAAAAAA);
 	public static final Tile FLOWERS_1 = new BasicTile(10, 7, 0, Colours.get(131, 131, 510, 450), 0x0FFFF9000);
