@@ -65,7 +65,7 @@ public class Setting extends JFrame {
 		cp.add(controlPanel);
 
 		// Difficulty
-		jButton2.setBounds(490, 490, 520, 114);
+		jButton2.setBounds(490, 490, 570, 114);
 		try {
 			Difficulty.openFile();
 		} catch (FileNotFoundException e1) {
