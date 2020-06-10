@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Difficulty {
 
-	public static int diff;
+	public static int diff = 0;
 	private static Formatter output;
 	private static Scanner input;
 
