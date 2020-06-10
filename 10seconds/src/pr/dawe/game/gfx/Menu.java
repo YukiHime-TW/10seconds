@@ -17,12 +17,9 @@ public class Menu extends JFrame {
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
 	private Music music = new Music("/music/BGM_Menu.wav");
-	// private Image backGround =
-	// Toolkit.getDefaultToolkit().getImage(".\\res\\backGround\\BG.png");
 	public static boolean running = false;
 
 	public Menu(String title) {
-
 		super(title);
 		music.play();
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -36,17 +33,16 @@ public class Menu extends JFrame {
 		setResizable(false);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-
-		JLabel background = new JLabel(new ImageIcon(".\\res\\backGround\\BG.png"));
-		cp.add(background);
+		BackgroundPanel bgp;
 
 		// Game Start
 		jButton1.setBounds(430, 280, 640, 114);
 		jButton1.setText("Start New Level");
 		jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
-		jButton1.setForeground(Color.LIGHT_GRAY);
+		jButton1.setForeground(Color.DARK_GRAY);
 		jButton1.setBackground(null);
-		jButton1.setOpaque(false);
+		//jButton1.setOpaque(false);
+		jButton1.setContentAreaFilled(false);
 		jButton1.setBorderPainted(false);
 		jButton1.setFocusPainted(false);
 		jButton1.addActionListener(new ActionListener() {
@@ -60,9 +56,10 @@ public class Menu extends JFrame {
 		jButton2.setBounds(490, 490, 520, 114);
 		jButton2.setText("Setting");
 		jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 80));
-		jButton2.setForeground(Color.LIGHT_GRAY);
+		jButton2.setForeground(Color.DARK_GRAY);
 		jButton2.setBackground(null);
-		jButton2.setOpaque(false);
+		//jButton2.setOpaque(false);
+		jButton2.setContentAreaFilled(false);
 		jButton2.setBorderPainted(false);
 		jButton2.setFocusPainted(false);
 		jButton2.addActionListener(new ActionListener() {
@@ -78,7 +75,8 @@ public class Menu extends JFrame {
 		jButton3.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 		jButton3.setForeground(Color.LIGHT_GRAY);
 		jButton3.setBackground(null);
-		jButton3.setOpaque(false);
+		//jButton3.setOpaque(false);
+		jButton3.setContentAreaFilled(false);
 		jButton3.setBorderPainted(false);
 		jButton3.setFocusPainted(false);
 		jButton3.addActionListener(new ActionListener() {
@@ -88,7 +86,10 @@ public class Menu extends JFrame {
 		});
 		cp.add(jButton3);
 
-		cp.setBackground(new Color(0xFFC800));
+		//BackGround
+		bgp = new BackgroundPanel((new ImageIcon(".\\res\\backGround\\BG.png")).getImage());
+		bgp.setBounds(0,0,d.width-1,d.height-1);
+		cp.add(bgp);
 
 		setVisible(true);
 	}
@@ -127,6 +128,22 @@ public class Menu extends JFrame {
 		music.stop();
 		WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
+	}
+	
+	class BackgroundPanel extends JPanel{
+		Image im;
+		public BackgroundPanel(Image im)
+		{
+		   this.im=im;
+		   this.setOpaque(true);
+		}
+		//Draw the back ground.
+		public void paintComponent(Graphics g)
+		{
+		   super.paintComponents(g);
+		   g.drawImage(im,0,0,this.getWidth(),this.getHeight(),this);
+	
+		}
 	}
 
 	public static void main(String[] args) {
