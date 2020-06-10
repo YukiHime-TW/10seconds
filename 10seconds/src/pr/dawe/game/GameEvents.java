@@ -156,7 +156,7 @@ public class GameEvents {
 				playerHealth++;
 			}
 		}
-
+		
 		if (!StageTimer.run) { // Time up
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
