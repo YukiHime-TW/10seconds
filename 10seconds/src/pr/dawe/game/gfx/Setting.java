@@ -14,8 +14,8 @@ public class Setting extends JFrame {
 	public int difficulty = 0;
 	private JSlider volumeChange;
 	private JLabel volumeNow;
-	private JLabel successLabel;
-	private JLabel failLabel;
+	private JLabel successLabel = new JLabel("");
+	private JLabel failLabel = new JLabel("");
 	private JPanel controlPanel;
 	private JPanel cheatPanel = new JPanel();
 	private JTextField cheat = new JTextField();
@@ -114,14 +114,19 @@ public class Setting extends JFrame {
 
 		// Cheat Code: C8763
 		if (Cheat.cheat == 1) {
-			System.out.printf("Cheat success\n");
-			successLabel = new JLabel("Star Burst Stream!");
+			cheatPanel.removeAll();
+			successLabel.setText("Star Burst Stream!");
 			successLabel.setForeground(Color.BLACK);
 			successLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
+			cheatPanel.setLayout(new BorderLayout(5, 10));
+			cheatPanel.setBackground(null);
+			cheatPanel.setOpaque(false);
+			cheatPanel.setSize(500, 50);
+			cheatPanel.setLocation(540, 300);
 			cheatPanel.add(successLabel);
 			setVisible(true);
 		} else {
-			System.out.printf("Cheat failed\n");
+			cheatPanel.removeAll();
 			cheatSubmit.setText("Link Start!");
 			cheatSubmit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
@@ -151,7 +156,7 @@ public class Setting extends JFrame {
 			if (e.getSource() == volumeChange) {
 				volumeNow.setText("Volume : " + ((JSlider) e.getSource()).getValue());
 				// music.setVolume(((JSlider) e.getSource()).getValue());
-				Volume.writeIn(((JSlider) e.getSource()).getValue());
+				Volume.volume = ((JSlider) e.getSource()).getValue();
 			}
 		}
 	}
@@ -195,7 +200,7 @@ public class Setting extends JFrame {
 		String cheatText = cheat.getText();
 		if (cheatText.equals("C8763") || cheatText.equals("c8763")) {
 			cheatPanel.removeAll();
-			successLabel = new JLabel("Star Burst Stream!");
+			successLabel.setText("Star Burst Stream!");
 			successLabel.setForeground(Color.BLACK);
 			successLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 56));
 			cheatPanel.add(successLabel);
@@ -203,7 +208,7 @@ public class Setting extends JFrame {
 			Cheat.cheat = 1;
 		} else {
 			cheatPanel.removeAll();
-			failLabel = new JLabel("KIRITO!!!!!!!");
+			failLabel.setText("KIRITO!!!!!!!");
 			failLabel.setForeground(Color.RED);
 			failLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD + java.awt.Font.ITALIC, 60));
 			cheatPanel.add(failLabel);
