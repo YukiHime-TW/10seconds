@@ -227,7 +227,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		level.renderEntities(screen); // ENTITIES
-		Player.checkBullet();
+		//Player.checkBullet();
 
 		gameEvents.renderInterface(screen, xOffset, yOffset);
 		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level);
