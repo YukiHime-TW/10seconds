@@ -139,7 +139,7 @@ public class GameEvents {
 
 			};
 
-			timergame.schedule(gametest, 3000);
+			timergame.schedule(gametest, 2000);
 		}
 
 	}
