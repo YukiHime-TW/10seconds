@@ -51,7 +51,7 @@ public class GameEvents {
 
 		Font.render(String.format("%d", Game.Time.midTime), screen, x + 25, y, Colours.get(-1, 255, 255, 255), 1);
 
-		Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540, 111), 1);
+		//Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540, 111), 1);
 	}
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, Level level) {
@@ -92,8 +92,9 @@ public class GameEvents {
 		if (Player.triggeredDOOR == true) {
 			Font.render("ENTER", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
 			if (input.enter.isPressed()) {
-
-				Game.startIndoorLevel("/levels/houses_house1.png", 75, 85);
+				if(nowLevel == 1) {
+					Game.startIndoorLevel("/levels/houses_house"+nowLevel+".png", 75, 85);
+				}
 				playerIsIndoor = true;
 			}
 		}
@@ -113,7 +114,7 @@ public class GameEvents {
 
 			Player.gettingDamage = true;
 			if (System.currentTimeMillis() >= lastTime) {
-				lastTime = System.currentTimeMillis() + 1000;
+				lastTime = System.currentTimeMillis() + 500;
 				playerHealth--;
 			} else {
 				Player.gettingDamage = false;
@@ -122,12 +123,12 @@ public class GameEvents {
 
 		if (Player.gettingDamage == false && playerHealth < 3) { // MEDIC
 			if (System.currentTimeMillis() >= lastTime) {
-				lastTime = System.currentTimeMillis() + 3000;
+				lastTime = System.currentTimeMillis() + 2000;
 				playerHealth++;
 			}
 		}
 
-		if (!StageTimer.run || playerHealth == 0) { // Time up or Dead
+		if (/*!StageTimer.run || */playerHealth == 0) { // Time up or Dead
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 			Timer timergame = new Timer();
