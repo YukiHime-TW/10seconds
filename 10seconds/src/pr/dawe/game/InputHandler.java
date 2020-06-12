@@ -45,7 +45,7 @@ public class InputHandler implements KeyListener {
 	// PICK UP
 	public Key investigate = new Key();
 	// MENU
-	public Key escape = new Key();
+	//public Key escape = new Key();
 	
 	public Game game;
 
@@ -84,10 +84,10 @@ public class InputHandler implements KeyListener {
 		}
 
 		// SHOOT
-		if (keyCode == KeyEvent.VK_SPACE) {
+		/*if (keyCode == KeyEvent.VK_SPACE) {
 			Weapon.shootDir = InputHandler.lookDir;
 			shoot.toggle(isPressed);
-		}
+		}*/
 		// COORDS
 		if (keyCode == KeyEvent.VK_K) {
 			System.out.println("X:" + Game.player.x + " Y:" + Game.player.y);
@@ -95,7 +95,7 @@ public class InputHandler implements KeyListener {
 		}
 
 		// CHEST
-		if (keyCode == KeyEvent.VK_C) {
+		/*if (keyCode == KeyEvent.VK_C) {
 			chest.toggle(isPressed);
 		}
 		if (keyCode == KeyEvent.VK_O) {
@@ -103,20 +103,20 @@ public class InputHandler implements KeyListener {
 		}
 		if (keyCode == KeyEvent.VK_P) {
 			zwei.toggle(isPressed);
-		}
+		}*/
 		// DOOR
 		if (keyCode == KeyEvent.VK_ENTER) {
 			enter.toggle(isPressed);
 		}
 		// INVESTIGATE
-		if (keyCode == KeyEvent.VK_I) {
+		/*if (keyCode == KeyEvent.VK_I) {
 			investigate.toggle(isPressed);
-		}
+		}*/
 		// MENU / ESCAPE
-		if (keyCode == KeyEvent.VK_ESCAPE) {
+		/*if (keyCode == KeyEvent.VK_ESCAPE) {
 			Menu.main(null);
 			Game.closeGame();
-		}
+		}*/
 
 	}
 
