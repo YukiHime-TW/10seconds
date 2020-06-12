@@ -150,11 +150,11 @@ public class Player extends Mob {
 		return false;
 	}
 
-	public static void checkBullet() {
+	/*public static void checkBullet() {
 		if (Weapon.moving == false) {
 			level.removeEntity(Game.FireBall);
 			GameEvents.shotbullet = 0;
 		}
-	}
+	}*/
 
 }
