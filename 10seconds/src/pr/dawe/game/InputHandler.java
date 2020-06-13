@@ -86,7 +86,6 @@ public class InputHandler implements KeyListener {
 
 		// Take out WEAPON
 		if (keyCode == KeyEvent.VK_SPACE && !Player.triggeredWEAPON) {
-			System.out.printf("Weapon Taken Out\n");
 			Weapon.shootDir = InputHandler.lookDir;
 			Player.triggeredWEAPON = true;
 			shoot.toggle(isPressed);
@@ -94,7 +93,6 @@ public class InputHandler implements KeyListener {
 		
 		// Put Away Weapon
 		if (keyCode == KeyEvent.VK_CONTROL && Player.triggeredWEAPON) { 
-			System.out.printf("Weapon Put Away\n");
 			Player.triggeredWEAPON = false;
 			shoot.toggle(isPressed);
 		}
