@@ -2,12 +2,16 @@ package pr.dawe.game.gfx;
 
 import javax.swing.JFrame;
 
+import pr.dawe.game.Game;
+
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.Toolkit;
 
 public class StageTimer {
-	Timer timerGame = new Timer();
+	Timer timerGame = new Timer("Timer1");
+	Timer weaponTimer = new Timer("Timer2");
 	public static boolean run = true;
 	public static long midTime = 0; // second
 
@@ -31,7 +35,7 @@ public class StageTimer {
 	public void TimeGame() {
 		run = true;
 		System.out.println("Start Time");
-		timerGame.schedule(gametest, 1000, 1000);
+		timerGame.scheduleAtFixedRate(gametest, 1000, 1000);
 	}
 
 	public void stop() {

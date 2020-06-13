@@ -18,8 +18,6 @@ public class GameEvents {
 	static Random generator = new Random();
 	static long lastTime;
 	static boolean playerIsIndoor = false;
-	private long lastShot;
-	private long Time;
 	private int nowLevel = 1;
 	public static boolean overItem = false;
 	public static boolean overCoin = false;
@@ -29,6 +27,8 @@ public class GameEvents {
 	private int orange = Colours.get(-1, 555, 542, 400);
 	private int red = Colours.get(-1, 555, 500, 400);
 	private int black = Colours.get(-1, 555, 000, 400);
+
+	Timer weaponTimer = new Timer();
 
 	private int playerHealth = 10;
 	static int bullets = 0;
@@ -79,19 +79,26 @@ public class GameEvents {
 		Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540, 111), 1);
 	}
 
-	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, Level level) {
+	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level) {
 
-		if (input.shoot.isPressed() && Player.triggeredWEAPON) { // Take out WEAPON
-			Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
-			level.addEntity(Game.FireBall);
-			System.out.printf("Weapon Taken Out\n");
-			lastShot = System.currentTimeMillis();
-			shotbullet++;
-		}
+		if (input.shoot.isPressed()) { // Take out WEAPON
+			if (Player.triggeredWEAPON) {
+				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
+				level.addEntity(Game.FireBall);
+				System.out.printf("Weapon Taken Out\n");
+				TimerTask weaponDes = new TimerTask() {
+					@Override
+					public void run() {
+						level.removeEntity(Game.FireBall);
+					}
 
-		if (input.shoot.isPressed() && !Player.triggeredWEAPON) {
-			System.out.printf("Weapon Put Away\n");
-			level.removeEntity(Game.FireBall);
+				};
+				weaponTimer.scheduleAtFixedRate(weaponDes, 2, 1);
+			} else {
+				System.out.printf("Weapon Put Away\n");
+				level.removeEntity(Game.FireBall);
+			}
+
 		}
 
 		if (overItem == true) { // PICK UP ITEMS
