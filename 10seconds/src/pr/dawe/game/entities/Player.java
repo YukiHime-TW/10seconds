@@ -172,7 +172,7 @@ public class Player extends Mob {
 				waterColour = Colours.get(-1, -1, -1, 400);
 			} else {
 				yOffset -= 1;
-				waterColour = Colours.get(-1, 400, -1, -1);
+				waterColour = Colours.get(-1, 400, -1, 200);
 			}
 			screen.render(xOffset, yOffset + 3, 0 + 27 * 32, waterColour, 0x00, 1);
 			screen.render(xOffset + 8, yOffset + 3, 0 + 27 * 32, waterColour, 0x01, 1);
