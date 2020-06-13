@@ -85,14 +85,14 @@ public class InputHandler implements KeyListener {
 		}
 
 		// Take out WEAPON
-		if (keyCode == KeyEvent.VK_SPACE && !Player.triggeredWEAPON) {
+		if (keyCode == KeyEvent.VK_SPACE ) {
 			Weapon.shootDir = InputHandler.lookDir;
 			Player.triggeredWEAPON = true;
 			shoot.toggle(isPressed);
 		}
 		
 		// Put Away Weapon
-		if (keyCode == KeyEvent.VK_CONTROL && Player.triggeredWEAPON) { 
+		if (keyCode == KeyEvent.VK_CONTROL ) { 
 			Player.triggeredWEAPON = false;
 			shoot.toggle(isPressed);
 		}
