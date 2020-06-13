@@ -20,13 +20,14 @@ public class Player extends Mob {
 	public static boolean triggeredDOOR = false;
 	public static boolean triggeredDOOR_LEAVE = false;
 	public static boolean triggeredLAVA = false;
+	public static boolean triggeredWEAPON = false;
 	public static boolean triggeredKEY = false;
 	public static boolean wardrobe = false;
 	public static int xPos;
 	public static int yPos;
 
 	public Player(Level level, int x, int y, InputHandler input) {
-		super(level, "Player", x, y, 2);
+		super(level, "Player", x, y, 2, 5, 2);
 		this.input = input;
 	}
 
@@ -137,9 +138,9 @@ public class Player extends Mob {
 			xTile += 4 + ((numSteps >> walkingSpeed) & 1) * 2;
 			flipTop = (movingDir - 1) % 2;
 		}
-		
-		//System.out.printf("flipTop = %d, flipBottom = %d%n", flipTop, flipBottom);
-		
+
+		// System.out.printf("flipTop = %d, flipBottom = %d%n", flipTop, flipBottom);
+
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;
 		int yOffset = y - modifier / 2 - 4;
@@ -221,11 +222,9 @@ public class Player extends Mob {
 		return false;
 	}
 
-	/*public static void checkBullet() {
-		if (Weapon.moving == false) {
-			level.removeEntity(Game.FireBall);
-			GameEvents.shotbullet = 0;
-		}
-	}*/
+	/*
+	 * public static void checkBullet() { if (Weapon.moving == false) {
+	 * level.removeEntity(Game.FireBall); GameEvents.shotbullet = 0; } }
+	 */
 
 }

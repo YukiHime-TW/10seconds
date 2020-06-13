@@ -8,15 +8,16 @@ import pr.dawe.game.level.Level;
 
 public class NPC extends Mob {
 
-	private int colour = Colours.get(-1, 000, 230, 543);
+	private int colour = Colours.get(-1, 19, 254, 23);
 	private int scale = 1;
 	protected boolean isSwimming = false;
 	private int tickCount;
 	Random generator = new Random();
 	private int move;
 
-	public NPC(Level level, int x, int y) {
-		super(level, "Slime", x, y, 1);
+	public NPC(Level level, int x, int y, int colour) {
+		super(level, "Slime", x, y, 1, 3 , 1);
+		this.colour = colour;
 	}
 
 	public void tick() {

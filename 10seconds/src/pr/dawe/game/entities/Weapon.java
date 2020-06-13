@@ -10,9 +10,10 @@ public class Weapon extends Mob {
 	private int scale = 1;
 	public static int shootDir;
 	public static boolean moving;
+	public static boolean isTakeOut = false;
 
-	public Weapon(Level level, int x, int y) {
-		super(level, "Fireball", x, y, 2);
+	public Weapon(Level level, int x, int y,String name) {
+		super(level, name, x, y, 0, 1, 1);
 	}
 
 	public void tick() {
