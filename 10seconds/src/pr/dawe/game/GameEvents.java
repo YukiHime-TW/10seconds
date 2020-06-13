@@ -80,23 +80,20 @@ public class GameEvents {
 	}
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level) {
+		
+		boolean firstTrigger = false;
 
-		if (input.shoot.isPressed()) { // Take out WEAPON
-			if (Player.triggeredWEAPON) {
-				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
-				level.addEntity(Game.FireBall);
+		if (input.shoot.isPressed() == true) { // Take out WEAPON
+			if (Player.triggeredWEAPON && !firstTrigger) {
 				System.out.printf("Weapon Taken Out\n");
-				TimerTask weaponDes = new TimerTask() {
-					@Override
-					public void run() {
-						level.removeEntity(Game.FireBall);
-					}
-
-				};
-				weaponTimer.scheduleAtFixedRate(weaponDes, 2, 1);
+				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
+				level.addWeaponEntity(Game.FireBall);
+				Player.triggeredWEAPON = false;
 			} else {
 				System.out.printf("Weapon Put Away\n");
-				level.removeEntity(Game.FireBall);
+				level.removeWeaponEntity();
+				Player.triggeredWEAPON = true;
+				firstTrigger = false;
 			}
 
 		}
