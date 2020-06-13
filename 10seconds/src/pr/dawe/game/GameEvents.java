@@ -81,14 +81,16 @@ public class GameEvents {
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, Level level) {
 
-		if (input.shoot.isPressed() == true) { // Take out WEAPON
+		if (input.shoot.isPressed() && Player.triggeredWEAPON) { // Take out WEAPON
 			Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
 			level.addEntity(Game.FireBall);
+			System.out.printf("Weapon Taken Out\n");
 			lastShot = System.currentTimeMillis();
 			shotbullet++;
 		}
 
-		if (input.shoot.isPressed() && Weapon.isTakeOut) {
+		if (input.shoot.isPressed() && !Player.triggeredWEAPON) {
+			System.out.printf("Weapon Put Away\n");
 			level.removeEntity(Game.FireBall);
 		}
 
@@ -150,7 +152,7 @@ public class GameEvents {
 			}
 		}
 
-		if (Player.gettingDamage == false && playerHealth < 3) { // MEDIC
+		if (Player.gettingDamage == false && playerHealth < 10) { // MEDIC
 			if (System.currentTimeMillis() >= lastTime) {
 				lastTime = System.currentTimeMillis() + 2000;
 				playerHealth++;
