@@ -170,9 +170,9 @@ public class Player extends Mob {
 				waterColour = Colours.get(-1, -1, 400, -1);
 			} else if (15 <= tickCount % 60 && tickCount % 60 < 30) {
 				yOffset -= 1;
-				waterColour = Colours.get(-1, 400, -1, -1);
+				waterColour = Colours.get(-1, 400, -1, 200);
 			} else if (30 <= tickCount % 60 && tickCount % 60 < 45) {
-				waterColour = Colours.get(-1, -1, -1, 400);
+				waterColour = Colours.get(-1, -1, 200, 400);
 			} else {
 				yOffset -= 1;
 				waterColour = Colours.get(-1, 400, -1, 200);
