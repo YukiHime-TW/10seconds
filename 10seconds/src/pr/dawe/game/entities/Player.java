@@ -60,66 +60,69 @@ public class Player extends Mob {
 
 		}
 
-		//SWIMMING
-		if(level.getTile(this.x >> 3, this.y >> 3 ).getId() == 3 || level.getTile(this.x >> 3, this.y >> 3 ).getId() == 7 || level.getTile(this.x >> 3, this.y >> 3 ).getId() == 18) {
-			isSwimming = true;	
+		// SWIMMING
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 3 || level.getTile(this.x >> 3, this.y >> 3).getId() == 7
+				|| level.getTile(this.x >> 3, this.y >> 3).getId() == 18) {
+			isSwimming = true;
 		}
-		if (isSwimming && level.getTile(this.x >> 3, this.y >> 3 ).getId() != 3 && level.getTile(this.x >> 3, this.y >> 3 ).getId() != 7 && level.getTile(this.x >> 3, this.y >> 3 ).getId() != 18) {
+		if (isSwimming && level.getTile(this.x >> 3, this.y >> 3).getId() != 3
+				&& level.getTile(this.x >> 3, this.y >> 3).getId() != 7
+				&& level.getTile(this.x >> 3, this.y >> 3).getId() != 18) {
 			isSwimming = false;
 		}
-		
-		//LAVA_SWIMMING
-		if(level.getTile(this.x >> 3, this.y >> 3 ).getId() == 18) {
-			isLSwimming = true;	
+
+		// LAVA_SWIMMING
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 18) {
+			isLSwimming = true;
 		}
-		if (isLSwimming && level.getTile(this.x >> 3, this.y >> 3 ).getId() != 18) {
+		if (isLSwimming && level.getTile(this.x >> 3, this.y >> 3).getId() != 18) {
 			isLSwimming = false;
 		}
-		
-	    //TRIGGERED CHEST
-		if(level.getTile(this.x >> 3,  this.y >> 3).getId() == 12) {
+
+		// TRIGGERED CHEST
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 12) {
 			triggeredCHEST = true;
 		}
-		if (level.getTile(this.x >> 3, this.y >> 3 ).getId() != 12) {
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() != 12) {
 			triggeredCHEST = false;
 		}
-		
-		//TRIGGERED DOOR_ENTER
-		if(level.getTile(this.x >> 3,  this.y >> 3).getId() == 13) {
+
+		// TRIGGERED DOOR_ENTER
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 13) {
 			triggeredDOOR = true;
 		}
-		if (level.getTile(this.x >> 3, this.y >> 3 ).getId() != 13) {
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() != 13) {
 			triggeredDOOR = false;
 		}
-		
-		//TRIGGERED DOOR_LEAVE
-		if(level.getTile(this.x >> 3,  this.y >> 3).getId() == 14) {
+
+		// TRIGGERED DOOR_LEAVE
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 14) {
 			triggeredDOOR_LEAVE = true;
 		}
-		if (level.getTile(this.x >> 3, this.y >> 3 ).getId() != 14) {
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() != 14) {
 			triggeredDOOR_LEAVE = false;
 		}
-		
-		//LAVA DAMAGE
-	    if(level.getTile(this.x >> 3,  this.y >> 3).getId() == 18) {
+
+		// LAVA DAMAGE
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 18) {
 			triggeredLAVA = true;
 		}
-		if (level.getTile(this.x >> 3, this.y >> 3 ).getId() != 18) {
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() != 18) {
 			triggeredLAVA = false;
 		}
-		
-		//KEY FLOWER
-	    if(level.getTile(this.x >> 3,  this.y >> 3).getId() == 21) {
+
+		// KEY FLOWER
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 21) {
 			triggeredKEY = true;
 		}
-		if (level.getTile(this.x >> 3, this.y >> 3 ).getId() != 21) {
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() != 21) {
 			triggeredKEY = false;
 		}
-		
-		if(level.getTile(this.x >> 3,  this.y >> 3).getId() == 19) {
+
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() == 19) {
 			wardrobe = true;
 		}
-		if (level.getTile(this.x >> 3, this.y >> 3 ).getId() != 19) {
+		if (level.getTile(this.x >> 3, this.y >> 3).getId() != 19) {
 			wardrobe = false;
 		}
 		tickCount++;
@@ -144,7 +147,7 @@ public class Player extends Mob {
 		int modifier = 8 * scale;
 		int xOffset = x - modifier / 2;
 		int yOffset = y - modifier / 2 - 4;
-		
+
 		if (isSwimming) {
 			int waterColour = 0;
 			yOffset += 4;
@@ -162,7 +165,7 @@ public class Player extends Mob {
 			screen.render(xOffset, yOffset + 3, 0 + 27 * 32, waterColour, 0x00, 1);
 			screen.render(xOffset + 8, yOffset + 3, 0 + 27 * 32, waterColour, 0x01, 1);
 		}
-		
+
 		if (isLSwimming) {
 			int waterColour = 0;
 			yOffset += 4;
