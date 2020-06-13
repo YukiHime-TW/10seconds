@@ -11,8 +11,8 @@ public class Weapon extends Mob {
 	public static int shootDir;
 	public static boolean moving;
 
-	public Weapon(Level level, int x, int y) {
-		super(level, "Fireball", x, y, 2);
+	public Weapon(Level level, int x, int y,String name) {
+		super(level, name, x, y, 2, 1, 1);
 	}
 
 	public void tick() {
