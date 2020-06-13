@@ -76,40 +76,47 @@ public class GameEvents {
 			Font.render(String.format("%d", Game.Time.midTime), screen, x, y + 8, Colours.get(-1, 255, 255, 255), 1);
 		}
 
-		// Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540,
-		// 111),1);
+		Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540, 111), 1);
 	}
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, Level level) {
 
-		if (input.shoot.isPressed() == true && bullets > 0 && shotbullet == 0) { // SHOOT
+		if (input.shoot.isPressed() == true) { // Take out WEAPON
 			Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
 			level.addEntity(Game.FireBall);
 			lastShot = System.currentTimeMillis();
 			shotbullet++;
-			bullets--;
 		}
 
-		/*
-		 * if (overItem == true) { // PICK UP ITEMS
-		 * level.removeEntity(PickableItem.pickUp); overItem = false; }
-		 */
+		if (input.shoot.isPressed() && Weapon.isTakeOut) {
+			level.removeEntity(Game.FireBall);
+		}
 
-		/*
-		 * if (overCoin == true) { // PICK UP ITEMS
-		 * level.removeEntity(PickableItem.pickUp); overCoin = false; bullets += 10; }
-		 */
+		if (overItem == true) { // PICK UP ITEMS
+			level.removeEntity(PickableItem.pickUp);
+			overItem = false;
+		}
 
-		/*
-		 * if (Player.wardrobe == true) { // WARDROBE int randomcolour1 =
-		 * generator.nextInt(5) + 1; int randomcolour2 = generator.nextInt(5) + 1; int
-		 * randomcolour3 = generator.nextInt(5) + 1; level.removeEntity(Game.monster);
-		 * 
-		 * Font.render("b", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
-		 * if (input.investigate.isPressed()) { level.removeEntity(Game.FireBall);
-		 * Player.colour = Colours.get(-1, 000, randomcolour1 * 100 + randomcolour2 * 10
-		 * + randomcolour3, 543); // Player.wardrobe = false; } }
-		 */
+		if (overCoin == true) { // PICK UP ITEMS
+			level.removeEntity(PickableItem.pickUp);
+			overCoin = false;
+			bullets += 10;
+		}
+
+		if (Player.wardrobe == true) { // WARDROBE
+			int randomcolour1 = generator.nextInt(5) + 1;
+			int randomcolour2 = generator.nextInt(5) + 1;
+			int randomcolour3 = generator.nextInt(5) + 1;
+			level.removeEntity(Game.monster);
+
+			Font.render("b", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
+
+			if (input.investigate.isPressed()) {
+				level.removeEntity(Game.FireBall);
+			}
+			Player.colour = Colours.get(-1, 000, randomcolour1 * 100 + randomcolour2 * 10 + randomcolour3, 543);
+			// Player.wardrobe = false;
+		}
 
 		if (Player.triggeredDOOR == true) {
 			Font.render("ENTER", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
@@ -150,7 +157,7 @@ public class GameEvents {
 			}
 		}
 
-		if (!StageTimer.run || playerHealth == 0) { // Time up or Dead
+		if (/* !StageTimer.run || */ playerHealth == 0) { // Time up or Dead
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 			Timer timergame = new Timer();
