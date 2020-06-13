@@ -3,12 +3,13 @@ package pr.dawe.game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import pr.dawe.game.entities.Player;
 import pr.dawe.game.entities.Weapon;
 import pr.dawe.game.gfx.Menu;
 
 public class InputHandler implements KeyListener {
 	public static int lookDir;
-	
+
 	public InputHandler(Game game) {
 		game.addKeyListener(this);
 	}
@@ -45,8 +46,8 @@ public class InputHandler implements KeyListener {
 	// PICK UP
 	public Key investigate = new Key();
 	// MENU
-	//public Key escape = new Key();
-	
+	// public Key escape = new Key();
+
 	public Game game;
 
 	public void keyPressed(KeyEvent e) {
@@ -83,11 +84,21 @@ public class InputHandler implements KeyListener {
 			right.toggle(isPressed);
 		}
 
-		// SHOOT
-		/*if (keyCode == KeyEvent.VK_SPACE) {
+		// Take out WEAPON
+		if (keyCode == KeyEvent.VK_SPACE && !Player.triggeredWEAPON) {
+			System.out.printf("Weapon Taken Out\n");
 			Weapon.shootDir = InputHandler.lookDir;
+			Player.triggeredWEAPON = true;
 			shoot.toggle(isPressed);
-		}*/
+		}
+		
+		// Put Away Weapon
+		if (keyCode == KeyEvent.VK_CONTROL && Player.triggeredWEAPON) { 
+			System.out.printf("Weapon Put Away\n");
+			Player.triggeredWEAPON = false;
+			shoot.toggle(isPressed);
+		}
+
 		// COORDS
 		if (keyCode == KeyEvent.VK_K) {
 			System.out.println("X:" + Game.player.x + " Y:" + Game.player.y);
@@ -95,28 +106,23 @@ public class InputHandler implements KeyListener {
 		}
 
 		// CHEST
-		/*if (keyCode == KeyEvent.VK_C) {
-			chest.toggle(isPressed);
-		}
-		if (keyCode == KeyEvent.VK_O) {
-			eins.toggle(isPressed);
-		}
-		if (keyCode == KeyEvent.VK_P) {
-			zwei.toggle(isPressed);
-		}*/
+		/*
+		 * if (keyCode == KeyEvent.VK_C) { chest.toggle(isPressed); } if (keyCode ==
+		 * KeyEvent.VK_O) { eins.toggle(isPressed); } if (keyCode == KeyEvent.VK_P) {
+		 * zwei.toggle(isPressed); }
+		 */
 		// DOOR
 		if (keyCode == KeyEvent.VK_ENTER) {
 			enter.toggle(isPressed);
 		}
 		// INVESTIGATE
-		/*if (keyCode == KeyEvent.VK_I) {
+		if (keyCode == KeyEvent.VK_I) {
 			investigate.toggle(isPressed);
-		}*/
+		}
 		// MENU / ESCAPE
-		/*if (keyCode == KeyEvent.VK_ESCAPE) {
-			Menu.main(null);
-			Game.closeGame();
-		}*/
+		/*
+		 * if (keyCode == KeyEvent.VK_ESCAPE) { Menu.main(null); Game.closeGame(); }
+		 */
 
 	}
 
