@@ -23,6 +23,7 @@ public class Level {
 	public static int width;
 	public static int height;
 	public List<Entity> entities = new ArrayList<Entity>();
+	public List<Entity> weapon = new ArrayList<Entity>();
 	private String imagePath;
 	private BufferedImage image;
 	public boolean getTileId;
@@ -96,6 +97,9 @@ public class Level {
 		for (Entity e : entities) {
 			e.tick();
 		}
+		for (Entity e : weapon) {
+			e.tick();
+		}
 		for (Tile t : Tile.tiles) {
 			if (t == null) {
 				break;
@@ -127,6 +131,9 @@ public class Level {
 		for (Entity e : entities) {
 			e.render(screen);
 		}
+		for (Entity e : weapon) {
+			e.render(screen);
+		}
 	}
 
 	public Tile getTile(int x, int y) {
@@ -142,6 +149,10 @@ public class Level {
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
 	}
+	
+	public void addWeaponEntity(Entity entity) {
+		this.weapon.add(entity);
+	}
 
 	public void addNPC(List<NPC> npcs) {
 		this.entities.addAll(npcs);
@@ -149,6 +160,10 @@ public class Level {
 
 	public void removeEntity(Entity entity) {
 		this.entities.remove(entity);
+	}
+	
+	public void removeWeaponEntity() {
+		this.weapon.clear();
 	}
 
 }
