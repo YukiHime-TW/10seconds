@@ -259,6 +259,6 @@ public class Setting extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new Setting("Time Brave:Take a breath");
+		new Setting("®É¶¡«iªÌ:Take a breath");
 	}
 }
