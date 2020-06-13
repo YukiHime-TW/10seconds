@@ -33,8 +33,6 @@ public class GameEvents {
 	private int playerHealth = 3;
 	static int bullets = 0;
 	public static int shotbullet = 0;
-	private int water = 100;
-	private int food = 100;
 
 	public GameEvents() {
 
@@ -56,26 +54,26 @@ public class GameEvents {
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, Level level) {
 
-		if (input.shoot.isPressed() == true && bullets > 0 && shotbullet == 0) { // SHOOT
+		/*if (input.shoot.isPressed() == true && bullets > 0 && shotbullet == 0) { // SHOOT
 			Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55);
 			level.addEntity(Game.FireBall);
 			lastShot = System.currentTimeMillis();
 			shotbullet++;
 			bullets--;
-		}
+		}*/
 
-		if (overItem == true) { // PICK UP ITEMS
+		/*if (overItem == true) { // PICK UP ITEMS
 			level.removeEntity(PickableItem.pickUp);
 			overItem = false;
-		}
+		}*/
 
-		if (overCoin == true) { // PICK UP ITEMS
+		/*if (overCoin == true) { // PICK UP ITEMS
 			level.removeEntity(PickableItem.pickUp);
 			overCoin = false;
 			bullets += 10;
-		}
+		}*/
 
-		if (Player.wardrobe == true) { // WARDROBE
+		/*if (Player.wardrobe == true) { // WARDROBE
 			int randomcolour1 = generator.nextInt(5) + 1;
 			int randomcolour2 = generator.nextInt(5) + 1;
 			int randomcolour3 = generator.nextInt(5) + 1;
@@ -87,7 +85,7 @@ public class GameEvents {
 				Player.colour = Colours.get(-1, 000, randomcolour1 * 100 + randomcolour2 * 10 + randomcolour3, 543);
 				// Player.wardrobe = false;
 			}
-		}
+		}*/
 
 		if (Player.triggeredDOOR == true) {
 			Font.render("ENTER", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
