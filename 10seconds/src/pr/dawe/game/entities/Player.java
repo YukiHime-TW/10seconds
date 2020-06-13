@@ -18,6 +18,7 @@ public class Player extends Mob {
 	public static boolean triggeredDOOR = false;
 	public static boolean triggeredDOOR_LEAVE = false;
 	public static boolean triggeredLAVA = false;
+	public static boolean triggeredWEAPON = false;
 	public static boolean wardrobe = false;
 	public static int xPos;
 	public static int yPos;
