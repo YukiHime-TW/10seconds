@@ -18,7 +18,7 @@ public abstract class Mob extends Entity {
 	public int hp = 10;
 	public int force = 10;
 
-	public Mob(Level level, String name, int x, int y, int speed,int hp,int force) {
+	public Mob(Level level, String name, int x, int y, int speed, int hp, int force) {
 		super(level);
 		this.name = name;
 		this.x = x;

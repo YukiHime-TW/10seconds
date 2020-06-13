@@ -175,9 +175,7 @@ public class GameEvents {
 				public void run() {
 					System.exit(1);
 				}
-
 			};
-
 			timergame.schedule(gametest, 2000);
 		}
 
