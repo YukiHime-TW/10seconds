@@ -31,9 +31,11 @@ import pr.dawe.game.entities.Player;
 import pr.dawe.game.entities.Weapon;
 import pr.dawe.game.gfx.Colours;
 import pr.dawe.game.gfx.Menu;
+import pr.dawe.game.gfx.Music;
 import pr.dawe.game.gfx.Screen;
 import pr.dawe.game.gfx.SpriteSheet;
 import pr.dawe.game.gfx.StageTimer;
+import pr.dawe.game.gfx.Volume;
 import pr.dawe.game.level.Level;
 
 public class Game extends Canvas implements Runnable {
@@ -69,6 +71,8 @@ public class Game extends Canvas implements Runnable {
 	public static NPC monster;
 	public static Weapon FireBall;
 	public static StageTimer Time;
+	
+	private static Music music = new Music("/music/BGM_Fight.wav");
 
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
 
@@ -105,7 +109,7 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
-		startLevel1("/levels/level_1.png", 390, 390);
+		startLevel1("/levels/level_1(shadow).png", 390, 390);
 		addEntities();
 		
 	}
@@ -115,6 +119,8 @@ public class Game extends Canvas implements Runnable {
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23));
 		Time = new StageTimer(frame,10);
+		//music.play();
+		//music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
 		gameEvents = new GameEvents();
