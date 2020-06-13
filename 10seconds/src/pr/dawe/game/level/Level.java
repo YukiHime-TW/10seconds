@@ -148,7 +148,7 @@ public class Level {
 	}
 
 	public void removeEntity(Entity entity) {
-		this.entities.clear();
+		this.entities.remove(entity);
 	}
 
 }
