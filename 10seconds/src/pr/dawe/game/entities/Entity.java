@@ -11,7 +11,6 @@ public abstract class Entity {
 
 	public Entity(Level level) {
 		init(level);
-
 	}
 
 	public final void init(Level level) {
