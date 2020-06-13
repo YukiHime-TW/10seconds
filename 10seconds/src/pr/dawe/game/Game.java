@@ -123,7 +123,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void addEntities() {
-		PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 1, 9, 29, 400, 400);
+		/*PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 1, 9, 29, 400, 400);
 		PickableItem gun_mun = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 430);
 		PickableItem gun_mun2 = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 410);
 		PickableItem shotgun_mun = new PickableItem(level, "shotgun_mun", Colours.get(-1, 111, 300, 540), 1, 10, 29,
@@ -131,7 +131,7 @@ public class Game extends Canvas implements Runnable {
 		pickableItems.add(gun_mun);
 		pickableItems.add(gun_mun2);
 		pickableItems.add(gun);
-		pickableItems.add(shotgun_mun);
+		pickableItems.add(shotgun_mun);*/
 		level.addPickableItems(pickableItems);
 
 	}
