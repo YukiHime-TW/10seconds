@@ -23,7 +23,6 @@ public class Menu extends JFrame {
 		super(title);
 		music.play();
 		music.setVolume(Volume.volume);
-		
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\res\\levels\\icon.png"));
 		setUndecorated(true);
