@@ -48,23 +48,37 @@ public class Screen {
 
 			for (int x = 0; x < 8; x++) {
 				int xSheet = x;
-				if (mirrorX)
+
+				if (mirrorX) {
 					xSheet = 7 - x;
+				}
+
 				int xPixel = x + xPos + (x * scaleMap) - ((scaleMap << 3) / 2);
 				int col = (colour >> (sheet.pixels[xSheet + ySheet * sheet.width + tileOffset] * 8)) & 255;
+
 				if (col < 255) {
+
 					for (int yScale = 0; yScale < scale; yScale++) {
-						if (yPixel + yScale < 0 || yPixel + yScale >= height)
+
+						if (yPixel + yScale < 0 || yPixel + yScale >= height) {
 							continue;
+						}
+
 						for (int xScale = 0; xScale < scale; xScale++) {
-							if (xPixel + xScale < 0 || xPixel + xScale >= width)
+
+							if (xPixel + xScale < 0 || xPixel + xScale >= width) {
 								continue;
+							}
+
 							pixels[(xPixel + xScale) + (yPixel + yScale) * width] = col;
 
 						}
 					}
+
 				}
+
 			}
+
 		}
 	}
 
