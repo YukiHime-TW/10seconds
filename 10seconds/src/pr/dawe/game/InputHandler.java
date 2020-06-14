@@ -34,13 +34,14 @@ public class InputHandler implements KeyListener {
 
 	// ACTIONS
 	public Key shoot = new Key();
+	public Key weaponDes = new Key();
 	public Key coords = new Key();
 
 	// CHEST
 	public Key chest = new Key();
 
-	public Key eins = new Key();
-	public Key zwei = new Key();
+	// public Key eins = new Key();
+	// public Key zwei = new Key();
 	// DOOR
 	public Key enter = new Key();
 	// PICK UP
@@ -85,16 +86,16 @@ public class InputHandler implements KeyListener {
 		}
 
 		// Take out WEAPON
-		if (keyCode == KeyEvent.VK_SPACE ) {
+		if (keyCode == KeyEvent.VK_SPACE) {
 			Weapon.shootDir = InputHandler.lookDir;
 			Player.triggeredWEAPON = true;
 			shoot.toggle(isPressed);
 		}
-		
+
 		// Put Away Weapon
-		if (keyCode == KeyEvent.VK_CONTROL ) { 
+		if (keyCode == KeyEvent.VK_CONTROL) {
 			Player.triggeredWEAPON = false;
-			shoot.toggle(isPressed);
+			weaponDes.toggle(isPressed);
 		}
 
 		// COORDS
