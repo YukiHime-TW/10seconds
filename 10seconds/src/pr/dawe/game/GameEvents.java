@@ -75,25 +75,27 @@ public class GameEvents {
 
 			Font.render(String.format("%d", Game.Time.midTime), screen, x, y + 8, Colours.get(-1, 255, 255, 255), 1);
 		}
-
-		Font.render("m" + bullets, screen, x, y + 7, Colours.get(-1, 111, 540, 111), 1);
 	}
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level) {
-		
-		boolean firstTrigger = false;
 
-		if (input.shoot.isPressed() == true) { // Take out WEAPON
-			if (Player.triggeredWEAPON && !firstTrigger) {
+		int onlyWeapon = 0;
+
+		if (input.shoot.isPressed()) { // Take out WEAPON
+			if (Player.triggeredWEAPON) {
 				System.out.printf("Weapon Taken Out\n");
 				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
 				level.addWeaponEntity(Game.FireBall);
 				Player.triggeredWEAPON = false;
-			} else {
+			}
+
+		}
+
+		if (input.weaponDes.isPressed()) { // Put away WEAPON
+			if (!Player.triggeredWEAPON) {
 				System.out.printf("Weapon Put Away\n");
 				level.removeWeaponEntity();
 				Player.triggeredWEAPON = true;
-				firstTrigger = false;
 			}
 
 		}
