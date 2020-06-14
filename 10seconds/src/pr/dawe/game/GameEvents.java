@@ -86,6 +86,7 @@ public class GameEvents {
 				System.out.printf("Weapon Taken Out\n");
 				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
 				level.addWeaponEntity(Game.FireBall);
+				level.removeUselessWeapon();
 				Player.triggeredWEAPON = false;
 			}
 
