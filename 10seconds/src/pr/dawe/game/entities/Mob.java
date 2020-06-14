@@ -29,7 +29,7 @@ public abstract class Mob extends Entity {
 	}
 
 	public void move(int xa, int ya) {
-		//System.out.printf("speed = %d%n", speed);
+		// System.out.printf("speed = %d%n", speed);
 		if (xa != 0 && ya != 0) {
 			move(xa, 0);
 			move(0, ya);
@@ -51,9 +51,9 @@ public abstract class Mob extends Entity {
 		}
 
 	}
-	
+
 	public void attack(Mob enemy) {
-		
+		enemy.hp = enemy.hp - this.force;
 	}
 
 	public abstract boolean hasCollided(int xa, int ya);
@@ -69,5 +69,17 @@ public abstract class Mob extends Entity {
 		}
 		return false;
 	}
+
+	/*protected boolean isMonster(int xa, int ya, int x, int y) {
+		if (level == null) {
+			return false;
+		}
+		NPC lastNPC = level.getMonster((this.x + x) >> 3, (this.y + y) >> 3);
+		NPC newNPC = level.getMonster((this.x + x + xa) >> 3, (this.y + y + ya) >> 3);
+		if (!lastNPC.equals(newNPC) && newNPC.isSolid()) {
+			return true;
+		}
+		return false;
+	}*/
 
 }
