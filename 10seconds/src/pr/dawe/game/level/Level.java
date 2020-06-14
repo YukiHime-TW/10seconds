@@ -142,6 +142,11 @@ public class Level {
 		return Tile.tiles[tiles[x + y * width]];
 	}
 
+	/*
+	 * public NPC getMonster(int x, int y) { if (0 > x || x >= width || 0 > y || y
+	 * >= height) return null; return NPC.; }
+	 */
+
 	public void addPickableItems(List<PickableItem> pickableItems) {
 		this.entities.addAll(pickableItems);
 	}
@@ -149,9 +154,11 @@ public class Level {
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
 	}
-	
+
 	public void addWeaponEntity(Entity entity) {
-		this.weapon.add(entity);
+		if (weapon.size() == 0) {
+			this.weapon.add(entity);
+		}
 	}
 
 	public void addNPC(List<NPC> npcs) {
@@ -161,7 +168,7 @@ public class Level {
 	public void removeEntity(Entity entity) {
 		this.entities.remove(entity);
 	}
-	
+
 	public void removeWeaponEntity() {
 		this.weapon.clear();
 	}
