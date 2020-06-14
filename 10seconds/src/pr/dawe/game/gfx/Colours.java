@@ -5,9 +5,10 @@ public class Colours {
 	public static int get(int colour1, int colour2, int colour3, int colour4) {
 		return (get(colour4) << 24) + (get(colour3) << 16) + (get(colour2) << 8) + get(colour1);
 		// E.g. -1 131 141 -1
-		// 255*24 + 255 + (1*36+3*6+1) + (1*36+4*6+1)
-		// 6120 + 255 + 55 + 61 
-		// 6491
+		// 255*24 + (1*36+3*6+1)*16 + (1*36+4*6+1)*8 + 255
+		// 6120 + 55*16 + 61*8 + 255 
+		// 6120 + 880 + 488 + 255
+		// 7743
 	}
 
 	private static int get(int colour) {
