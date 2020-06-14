@@ -156,9 +156,7 @@ public class Level {
 	}
 
 	public void addWeaponEntity(Entity entity) {
-		if (weapon.size() == 0) {
-			this.weapon.add(entity);
-		}
+		this.weapon.add(entity);
 	}
 
 	public void addNPC(List<NPC> npcs) {
@@ -171,6 +169,12 @@ public class Level {
 
 	public void removeWeaponEntity() {
 		this.weapon.clear();
+	}
+
+	public void removeUselessWeapon() {
+		while (weapon.size() != 1) {
+			weapon.remove(0);
+		}
 	}
 
 }
