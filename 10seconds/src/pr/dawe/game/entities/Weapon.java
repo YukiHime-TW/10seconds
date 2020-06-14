@@ -100,5 +100,7 @@ public class Weapon extends Mob {
 		}
 		return false;
 	}
+	
+	
 
 }
