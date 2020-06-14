@@ -109,7 +109,7 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
-		startLevel1("/levels/level_1(shadow).png", 390, 390);
+		startLevel1("/levels/level_1.png", 390, 390);
 		addEntities();
 		
 	}
@@ -117,7 +117,7 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel1(String levelPath, int x, int y) {
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23));
+		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Slime");
 		Time = new StageTimer(frame,10);
 		//music.play();
 		//music.setVolume(Volume.volume);
@@ -129,7 +129,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void addEntities() {
-		PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 0, 9, 29, 400, 400);
+		/*PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 0, 9, 29, 400, 400);
 		PickableItem gun_mun = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 430);
 		PickableItem gun_mun2 = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 410);
 		PickableItem shotgun_mun = new PickableItem(level, "shotgun_mun", Colours.get(-1, 111, 300, 540), 0, 10, 29,
@@ -137,7 +137,7 @@ public class Game extends Canvas implements Runnable {
 		pickableItems.add(gun_mun);
 		pickableItems.add(gun_mun2);
 		pickableItems.add(gun);
-		pickableItems.add(shotgun_mun);
+		pickableItems.add(shotgun_mun);*/
 		level.addPickableItems(pickableItems);
 
 	}
