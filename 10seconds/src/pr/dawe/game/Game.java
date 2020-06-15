@@ -127,6 +127,20 @@ public class Game extends Canvas implements Runnable {
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
+	
+	public static void startLevel2(String levelPath, int x, int y) {
+		level = new Level(levelPath);
+		player = new Player(level, x, y, input);
+		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Goblin");
+		Time = new StageTimer(frame,30);
+		//music.play();
+		//music.setVolume(Volume.volume);
+		level.addEntity(player);
+		level.addEntity(monster);
+		gameEvents = new GameEvents();
+		Time.TimeGame();
+		// ADD ENTITIES
+	}
 
 	public void addEntities() {
 		/*PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 0, 9, 29, 400, 400);
