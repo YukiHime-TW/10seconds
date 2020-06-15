@@ -142,10 +142,12 @@ public class Level {
 		return Tile.tiles[tiles[x + y * width]];
 	}
 
-	/*
-	 * public NPC getMonster(int x, int y) { if (0 > x || x >= width || 0 > y || y
-	 * >= height) return null; return NPC.; }
-	 */
+	public boolean getMonster(int x, int y) {
+		if (0 > x || x >= width || 0 > y || y >= height) {
+			return null;
+		}
+		return NPC;
+	}
 
 	public void addPickableItems(List<PickableItem> pickableItems) {
 		this.entities.addAll(pickableItems);

@@ -22,6 +22,7 @@ public class Player extends Mob {
 	public static boolean triggeredLAVA = false;
 	public static boolean triggeredWEAPON = false;
 	public static boolean triggeredKEY = false;
+	public static boolean attackMonster = false;
 	public static boolean wardrobe = false;
 	public static int xPos;
 	public static int yPos;
@@ -133,22 +134,22 @@ public class Player extends Mob {
 		int yMin = 3;
 		int yMax = 7;
 		for (int x = xMin; x < xMax; x++) {
-			if (isSolidTile(xa, ya, x, yMin)) {
+			if (isMonster(xa, ya, x, yMin)) {
 				return true;
 			}
 		}
 		for (int x = xMin; x < xMax; x++) {
-			if (isSolidTile(xa, ya, x, yMax)) {
+			if (isMonster(xa, ya, x, yMax)) {
 				return true;
 			}
 		}
 		for (int y = yMin; y < yMax; y++) {
-			if (isSolidTile(xa, ya, xMin, y)) {
+			if (isMonster(xa, ya, xMin, y)) {
 				return true;
 			}
 		}
 		for (int y = yMin; y < yMax; y++) {
-			if (isSolidTile(xa, ya, xMax, y)) {
+			if (isMonster(xa, ya, xMax, y)) {
 				return true;
 			}
 		}
