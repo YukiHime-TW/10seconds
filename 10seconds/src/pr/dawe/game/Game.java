@@ -141,6 +141,34 @@ public class Game extends Canvas implements Runnable {
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
+	
+	public static void startLevel3(String levelPath, int x, int y) {
+		level = new Level(levelPath);
+		player = new Player(level, x, y, input);
+		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Oku");
+		Time = new StageTimer(frame,45);
+		//music.play();
+		//music.setVolume(Volume.volume);
+		level.addEntity(player);
+		level.addEntity(monster);
+		gameEvents = new GameEvents();
+		Time.TimeGame();
+		// ADD ENTITIES
+	}
+	
+	public static void startLevel4(String levelPath, int x, int y) {
+		level = new Level(levelPath);
+		player = new Player(level, x, y, input);
+		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Oku");
+		Time = new StageTimer(frame,45);
+		//music.play();
+		//music.setVolume(Volume.volume);
+		level.addEntity(player);
+		level.addEntity(monster);
+		gameEvents = new GameEvents();
+		Time.TimeGame();
+		// ADD ENTITIES
+	}
 
 	public void addEntities() {
 		/*PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 0, 9, 29, 400, 400);
@@ -250,7 +278,7 @@ public class Game extends Canvas implements Runnable {
 		//Player.checkBullet();
 
 		gameEvents.renderInterface(screen, xOffset, yOffset);
-		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level);
+		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level,monster);
 
 		for (int y = 0; y < screen.height; y++) {
 			for (int x = 0; x < screen.width; x++) {
