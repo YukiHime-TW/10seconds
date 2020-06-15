@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import pr.dawe.game.entities.Mob;
+import pr.dawe.game.entities.NPC;
 import pr.dawe.game.entities.PickableItem;
 import pr.dawe.game.entities.Player;
 import pr.dawe.game.entities.Weapon;
@@ -77,7 +78,7 @@ public class GameEvents {
 		}
 	}
 
-	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level) {
+	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level,NPC enemy) {
 
 		int onlyWeapon = 0;
 
@@ -99,6 +100,19 @@ public class GameEvents {
 				Player.triggeredWEAPON = true;
 			}
 
+		}
+
+		if (level.entities.size() == 1) { // If all the monster are dead
+			if (nowLevel == 1) {
+				nowLevel++;
+				Game.startLevel2("/levels/level_" + nowLevel + ".png", 505, 475);
+			}else if(nowLevel == 2) {
+				nowLevel++;
+				Game.startLevel3("/levels/level_" + nowLevel + ".png", 505, 475);
+			}else if(nowLevel == 3) {
+				nowLevel++;
+				Game.startLevel4("/levels/level_" + nowLevel + ".png", 505, 475);
+			}
 		}
 
 		if (overItem == true) { // PICK UP ITEMS
@@ -142,6 +156,10 @@ public class GameEvents {
 			if (input.enter.isPressed()) {
 				if (nowLevel == 1) {
 					Game.startLevel1("/levels/level_" + nowLevel + ".png", 505, 475);
+				}else if(nowLevel == 2) {
+					Game.startLevel2("/levels/level_" + nowLevel + ".png", 505, 475);
+				}else if(nowLevel == 3) {
+					Game.startLevel3("/levels/level_" + nowLevel + ".png", 505, 475);
 				}
 
 				playerIsIndoor = false;
@@ -157,6 +175,10 @@ public class GameEvents {
 			} else {
 				Player.gettingDamage = false;
 			}
+		}
+		
+		if(Player.attackMonster == true) {
+			
 		}
 
 		if (Player.gettingDamage == false && playerHealth < 10) { // MEDIC
