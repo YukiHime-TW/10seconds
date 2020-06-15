@@ -70,7 +70,7 @@ public abstract class Mob extends Entity {
 		return false;
 	}
 
-	/*protected boolean isMonster(int xa, int ya, int x, int y) {
+	protected boolean isMonster(int xa, int ya, int x, int y) {
 		if (level == null) {
 			return false;
 		}
@@ -80,6 +80,6 @@ public abstract class Mob extends Entity {
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 }
