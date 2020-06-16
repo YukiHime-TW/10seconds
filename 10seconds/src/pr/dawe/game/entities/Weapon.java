@@ -12,8 +12,12 @@ public class Weapon extends Mob {
 	public static boolean moving;
 	public static boolean isTakeOut = false;
 
-	public Weapon(Level level, int x, int y,String name) {
-		super(level, name, x, y, 0, 1, 1);
+	public Weapon(Level level, int x, int y, String name, int attack) {
+		super(level, name, x, y, 0, 1, setforce(attack));
+	}
+
+	public static int setforce(int attack) {
+		return Player.force + attack;
 	}
 
 	public void tick() {
@@ -100,7 +104,5 @@ public class Weapon extends Mob {
 		}
 		return false;
 	}
-	
-	
 
 }
