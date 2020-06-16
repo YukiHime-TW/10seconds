@@ -107,12 +107,12 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(2).png")); // MAP; PLAYER; SHEEP
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(3).png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
 		//startLevel1(450, 450);
-		startLevel2(390, 390);
-		//startLevel1(450, 450);
-		//startLevel1(450, 450);
+		//startLevel2(510, 330);
+		startLevel3(450, 450);
+		//startLevel4(450, 450);
 		addEntities();
 
 	}
@@ -136,7 +136,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_2.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 350, 240, 250), "Goblin", 1, 4, 2);
+		monster = new NPC(level, 410, 718, Colours.get(-1, 20, 240, 250), "Goblin", 1, 4, 2);
 		Time = new StageTimer(frame, 30);
 		// music.play();
 		// music.setVolume(Volume.volume);
