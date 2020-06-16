@@ -149,13 +149,6 @@ public class Level {
 		return Tile.tiles[tiles[x + y * width]];
 	}
 
-	public boolean getMonster(int x, int y) {
-		if (0 > x || x >= width || 0 > y || y >= height) {
-			return false;
-		}
-		return true;
-	}
-
 	public void addPickableItems(List<PickableItem> pickableItems) {
 		this.entities.addAll(pickableItems);
 	}
