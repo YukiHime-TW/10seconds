@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import pr.dawe.game.GameEvents;
 import pr.dawe.game.gfx.Colours;
 import pr.dawe.game.gfx.Screen;
 import pr.dawe.game.level.Level;
@@ -18,7 +19,7 @@ public class NPC extends Mob {
 	private int tickCount;
 	Random generator = new Random();
 	private int move;
-	public Dimension d = new Dimension(8, 16);
+	public Dimension d = new Dimension(12, 16);
 	public Point monLeft;
 	public Rectangle touchPlayer;
 
@@ -131,5 +132,10 @@ public class NPC extends Mob {
 
 	public boolean getIsMon() {
 		return isMon;
+	}
+
+
+	public void monAttack(Player player) {
+		GameEvents.setPlayerHealth(GameEvents.getPlayerHealth() - force);
 	}
 }
