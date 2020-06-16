@@ -190,9 +190,9 @@ public class GameEvents {
 		}
 
 		if (player.touchMon.intersects(enemy.touchPlayer)) {
-			System.out.printf("Touched!\n");
+			//System.out.printf("Touched!\n");
 		}else {
-			System.out.printf("NOT Touched!\n");
+			//System.out.printf("NOT Touched!\n");
 		}
 
 		if (Player.attackMonster == true) {
