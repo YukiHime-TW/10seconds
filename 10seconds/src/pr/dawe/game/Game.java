@@ -118,7 +118,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_1.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 600, 500, Colours.get(-1, 19, 254, 23), "Slime",1 ,3 1);
+		monster = new NPC(level, 600, 500, Colours.get(-1, 19, 254, 23), "Slime", 1, 3, 1);
 		Time = new StageTimer(frame, 10);
 		// music.play();
 		// music.setVolume(Volume.volume);
@@ -133,7 +133,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_2.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 350, 240, 250), "Goblin");
+		monster = new NPC(level, 365, 430, Colours.get(-1, 350, 240, 250), "Goblin", 1, 4, 2);
 		Time = new StageTimer(frame, 30);
 		// music.play();
 		// music.setVolume(Volume.volume);
@@ -148,7 +148,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_3.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 500, 536, 350), "Oku");
+		monster = new NPC(level, 365, 430, Colours.get(-1, 500, 536, 350), "Oku", 1, 4, 4);
 		Time = new StageTimer(frame, 45);
 		// music.play();
 		// music.setVolume(Volume.volume);
@@ -163,7 +163,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_4.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 19, 545, 500), "Aerodactyl");
+		monster = new NPC(level, 365, 430, Colours.get(-1, 19, 545, 500), "Aerodactyl", 1, 4, 5);
 		Time = new StageTimer(frame, 45);
 		// music.play();
 		// music.setVolume(Volume.volume);
