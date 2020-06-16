@@ -97,15 +97,6 @@ public class GameEvents {
 
 		}
 
-		/*if (input.shoot.isPressed()) { // Take out WEAPON
-			if (Player.triggeredWEAPON) {
-				System.out.printf("Weapon Taken Out\n");
-				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
-				level.addWeaponEntity(Game.FireBall); // level.removeUselessWeapon();
-				Player.triggeredWEAPON = false;
-			}
-		}*/
-
 		if (input.weaponDes.isPressed()) { // Put away WEAPON
 			if (!Player.triggeredWEAPON) {
 				System.out.printf("Weapon Put Away\n");
