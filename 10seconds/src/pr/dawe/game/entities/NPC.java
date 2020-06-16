@@ -1,5 +1,8 @@
 package pr.dawe.game.entities;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Random;
 
 import pr.dawe.game.gfx.Colours;
@@ -15,11 +18,17 @@ public class NPC extends Mob {
 	private int tickCount;
 	Random generator = new Random();
 	private int move;
+	public Dimension d = new Dimension(8, 16);
+	public Point monLeft;
+	public Rectangle touchPlayer;
 
-	public NPC(Level level, int x, int y, int colour, String name) {
-		super(level, name, x, y, 1, 3, 1);
+	public NPC(Level level, int x, int y, int colour, String name, int speed , int hp ,int attack) {
+		super(level, name, x, y, speed, hp, attack);
 		this.colour = colour;
+		monLeft = new Point(x - 18, y - 18);
+		touchPlayer = new Rectangle(monLeft, d);
 	}
+	
 
 	public void tick() {
 		int xa = 0;
@@ -44,6 +53,8 @@ public class NPC extends Mob {
 
 			if (xa != 0 || ya != 0) {
 				move(xa, ya);
+				monLeft.setLocation(x - 18, y - 18);
+				touchPlayer.setLocation(monLeft);
 				isMoving = true;
 			} else {
 				isMoving = false;
