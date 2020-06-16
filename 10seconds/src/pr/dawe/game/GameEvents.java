@@ -93,7 +93,7 @@ public class GameEvents {
 	}
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level,
-			NPC enemy) {
+			NPC enemy, Game game) {
 
 		boolean firstTrigger = false;
 
@@ -141,18 +141,13 @@ public class GameEvents {
 
 		if (level.monEntities.size() == 0) { // If all the monster are dead
 			if (nowLevel == 1) {
-				System.out.printf("%d\n", nowLevel);
 				nowLevel++;
-				Game.startLevel2(510, 330);
 			} else if (nowLevel == 2) {
-				System.out.printf("%d\n", nowLevel);
 				nowLevel++;
-				Game.startLevel3(675, 335);
 			} else if (nowLevel == 3) {
-				System.out.printf("%d\n", nowLevel);
 				nowLevel++;
-				Game.startLevel4(725, 300);
 			}
+			game.init();
 		}
 
 		if (overItem == true) { // PICK UP ITEMS
