@@ -117,7 +117,7 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel1(int x, int y) {
 		String levelPath = "/levels/level_1.png";
 		level = new Level(levelPath);
-		player = new Player(level, x, y, input);
+		player = new Player(level, x, y, input, 3);
 		monster = new NPC(level, 600, 500, Colours.get(-1, 19, 254, 23), "Slime", 1, 3, 1);
 		Time = new StageTimer(frame, 10);
 		// music.play();
@@ -132,7 +132,7 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel2(int x, int y) {
 		String levelPath = "/levels/level_2.png";
 		level = new Level(levelPath);
-		player = new Player(level, x, y, input);
+		player = new Player(level, x, y, input, 5);
 		monster = new NPC(level, 365, 430, Colours.get(-1, 350, 240, 250), "Goblin", 1, 4, 2);
 		Time = new StageTimer(frame, 30);
 		// music.play();
@@ -147,13 +147,13 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel3(int x, int y) {
 		String levelPath = "/levels/level_3.png";
 		level = new Level(levelPath);
-		player = new Player(level, x, y, input);
+		player = new Player(level, x, y, input, 7);
 		monster = new NPC(level, 365, 430, Colours.get(-1, 500, 536, 350), "Oku", 1, 4, 4);
 		Time = new StageTimer(frame, 45);
 		// music.play();
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
-		level.addEntity(monster);
+		level.addMonEntity(monster);
 		gameEvents = new GameEvents(7);
 		Time.TimeGame();
 		// ADD ENTITIES
@@ -162,13 +162,13 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel4(int x, int y) {
 		String levelPath = "/levels/level_4.png";
 		level = new Level(levelPath);
-		player = new Player(level, x, y, input);
+		player = new Player(level, x, y, input, 10);
 		monster = new NPC(level, 365, 430, Colours.get(-1, 19, 545, 500), "Aerodactyl", 1, 4, 5);
 		Time = new StageTimer(frame, 45);
 		// music.play();
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
-		level.addEntity(monster);
+		level.addMonEntity(monster);
 		gameEvents = new GameEvents(10);
 		Time.TimeGame();
 		// ADD ENTITIES
@@ -191,7 +191,7 @@ public class Game extends Canvas implements Runnable {
 
 	public static void startIndoorLevel(String levelPath, int x, int y) {
 		level = new Level(levelPath);
-		Player player = new Player(level, x, y, input);
+		Player player = new Player(level, x, y, input, 3);
 		level.addEntity(player);
 	}
 
