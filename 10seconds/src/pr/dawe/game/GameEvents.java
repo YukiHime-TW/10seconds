@@ -120,13 +120,13 @@ public class GameEvents {
 		/*if (level.monEntities.size() == 0) { // If all the monster are dead
 			if (nowLevel == 1) {
 				nowLevel++;
-				Game.startLevel2(505, 475);
+				Game.startLevel2(510, 330);
 			} else if (nowLevel == 2) {
 				nowLevel++;
-				Game.startLevel3(505, 475);
+				Game.startLevel3(675, 335);
 			} else if (nowLevel == 3) {
 				nowLevel++;
-				Game.startLevel4(505, 475);
+				Game.startLevel4(725, 300);
 			}
 		}*/
 
