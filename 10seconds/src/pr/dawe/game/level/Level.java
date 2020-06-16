@@ -163,17 +163,21 @@ public class Level {
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
 	}
+	
+	public void addMonEntity(Entity entity) {
+		monEntities.add(entity);
+	}
 
 	public void addWeaponEntity(Entity entity) {
 		this.weapon.add(entity);
 	}
 
-	public void addNPC(List<NPC> npcs) {
-		this.entities.addAll(npcs);
-	}
-
 	public void removeEntity(Entity entity) {
 		this.entities.remove(entity);
+	}
+	
+	public void removeMonEntity(NPC entity) {
+		monEntities.remove(entity);
 	}
 
 	public void removeWeaponEntity() {
