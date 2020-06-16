@@ -146,6 +146,8 @@ public class GameEvents {
 				nowLevel++;
 			} else if (nowLevel == 3) {
 				nowLevel++;
+			} else if (nowLevel == 4) {
+				nowLevel = 1;
 			}
 			game.init();
 		}
@@ -218,7 +220,7 @@ public class GameEvents {
 			}
 		}
 
-		if (/* !StageTimer.run || */ playerHealth < 500) { // Time up or Dead
+		if (!StageTimer.run || playerHealth < 500) { // Time up or Dead
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 			Timer timergame = new Timer();
