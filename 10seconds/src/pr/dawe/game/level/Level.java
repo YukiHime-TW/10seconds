@@ -24,7 +24,7 @@ public class Level {
 	public static int height;
 	public List<Entity> entities = new ArrayList<Entity>();
 	public List<Entity> weapon = new ArrayList<Entity>();
-	public List<Entity> monEntities = new ArrayList<Entity>();
+	public static List<Entity> monEntities = new ArrayList<Entity>();
 	private String imagePath;
 	private BufferedImage image;
 	public boolean getTileId;
@@ -176,7 +176,7 @@ public class Level {
 		this.entities.remove(entity);
 	}
 	
-	public void removeMonEntity(NPC entity) {
+	public static void removeMonEntity(NPC entity) {
 		monEntities.remove(entity);
 	}
 
