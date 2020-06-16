@@ -113,17 +113,17 @@ public class Game extends Canvas implements Runnable {
 			startLevel1(450, 450);
 			addEntities();
 		} else if (GameEvents.nowLevel == 2) {
-			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(2).png")); // MAP; PLAYER; SHEEP
+			screen.setSheet(new SpriteSheet("/sprite_sheet(2).png")); // MAP; PLAYER; SHEEP
 			input = new InputHandler(this);
 			startLevel2(510, 330);
 			addEntities();
 		} else if (GameEvents.nowLevel == 3) {
-			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(3).png")); // MAP; PLAYER; SHEEP
+			screen.setSheet(new SpriteSheet("/sprite_sheet(3).png")); // MAP; PLAYER; SHEEP
 			input = new InputHandler(this);
 			startLevel3(675, 335);
 			addEntities();
 		} else if (GameEvents.nowLevel == 4) {
-			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(4).png")); // MAP; PLAYER; SHEEP
+			screen.setSheet(new SpriteSheet("/sprite_sheet(4).png")); // MAP; PLAYER; SHEEP
 			input = new InputHandler(this);
 			startLevel4(725, 300);
 			addEntities();
@@ -313,7 +313,7 @@ public class Game extends Canvas implements Runnable {
 		// Player.checkBullet();
 
 		gameEvents.renderInterface(screen, xOffset, yOffset);
-		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level, monster);
+		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level, monster,this);
 
 		for (int y = 0; y < screen.height; y++) {
 			for (int x = 0; x < screen.width; x++) {
