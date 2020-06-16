@@ -1,4 +1,4 @@
-//¶i¤JÂI
+//ï¿½iï¿½Jï¿½I
 package pr.dawe.game.gfx;
 
 import java.awt.*;
@@ -148,7 +148,7 @@ public class Menu extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new Menu("®É¶¡«iªÌ:Take a breath");
+		new Menu("æ™‚é–“å‹‡è€…:Take a breath");
 	}
 
 }
