@@ -107,9 +107,12 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png")); // MAP; PLAYER; SHEEP
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(1).png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
-		startLevel1(390, 390);
+		startLevel1(450, 450);
+		//startLevel2(510, 330);
+		//startLevel3(675, 335);
+		//startLevel4(725, 300);
 		addEntities();
 
 	}
@@ -118,7 +121,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_1.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 600, 500, Colours.get(-1, 19, 254, 23), "Slime", 1, 3, 1);
+		monster = new NPC(level, 385, 395, Colours.get(-1, 19, 254, 23), "Slime", 1, 3, 1);
 		Time = new StageTimer(frame, 10);
 		// music.play();
 		// music.setVolume(Volume.volume);
@@ -136,7 +139,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_2.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 350, 240, 250), "Goblin", 1, 4, 2);
+		monster = new NPC(level, 410, 718, Colours.get(-1, 20, 240, 250), "Goblin", 1, 4, 2);
 		Time = new StageTimer(frame, 30);
 		// music.play();
 		// music.setVolume(Volume.volume);
@@ -154,7 +157,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_3.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 500, 536, 350), "Oku", 1, 4, 4);
+		monster = new NPC(level, 700, 650, Colours.get(-1, 500, 536, 350), "Oku", 1, 4, 4);
 		Time = new StageTimer(frame, 45);
 		// music.play();
 		// music.setVolume(Volume.volume);
@@ -172,7 +175,7 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_4.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 365, 430, Colours.get(-1, 19, 545, 500), "Aerodactyl", 1, 4, 5);
+		monster = new NPC(level, 483, 622, Colours.get(-1, 19, 545, 500), "Aerodactyl", 1, 4, 5);
 		Time = new StageTimer(frame, 45);
 		// music.play();
 		// music.setVolume(Volume.volume);
