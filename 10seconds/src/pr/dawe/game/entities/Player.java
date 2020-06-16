@@ -1,5 +1,9 @@
 package pr.dawe.game.entities;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+
 import pr.dawe.game.Game;
 import pr.dawe.game.GameEvents;
 import pr.dawe.game.InputHandler;
@@ -24,12 +28,17 @@ public class Player extends Mob {
 	public static boolean triggeredKEY = false;
 	public static boolean attackMonster = false;
 	public static boolean wardrobe = false;
+	public Dimension d = new Dimension(8, 16);
+	public Point playerLeft;
+	public Rectangle touchMon;
 	public static int xPos;
 	public static int yPos;
 
 	public Player(Level level, int x, int y, InputHandler input) {
 		super(level, "Player", x, y, 2, 5, 2);
 		this.input = input;
+		playerLeft = new Point(x - 18, y - 18);
+		touchMon = new Rectangle(playerLeft, d);
 	}
 
 	public void tick() {
@@ -55,6 +64,8 @@ public class Player extends Mob {
 
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
+			playerLeft.setLocation(x - 18, y - 18);
+			touchMon.setLocation(playerLeft);
 			isMoving = true;
 		} else {
 			isMoving = false;
@@ -128,33 +139,6 @@ public class Player extends Mob {
 		}
 		tickCount++;
 	}
-	/*public boolean isMob(int xa, int ya) {
-		int xMin = 0;
-		int xMax = 7;
-		int yMin = 3;
-		int yMax = 7;
-		for (int x = xMin; x < xMax; x++) {
-			if (isMonster(xa, ya, x, yMin)) {
-				return true;
-			}
-		}
-		for (int x = xMin; x < xMax; x++) {
-			if (isMonster(xa, ya, x, yMax)) {
-				return true;
-			}
-		}
-		for (int y = yMin; y < yMax; y++) {
-			if (isMonster(xa, ya, xMin, y)) {
-				return true;
-			}
-		}
-		for (int y = yMin; y < yMax; y++) {
-			if (isMonster(xa, ya, xMax, y)) {
-				return true;
-			}
-		}
-		return false;
-	}*/
 
 	public void render(Screen screen) {
 		int xTile = 0;

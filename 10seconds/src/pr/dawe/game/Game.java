@@ -118,13 +118,13 @@ public class Game extends Canvas implements Runnable {
 		String levelPath = "/levels/level_1.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 600, 500, Colours.get(-1, 19, 254, 23), "Slime");
+		monster = new NPC(level, 600, 500, Colours.get(-1, 19, 254, 23), "Slime",1 ,3 1);
 		Time = new StageTimer(frame, 10);
 		// music.play();
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
-		level.addEntity(monster);
-		gameEvents = new GameEvents();
+		level.addMonEntity(monster);
+		gameEvents = new GameEvents(3);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
@@ -138,8 +138,8 @@ public class Game extends Canvas implements Runnable {
 		// music.play();
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
-		level.addEntity(monster);
-		gameEvents = new GameEvents();
+		level.addMonEntity(monster);
+		gameEvents = new GameEvents(5);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
@@ -154,7 +154,7 @@ public class Game extends Canvas implements Runnable {
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
-		gameEvents = new GameEvents();
+		gameEvents = new GameEvents(7);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
@@ -169,7 +169,7 @@ public class Game extends Canvas implements Runnable {
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
-		gameEvents = new GameEvents();
+		gameEvents = new GameEvents(10);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
