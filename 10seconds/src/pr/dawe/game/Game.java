@@ -107,8 +107,10 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(1).png"));
+
 		if (GameEvents.nowLevel == 1) {
-			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(1).png")); // MAP; PLAYER; SHEEP
+			screen.setSheet(new SpriteSheet("/sprite_sheet(1).png")); // MAP; PLAYER; SHEEP
 			input = new InputHandler(this);
 			startLevel1(450, 450);
 			addEntities();
@@ -313,7 +315,7 @@ public class Game extends Canvas implements Runnable {
 		// Player.checkBullet();
 
 		gameEvents.renderInterface(screen, xOffset, yOffset);
-		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level, monster,this);
+		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level, monster, this);
 
 		for (int y = 0; y < screen.height; y++) {
 			for (int x = 0; x < screen.width; x++) {
