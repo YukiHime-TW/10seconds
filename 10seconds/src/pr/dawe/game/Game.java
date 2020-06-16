@@ -107,13 +107,31 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(1).png")); // MAP; PLAYER; SHEEP
-		input = new InputHandler(this);
-		startLevel1(450, 450);
-		//startLevel2(510, 330);
-		//startLevel3(675, 335);
-		//startLevel4(725, 300);
-		addEntities();
+		if (GameEvents.nowLevel == 1) {
+			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(1).png")); // MAP; PLAYER; SHEEP
+			input = new InputHandler(this);
+			startLevel1(450, 450);
+			addEntities();
+		} else if (GameEvents.nowLevel == 2) {
+			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(2).png")); // MAP; PLAYER; SHEEP
+			input = new InputHandler(this);
+			startLevel2(510, 330);
+			addEntities();
+		} else if (GameEvents.nowLevel == 3) {
+			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(3).png")); // MAP; PLAYER; SHEEP
+			input = new InputHandler(this);
+			startLevel3(675, 335);
+			addEntities();
+		} else if (GameEvents.nowLevel == 4) {
+			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(4).png")); // MAP; PLAYER; SHEEP
+			input = new InputHandler(this);
+			startLevel4(725, 300);
+			addEntities();
+		}
+
+		// startLevel2(510, 330);
+		// startLevel3(675, 335);
+		// startLevel4(725, 300);
 
 	}
 
@@ -127,13 +145,13 @@ public class Game extends Canvas implements Runnable {
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
-		gameEvents = new GameEvents(3);
+		gameEvents = new GameEvents(3000);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
 
 	public static void startLevel2(int x, int y) {
-		if(Time.run) {
+		if (Time.run) {
 			Time.stop();
 		}
 		String levelPath = "/levels/level_2.png";
@@ -145,13 +163,13 @@ public class Game extends Canvas implements Runnable {
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
-		gameEvents = new GameEvents(5);
+		gameEvents = new GameEvents(5000);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
 
 	public static void startLevel3(int x, int y) {
-		if(Time.run) {
+		if (Time.run) {
 			Time.stop();
 		}
 		String levelPath = "/levels/level_3.png";
@@ -163,13 +181,13 @@ public class Game extends Canvas implements Runnable {
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
-		gameEvents = new GameEvents(7);
+		gameEvents = new GameEvents(7000);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
 
 	public static void startLevel4(int x, int y) {
-		if(Time.run) {
+		if (Time.run) {
 			Time.stop();
 		}
 		String levelPath = "/levels/level_4.png";
@@ -181,7 +199,7 @@ public class Game extends Canvas implements Runnable {
 		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
-		gameEvents = new GameEvents(10);
+		gameEvents = new GameEvents(10000);
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
