@@ -128,7 +128,7 @@ public class Player extends Mob {
 		}
 		tickCount++;
 	}
-	public boolean isMob(int xa, int ya) {
+	/*public boolean isMob(int xa, int ya) {
 		int xMin = 0;
 		int xMax = 7;
 		int yMin = 3;
@@ -154,7 +154,7 @@ public class Player extends Mob {
 			}
 		}
 		return false;
-	}
+	}*/
 
 	public void render(Screen screen) {
 		int xTile = 0;
