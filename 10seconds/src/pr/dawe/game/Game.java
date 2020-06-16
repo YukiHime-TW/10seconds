@@ -117,7 +117,7 @@ public class Game extends Canvas implements Runnable {
 	public static void startLevel1(String levelPath, int x, int y) {
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Slime");
+		monster = new NPC(level, 500, 500,Colours.get(-1, 19, 254, 23),"Slime");
 		Time = new StageTimer(frame,10);
 		//music.play();
 		//music.setVolume(Volume.volume);
