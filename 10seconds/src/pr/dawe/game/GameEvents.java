@@ -19,7 +19,7 @@ public class GameEvents {
 	static Random generator = new Random();
 	static long lastTime;
 	static boolean playerIsIndoor = false;
-	private int nowLevel = 1;
+	public static int nowLevel = 1;
 	public static boolean overItem = false;
 	public static boolean overCoin = false;
 
@@ -47,12 +47,15 @@ public class GameEvents {
 	}
 
 	public static void setPlayerHealth(int health) {
+		if (health < 0) {
+			health = 0;
+		}
 		playerHealth = health;
 	}
 
 	public void renderInterface(Screen screen, int x, int y) {
 		if (!playerIsIndoor) {
-			switch (playerHealth) {// HEALTH
+			switch (playerHealth / 1000) {// HEALTH
 			case 10:
 				Font.render("cccccccccc", screen, x + 1, y, Colours.get(-1, 555, -1, 400), 1);
 				break;
@@ -102,12 +105,10 @@ public class GameEvents {
 			Player.triggeredWEAPON = false;
 			// }
 			if (player.touchMon.intersects(enemy.touchPlayer)) {
-				if (player.touchMon.intersects(enemy.touchPlayer)) {
-					System.out.print("Player Attack!\n");
-					Game.FireBall.playerAttack(enemy);
-					System.out.print("Monster Attack!\n");
-					enemy.monAttack(player);
-				}
+				System.out.print("Player Attack!\n");
+				Game.FireBall.playerAttack(enemy);
+				System.out.print("Monster Attack!\n");
+				enemy.monAttack(player);
 
 			}
 		}
@@ -118,10 +119,9 @@ public class GameEvents {
 			Player.triggeredWEAPON = true;
 			// }
 			if (enemy.touchPlayer.intersects(player.touchMon)) {
-				if (enemy.touchPlayer.intersects(player.touchMon)) {
-					System.out.print("Monster Attack!\n");
-					enemy.monAttack(player);
-				}
+				System.out.print("Monster Attack!\n");
+				enemy.monAttack(player);
+
 			}
 		}
 
@@ -139,18 +139,21 @@ public class GameEvents {
 		 * level.removeWeaponEntity(); Player.triggeredWEAPON = true; } }
 		 */
 
-		/*if (level.monEntities.size() == 0) { // If all the monster are dead
+		if (level.monEntities.size() == 0) { // If all the monster are dead
 			if (nowLevel == 1) {
+				System.out.printf("%d\n", nowLevel);
 				nowLevel++;
 				Game.startLevel2(510, 330);
 			} else if (nowLevel == 2) {
+				System.out.printf("%d\n", nowLevel);
 				nowLevel++;
 				Game.startLevel3(675, 335);
 			} else if (nowLevel == 3) {
+				System.out.printf("%d\n", nowLevel);
 				nowLevel++;
 				Game.startLevel4(725, 300);
 			}
-		}*/
+		}
 
 		if (overItem == true) { // PICK UP ITEMS
 			level.removeEntity(PickableItem.pickUp);
@@ -205,8 +208,8 @@ public class GameEvents {
 			Player.gettingDamage = true;
 			if (System.currentTimeMillis() >= lastTime) {
 				lastTime = System.currentTimeMillis() + 500;
-				playerHealth--;
-				player.hp--;
+				playerHealth -= 500;
+				player.hp -= 500;
 			} else {
 				Player.gettingDamage = false;
 			}
@@ -215,12 +218,12 @@ public class GameEvents {
 		if (Player.gettingDamage == false && playerHealth < playerMaxHealth) { // MEDIC
 			if (System.currentTimeMillis() >= lastTime) {
 				lastTime = System.currentTimeMillis() + 2000;
-				playerHealth++;
-				player.hp++;
+				playerHealth += 500;
+				player.hp += 500;
 			}
 		}
 
-		if (/* !StageTimer.run || */ playerHealth == 0) { // Time up or Dead
+		if (/* !StageTimer.run || */ playerHealth < 500) { // Time up or Dead
 			Game.level = new Level("/levels/you_are_dead.png");
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 			Timer timergame = new Timer();
@@ -233,29 +236,6 @@ public class GameEvents {
 			};
 			timergame.schedule(gametest, 2000);
 		}
-
-	}
-
-	class Damage extends Thread {
-		public int midTime = 500;
-
-		@Override
-		public void run() {
-			Timer damageSlow = new Timer();
-
-			damageSlow.schedule(gametest, 1000);
-		}
-
-		public TimerTask gametest = new TimerTask() {
-			@Override
-			public void run() {
-				if (midTime > 0) {
-					midTime--;
-					System.out.printf("DAMAGE = %d\n", midTime + 1);
-				}
-			}
-
-		};
 
 	}
 
