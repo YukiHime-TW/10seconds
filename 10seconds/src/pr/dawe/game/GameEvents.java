@@ -117,7 +117,7 @@ public class GameEvents {
 		 * level.removeWeaponEntity(); Player.triggeredWEAPON = true; } }
 		 */
 
-		if (level.monEntities.size() == 0) { // If all the monster are dead
+		/*if (level.monEntities.size() == 0) { // If all the monster are dead
 			if (nowLevel == 1) {
 				nowLevel++;
 				Game.startLevel2(505, 475);
@@ -128,7 +128,7 @@ public class GameEvents {
 				nowLevel++;
 				Game.startLevel4(505, 475);
 			}
-		}
+		}*/
 
 		if (overItem == true) { // PICK UP ITEMS
 			level.removeEntity(PickableItem.pickUp);
