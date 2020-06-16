@@ -93,10 +93,10 @@ public class InputHandler implements KeyListener {
 		}
 
 		// Put Away Weapon
-		if (keyCode == KeyEvent.VK_CONTROL) {
+		/*if (keyCode == KeyEvent.VK_CONTROL) {
 			Player.triggeredWEAPON = false;
 			weaponDes.toggle(isPressed);
-		}
+		}*/
 
 		// COORDS
 		if (keyCode == KeyEvent.VK_K) {

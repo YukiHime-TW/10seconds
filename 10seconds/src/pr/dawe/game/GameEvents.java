@@ -83,12 +83,21 @@ public class GameEvents {
 		
 		boolean firstTrigger = false;
 
-		if (input.shoot.isPressed()) { // Take out WEAPON
-			if (Player.triggeredWEAPON && !firstTrigger) {
-				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword");
+		if (input.shoot.isPressed() || Player.triggeredWEAPON) { // Take out WEAPON
+			//if (Player.triggeredWEAPON) {
+				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword", 1);
 				level.addWeaponEntity(Game.FireBall);
+				level.removeUselessWeapon();
 				Player.triggeredWEAPON = false;
-			}
+			//}
+
+		}
+		
+		if (!input.shoot.isPressed()) { // Take out WEAPON
+			//if (Player.triggeredWEAPON) {
+				level.removeWeaponEntity();
+				Player.triggeredWEAPON = true;
+			//}
 
 		}
 
@@ -102,15 +111,15 @@ public class GameEvents {
 			}
 		}*/
 
-		if (input.weaponDes.isPressed()) { // Put away WEAPON
+		/*if (input.weaponDes.isPressed()) { // Put away WEAPON
 			if (!Player.triggeredWEAPON) {
 				System.out.printf("Weapon Put Away\n");
 				level.removeWeaponEntity();
 				Player.triggeredWEAPON = true;
 			}
-		}
+		}*/
 
-		if (level.entities.size() == 1) { // If all the monster are dead
+		if (level.monEntities.size() == 1) { // If all the monster are dead
 			if (nowLevel == 1) {
 				nowLevel++;
 				Game.startLevel2(505, 475);
@@ -186,7 +195,7 @@ public class GameEvents {
 		}
 
 		if (Player.attackMonster == true) {
-
+			Weapon.attack(Game.monster);
 		}
 
 		if (Player.gettingDamage == false && playerHealth < 10) { // MEDIC

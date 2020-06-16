@@ -16,16 +16,16 @@ public abstract class Mob extends Entity {
 	protected int movingDir = 1;
 	protected int scale = 1;
 	public int hp = 10;
-	public int force = 10;
+	public static int force = 10;
 
-	public Mob(Level level, String name, int x, int y, int speed, int hp, int force) {
+	public Mob(Level level, String name, int x, int y, int speed, int hp, int attack) {
 		super(level);
 		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.speed = speed;
 		this.hp = hp;
-		this.force = force;
+		force = attack;
 	}
 
 	public void move(int xa, int ya) {
@@ -52,10 +52,10 @@ public abstract class Mob extends Entity {
 
 	}
 
-	public void attack(Mob enemy) {
-		enemy.hp = enemy.hp - this.force;
+	public static void attack(Mob enemy) {
+		enemy.hp = enemy.hp - Player.force;
 	}
-
+	
 	public abstract boolean hasCollided(int xa, int ya);
 
 	protected boolean isSolidTile(int xa, int ya, int x, int y) {
