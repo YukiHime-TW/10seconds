@@ -93,10 +93,10 @@ public class InputHandler implements KeyListener {
 		}
 
 		// Put Away Weapon
-		/*if (keyCode == KeyEvent.VK_CONTROL) {
-			Player.triggeredWEAPON = false;
-			weaponDes.toggle(isPressed);
-		}*/
+		/*
+		 * if (keyCode == KeyEvent.VK_CONTROL) { Player.triggeredWEAPON = false;
+		 * weaponDes.toggle(isPressed); }
+		 */
 
 		// COORDS
 		if (keyCode == KeyEvent.VK_K) {
@@ -119,9 +119,9 @@ public class InputHandler implements KeyListener {
 			investigate.toggle(isPressed);
 		}
 		// MENU / ESCAPE
-		/*
-		 * if (keyCode == KeyEvent.VK_ESCAPE) { Menu.main(null); Game.closeGame(); }
-		 */
+		if (keyCode == KeyEvent.VK_ESCAPE) {
+			Game.closeGame();
+		}
 
 	}
 
