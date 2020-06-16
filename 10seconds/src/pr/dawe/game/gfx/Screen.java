@@ -28,6 +28,11 @@ public class Screen {
 
 	}
 
+	public void setSheet(SpriteSheet sheet) {
+		System.out.printf("%s\n",sheet.path);
+		this.sheet = sheet;
+	}
+
 	public void render(int xPos, int yPos, int tile, int colour, int mirrorDir, int scale) {
 		xPos -= xOffset;
 		yPos -= yOffset;
