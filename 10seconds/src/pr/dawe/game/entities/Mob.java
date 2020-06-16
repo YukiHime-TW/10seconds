@@ -70,13 +70,18 @@ public abstract class Mob extends Entity {
 		return false;
 	}
 
-	protected boolean isMonster(int xa, int ya, int x, int y) {
-		/*
-		 * if (level == null) { return false; } NPC lastNPC = level.getMonster((this.x +
-		 * x) >> 3, (this.y + y) >> 3); NPC newNPC = level.getMonster((this.x + x + xa)
-		 * >> 3, (this.y + y + ya) >> 3); if (!lastNPC.equals(newNPC) &&
-		 * newNPC.isSolid()) { return true; }
-		 */
+	/*protected boolean isMonster(int xa, int ya, int x, int y) {
+		if (level == null) {
+			return false; 
+		} 
+		
+		NPC lastNPC = level.getMonster((this.x +x) >> 3, (this.y + y) >> 3);
+		
+		NPC newNPC = level.getMonster((this.x + x + xa) >> 3, (this.y + y + ya) >> 3);
+		
+		if (!lastNPC.equals(newNPC) && newNPC.isSolid()) { 
+			return true; 
+		}
 		return false;
 	}*/
 
