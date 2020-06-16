@@ -35,7 +35,7 @@ public class Player extends Mob {
 	public static int yPos;
 
 	public Player(Level level, int x, int y, InputHandler input) {
-		super(level, "Player", x, y, 2, 5, 2);
+		super(level, "Player", x, y, 2, 5, 0);
 		this.input = input;
 		playerLeft = new Point(x - 18, y - 18);
 		touchMon = new Rectangle(playerLeft, d);
