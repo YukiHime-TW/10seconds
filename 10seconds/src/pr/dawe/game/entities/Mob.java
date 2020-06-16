@@ -83,6 +83,6 @@ public abstract class Mob extends Entity {
 			return true; 
 		}
 		return false;
-	}*/
+	}
 
 }
