@@ -78,6 +78,6 @@ public abstract class Mob extends Entity {
 		 * newNPC.isSolid()) { return true; }
 		 */
 		return false;
-	}
+	}*/
 
 }
