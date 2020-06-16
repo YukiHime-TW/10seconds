@@ -137,5 +137,6 @@ public class NPC extends Mob {
 
 	public void monAttack(Player player) {
 		GameEvents.setPlayerHealth(GameEvents.getPlayerHealth() - force);
+		System.out.printf("%d\n",GameEvents.getPlayerHealth());
 	}
 }
