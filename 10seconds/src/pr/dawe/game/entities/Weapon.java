@@ -20,6 +20,13 @@ public class Weapon extends Mob {
 		return Player.force + attack;
 	}
 
+	public void playerAttack(NPC enemy) {
+		enemy.hp = enemy.hp - Weapon.force;
+		if(enemy.hp<=0) {
+			Level.removeMonEntity(enemy);
+		}
+	}
+	
 	public void tick() {
 		int xa = 0;
 		int ya = 0;
