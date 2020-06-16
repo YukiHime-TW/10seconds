@@ -15,7 +15,7 @@ public abstract class Mob extends Entity {
 	protected boolean isMoving;
 	protected int movingDir = 1;
 	protected int scale = 1;
-	public int hp = 10;
+	public static int hp;
 	public static int force = 10;
 
 	public Mob(Level level, String name, int x, int y, int speed, int hp, int attack) {
@@ -50,10 +50,6 @@ public abstract class Mob extends Entity {
 			y += ya * speed;
 		}
 
-	}
-
-	public static void attack(Mob enemy) {
-		enemy.hp = enemy.hp - Player.force;
 	}
 	
 	public abstract boolean hasCollided(int xa, int ya);
