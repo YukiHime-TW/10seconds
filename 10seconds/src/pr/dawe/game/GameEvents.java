@@ -82,10 +82,10 @@ public class GameEvents {
 			NPC enemy) {
 		
 		boolean firstTrigger = false;
-
+		
 		if (input.shoot.isPressed() == true) { // Take out WEAPON
 			if (Player.triggeredWEAPON && !firstTrigger) {
-				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
+				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword");
 				level.addWeaponEntity(Game.FireBall);
 				Player.triggeredWEAPON = false;
 			} else {
