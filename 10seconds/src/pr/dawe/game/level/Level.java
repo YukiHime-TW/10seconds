@@ -174,8 +174,8 @@ public class Level {
 	}
 
 	public void removeUselessWeapon() {
-		while (weapon.size() != 1) {
-			weapon.remove(0);
+		while (this.weapon.size() != 2) {
+			this.weapon.remove(0);
 		}
 	}
 

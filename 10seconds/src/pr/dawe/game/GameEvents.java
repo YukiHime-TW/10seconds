@@ -83,16 +83,11 @@ public class GameEvents {
 		
 		boolean firstTrigger = false;
 
-		if (input.shoot.isPressed() == true) { // Take out WEAPON
+		if (input.shoot.isPressed()) { // Take out WEAPON
 			if (Player.triggeredWEAPON && !firstTrigger) {
-				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
+				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword");
 				level.addWeaponEntity(Game.FireBall);
 				Player.triggeredWEAPON = false;
-			} else {
-				level.removeEntity(Game.FireBall);
-				level.removeWeaponEntity();
-				Player.triggeredWEAPON = true;
-				firstTrigger = false;
 			}
 
 		}
@@ -100,8 +95,9 @@ public class GameEvents {
 		/*if (input.shoot.isPressed()) { // Take out WEAPON
 			if (Player.triggeredWEAPON) {
 				System.out.printf("Weapon Taken Out\n");
-				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
-				level.addWeaponEntity(Game.FireBall); // level.removeUselessWeapon();
+				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword");
+				level.addWeaponEntity(Game.FireBall);
+				level.removeUselessWeapon();
 				Player.triggeredWEAPON = false;
 			}
 		}*/
@@ -117,13 +113,13 @@ public class GameEvents {
 		if (level.entities.size() == 1) { // If all the monster are dead
 			if (nowLevel == 1) {
 				nowLevel++;
-				Game.startLevel2("/levels/level_" + nowLevel + ".png", 505, 475);
+				Game.startLevel2(505, 475);
 			} else if (nowLevel == 2) {
 				nowLevel++;
-				Game.startLevel3("/levels/level_" + nowLevel + ".png", 505, 475);
+				Game.startLevel3(505, 475);
 			} else if (nowLevel == 3) {
 				nowLevel++;
-				Game.startLevel4("/levels/level_" + nowLevel + ".png", 505, 475);
+				Game.startLevel4(505, 475);
 			}
 		}
 
@@ -167,11 +163,11 @@ public class GameEvents {
 			Font.render("LEAVE", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
 			if (input.enter.isPressed()) {
 				if (nowLevel == 1) {
-					Game.startLevel1("/levels/level_" + nowLevel + ".png", 505, 475);
+					Game.startLevel1(505, 475);
 				} else if (nowLevel == 2) {
-					Game.startLevel2("/levels/level_" + nowLevel + ".png", 505, 475);
+					Game.startLevel2(505, 475);
 				} else if (nowLevel == 3) {
-					Game.startLevel3("/levels/level_" + nowLevel + ".png", 505, 475);
+					Game.startLevel3(505, 475);
 				}
 
 				playerIsIndoor = false;

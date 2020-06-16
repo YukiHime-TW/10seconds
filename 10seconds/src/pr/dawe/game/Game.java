@@ -71,7 +71,7 @@ public class Game extends Canvas implements Runnable {
 	public static NPC monster;
 	public static Weapon FireBall;
 	public static StageTimer Time;
-	
+
 	private static Music music = new Music("/music/BGM_Fight.wav");
 
 	public List<PickableItem> pickableItems = new ArrayList<PickableItem>();
@@ -84,7 +84,7 @@ public class Game extends Canvas implements Runnable {
 		frame.setLayout(new BorderLayout());
 		frame.setUndecorated(true);
 		frame.add(this, BorderLayout.CENTER);
-		frame.getGraphicsConfiguration().getDevice().setFullScreenWindow(frame); 
+		frame.getGraphicsConfiguration().getDevice().setFullScreenWindow(frame);
 		frame.pack();
 
 		frame.setResizable(true);
@@ -92,7 +92,7 @@ public class Game extends Canvas implements Runnable {
 		frame.setVisible(true);
 
 	}
-	
+
 	public void init() {
 		int index = 0;
 		for (int r = 0; r < 6; r++) {
@@ -109,60 +109,64 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet.png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
-		startLevel1("/levels/level_1.png", 390, 390);
+		startLevel1(390, 390);
 		addEntities();
-		
+
 	}
 
-	public static void startLevel1(String levelPath, int x, int y) {
+	public static void startLevel1(int x, int y) {
+		String levelPath = "/levels/level_1.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 500, 500,Colours.get(-1, 19, 254, 23),"Slime");
-		Time = new StageTimer(frame,10);
-		//music.play();
-		//music.setVolume(Volume.volume);
+		monster = new NPC(level, 500, 500, Colours.get(-1, 19, 254, 23), "Slime");
+		Time = new StageTimer(frame, 10);
+		// music.play();
+		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
 		gameEvents = new GameEvents();
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
-	
-	public static void startLevel2(String levelPath, int x, int y) {
+
+	public static void startLevel2(int x, int y) {
+		String levelPath = "/levels/level_2.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Goblin");
-		Time = new StageTimer(frame,30);
-		//music.play();
-		//music.setVolume(Volume.volume);
+		monster = new NPC(level, 270, 270, Colours.get(-1, 19, 254, 23), "Goblin");
+		Time = new StageTimer(frame, 30);
+		// music.play();
+		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
 		gameEvents = new GameEvents();
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
-	
-	public static void startLevel3(String levelPath, int x, int y) {
+
+	public static void startLevel3(int x, int y) {
+		String levelPath = "/levels/level_3.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Oku");
-		Time = new StageTimer(frame,45);
-		//music.play();
-		//music.setVolume(Volume.volume);
+		monster = new NPC(level, 270, 270, Colours.get(-1, 19, 254, 23), "Oku");
+		Time = new StageTimer(frame, 45);
+		// music.play();
+		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
 		gameEvents = new GameEvents();
 		Time.TimeGame();
 		// ADD ENTITIES
 	}
-	
-	public static void startLevel4(String levelPath, int x, int y) {
+
+	public static void startLevel4(int x, int y) {
+		String levelPath = "/levels/level_4.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
-		monster = new NPC(level, 270, 270,Colours.get(-1, 19, 254, 23),"Aerodactyl");
-		Time = new StageTimer(frame,45);
-		//music.play();
-		//music.setVolume(Volume.volume);
+		monster = new NPC(level, 270, 270, Colours.get(-1, 19, 254, 23), "Aerodactyl");
+		Time = new StageTimer(frame, 45);
+		// music.play();
+		// music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addEntity(monster);
 		gameEvents = new GameEvents();
@@ -171,15 +175,16 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void addEntities() {
-		/*PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170, 222), 0, 9, 29, 400, 400);
-		PickableItem gun_mun = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 430);
-		PickableItem gun_mun2 = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 410);
-		PickableItem shotgun_mun = new PickableItem(level, "shotgun_mun", Colours.get(-1, 111, 300, 540), 0, 10, 29,
-				380, 450);
-		pickableItems.add(gun_mun);
-		pickableItems.add(gun_mun2);
-		pickableItems.add(gun);
-		pickableItems.add(shotgun_mun);*/
+		/*
+		 * PickableItem gun = new PickableItem(level, "Gun", Colours.get(-1, 111, 170,
+		 * 222), 0, 9, 29, 400, 400); PickableItem gun_mun = new PickableItem(level,
+		 * "gun_mun", Colours.get(-1, 111, 540, 321), 0, 8, 29, 380, 430); PickableItem
+		 * gun_mun2 = new PickableItem(level, "gun_mun", Colours.get(-1, 111, 540, 321),
+		 * 0, 8, 29, 380, 410); PickableItem shotgun_mun = new PickableItem(level,
+		 * "shotgun_mun", Colours.get(-1, 111, 300, 540), 0, 10, 29, 380, 450);
+		 * pickableItems.add(gun_mun); pickableItems.add(gun_mun2);
+		 * pickableItems.add(gun); pickableItems.add(shotgun_mun);
+		 */
 		level.addPickableItems(pickableItems);
 
 	}
@@ -242,7 +247,7 @@ public class Game extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - lastTimer >= 1000) {
 				lastTimer += 1000;
-				//System.out.println("" + ticks + " ticks, " + frames + " frames");
+				// System.out.println("" + ticks + " ticks, " + frames + " frames");
 				frames = 0;
 				ticks = 0;
 			}
@@ -275,10 +280,10 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		level.renderEntities(screen); // ENTITIES
-		//Player.checkBullet();
+		// Player.checkBullet();
 
 		gameEvents.renderInterface(screen, xOffset, yOffset);
-		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level,monster);
+		gameEvents.renderPlayerEvents(screen, xOffset, yOffset, input, player, level, monster);
 
 		for (int y = 0; y < screen.height; y++) {
 			for (int x = 0; x < screen.width; x++) {
@@ -296,13 +301,13 @@ public class Game extends Canvas implements Runnable {
 		bs.show();
 
 	}
-	
+
 	public static void closeGame() {
 		close();
 	}
 
 	public static void main(String[] args) {
-		 new Game().start();
+		new Game().start();
 	}
 
 }
