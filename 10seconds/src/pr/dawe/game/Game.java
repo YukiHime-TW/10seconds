@@ -107,12 +107,12 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(4).png")); // MAP; PLAYER; SHEEP
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet("/sprite_sheet(1).png")); // MAP; PLAYER; SHEEP
 		input = new InputHandler(this);
-		//startLevel1(450, 450);
+		startLevel1(450, 450);
 		//startLevel2(510, 330);
 		//startLevel3(675, 335);
-		  startLevel4(725, 300);
+		//startLevel4(725, 300);
 		addEntities();
 
 	}
