@@ -143,8 +143,8 @@ public class Game extends Canvas implements Runnable {
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 385, 395, Colours.get(-1, 19, 254, 23), "Slime", 1, 3, 1);
 		Time = new StageTimer(frame, 10);
-		// music.play();
-		// music.setVolume(Volume.volume);
+		music.play();
+		music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
 		gameEvents = new GameEvents(3000);
@@ -161,8 +161,8 @@ public class Game extends Canvas implements Runnable {
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 410, 718, Colours.get(-1, 20, 240, 250), "Goblin", 1, 4, 2);
 		Time = new StageTimer(frame, 30);
-		// music.play();
-		// music.setVolume(Volume.volume);
+		music.play();
+		music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
 		gameEvents = new GameEvents(5000);
@@ -179,8 +179,8 @@ public class Game extends Canvas implements Runnable {
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 700, 650, Colours.get(-1, 500, 536, 350), "Oku", 1, 4, 4);
 		Time = new StageTimer(frame, 45);
-		// music.play();
-		// music.setVolume(Volume.volume);
+		music.play();
+		music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
 		gameEvents = new GameEvents(7000);
@@ -197,8 +197,8 @@ public class Game extends Canvas implements Runnable {
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 483, 622, Colours.get(-1, 19, 545, 500), "Aerodactyl", 1, 4, 5);
 		Time = new StageTimer(frame, 45);
-		// music.play();
-		// music.setVolume(Volume.volume);
+		music.play();
+		music.setVolume(Volume.volume);
 		level.addEntity(player);
 		level.addMonEntity(monster);
 		gameEvents = new GameEvents(10000);
