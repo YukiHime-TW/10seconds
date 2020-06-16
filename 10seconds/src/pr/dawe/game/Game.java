@@ -133,7 +133,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public static void startLevel2(int x, int y) {
-		String levelPath = "/levels/level_3.png";
+		String levelPath = "/levels/level_2.png";
 		level = new Level(levelPath);
 		player = new Player(level, x, y, input);
 		monster = new NPC(level, 365, 430, Colours.get(-1, 350, 240, 250), "Goblin", 1, 4, 2);
