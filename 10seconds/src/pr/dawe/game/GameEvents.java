@@ -31,12 +31,14 @@ public class GameEvents {
 
 	Timer weaponTimer = new Timer();
 
-	private int playerHealth = 10;
+	private int playerHealth;
+	private int playerMaxHealth;
 	static int bullets = 0;
 	public static int shotbullet = 0;
 
-	public GameEvents() {
-
+	public GameEvents(int health) {
+		this.playerMaxHealth = health;
+		this.playerHealth = playerMaxHealth;
 	}
 
 	public void renderInterface(Screen screen, int x, int y) {
@@ -80,46 +82,42 @@ public class GameEvents {
 
 	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level,
 			NPC enemy) {
-		
+
 		boolean firstTrigger = false;
 
 		if (input.shoot.isPressed() || Player.triggeredWEAPON) { // Take out WEAPON
-			//if (Player.triggeredWEAPON) {
-				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword", 1);
-				level.addWeaponEntity(Game.FireBall);
-				level.removeUselessWeapon();
-				Player.triggeredWEAPON = false;
-			//}
+			// if (Player.triggeredWEAPON) {
+			Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword", 1);
+			level.addWeaponEntity(Game.FireBall);
+			level.removeUselessWeapon();
+			Player.triggeredWEAPON = false;
+			// }
 
 		}
-		
+
 		if (!input.shoot.isPressed()) { // Take out WEAPON
-			//if (Player.triggeredWEAPON) {
-				level.removeWeaponEntity();
-				Player.triggeredWEAPON = true;
-			//}
+			// if (Player.triggeredWEAPON) {
+			level.removeWeaponEntity();
+			Player.triggeredWEAPON = true;
+			// }
 
 		}
 
-		/*if (input.shoot.isPressed()) { // Take out WEAPON
-			if (Player.triggeredWEAPON) {
-				System.out.printf("Weapon Taken Out\n");
-				Game.FireBall = new Weapon(level, Screen.xOffset + 73, Screen.yOffset + 57, "Sword");
-				level.addWeaponEntity(Game.FireBall);
-				level.removeUselessWeapon();
-				Player.triggeredWEAPON = false;
-			}
-		}*/
+		/*
+		 * if (input.shoot.isPressed()) { // Take out WEAPON if (Player.triggeredWEAPON)
+		 * { System.out.printf("Weapon Taken Out\n"); Game.FireBall = new Weapon(level,
+		 * Screen.xOffset + 73, Screen.yOffset + 57, "Sword");
+		 * level.addWeaponEntity(Game.FireBall); level.removeUselessWeapon();
+		 * Player.triggeredWEAPON = false; } }
+		 */
 
-		/*if (input.weaponDes.isPressed()) { // Put away WEAPON
-			if (!Player.triggeredWEAPON) {
-				System.out.printf("Weapon Put Away\n");
-				level.removeWeaponEntity();
-				Player.triggeredWEAPON = true;
-			}
-		}*/
+		/*
+		 * if (input.weaponDes.isPressed()) { // Put away WEAPON if
+		 * (!Player.triggeredWEAPON) { System.out.printf("Weapon Put Away\n");
+		 * level.removeWeaponEntity(); Player.triggeredWEAPON = true; } }
+		 */
 
-		if (level.monEntities.size() == 1) { // If all the monster are dead
+		if (level.monEntities.size() == 0) { // If all the monster are dead
 			if (nowLevel == 1) {
 				nowLevel++;
 				Game.startLevel2(505, 475);
@@ -143,20 +141,17 @@ public class GameEvents {
 			bullets += 10;
 		}
 
-		if (Player.wardrobe == true) { // WARDROBE
-			int randomcolour1 = generator.nextInt(5) + 1;
-			int randomcolour2 = generator.nextInt(5) + 1;
-			int randomcolour3 = generator.nextInt(5) + 1;
-			level.removeEntity(Game.monster);
-
-			Font.render("b", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
-
-			if (input.investigate.isPressed()) {
-				level.removeEntity(Game.FireBall);
-			}
-			Player.colour = Colours.get(-1, 000, randomcolour1 * 100 + randomcolour2 * 10 + randomcolour3, 543);
-			// Player.wardrobe = false;
-		}
+		/*
+		 * if (Player.wardrobe == true) { // WARDROBE int randomcolour1 =
+		 * generator.nextInt(5) + 1; int randomcolour2 = generator.nextInt(5) + 1; int
+		 * randomcolour3 = generator.nextInt(5) + 1; level.removeEntity(Game.monster);
+		 * 
+		 * Font.render("b", screen, x + 72, y + 44, Colours.get(-1, 135, -1, 000), 1);
+		 * 
+		 * if (input.investigate.isPressed()) { level.removeEntity(Game.FireBall); }
+		 * Player.colour = Colours.get(-1, 000, randomcolour1 * 100 + randomcolour2 * 10
+		 * + randomcolour3, 543); // Player.wardrobe = false; }
+		 */
 
 		if (Player.triggeredDOOR == true) {
 			Font.render("ENTER", screen, x + 65, y + 37, Colours.get(-1, 135, -1, 000), 1);
@@ -194,11 +189,17 @@ public class GameEvents {
 			}
 		}
 
+		if (player.touchMon.intersects(enemy.touchPlayer)) {
+			System.out.printf("Touched!\n");
+		}else {
+			System.out.printf("NOT Touched!\n");
+		}
+
 		if (Player.attackMonster == true) {
 			Weapon.attack(Game.monster);
 		}
 
-		if (Player.gettingDamage == false && playerHealth < 10) { // MEDIC
+		if (Player.gettingDamage == false && playerHealth < playerMaxHealth) { // MEDIC
 			if (System.currentTimeMillis() >= lastTime) {
 				lastTime = System.currentTimeMillis() + 2000;
 				playerHealth++;
