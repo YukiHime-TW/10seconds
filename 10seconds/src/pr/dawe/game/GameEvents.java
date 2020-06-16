@@ -31,7 +31,7 @@ public class GameEvents {
 
 	Timer weaponTimer = new Timer();
 
-	private int playerHealth;
+	private static int playerHealth;
 	private int playerMaxHealth;
 	static int bullets = 0;
 	public static int shotbullet = 0;
@@ -39,6 +39,15 @@ public class GameEvents {
 	public GameEvents(int health) {
 		this.playerMaxHealth = health;
 		this.playerHealth = playerMaxHealth;
+		Player.hp = health;
+	}
+
+	public static int getPlayerHealth() {
+		return playerHealth;
+	}
+
+	public static void setPlayerHealth(int health) {
+		playerHealth = health;
 	}
 
 	public void renderInterface(Screen screen, int x, int y) {
@@ -92,15 +101,28 @@ public class GameEvents {
 			level.removeUselessWeapon();
 			Player.triggeredWEAPON = false;
 			// }
+			if (player.touchMon.intersects(enemy.touchPlayer)) {
+				if (player.touchMon.intersects(enemy.touchPlayer)) {
+					System.out.print("Player Attack!\n");
+					Game.FireBall.playerAttack(enemy);
+					System.out.print("Monster Attack!\n");
+					enemy.monAttack(player);
+				}
 
+			}
 		}
 
-		if (!input.shoot.isPressed()) { // Take out WEAPON
+		if (!input.shoot.isPressed()) { // Put Away WEAPON
 			// if (Player.triggeredWEAPON) {
 			level.removeWeaponEntity();
 			Player.triggeredWEAPON = true;
 			// }
-
+			if (enemy.touchPlayer.intersects(player.touchMon)) {
+				if (enemy.touchPlayer.intersects(player.touchMon)) {
+					System.out.print("Monster Attack!\n");
+					enemy.monAttack(player);
+				}
+			}
 		}
 
 		/*
@@ -184,25 +206,17 @@ public class GameEvents {
 			if (System.currentTimeMillis() >= lastTime) {
 				lastTime = System.currentTimeMillis() + 500;
 				playerHealth--;
+				player.hp--;
 			} else {
 				Player.gettingDamage = false;
 			}
-		}
-
-		if (player.touchMon.intersects(enemy.touchPlayer)) {
-			System.out.printf("Touched!\n");
-		}else {
-			System.out.printf("NOT Touched!\n");
-		}
-
-		if (Player.attackMonster == true) {
-			Weapon.attack(Game.monster);
 		}
 
 		if (Player.gettingDamage == false && playerHealth < playerMaxHealth) { // MEDIC
 			if (System.currentTimeMillis() >= lastTime) {
 				lastTime = System.currentTimeMillis() + 2000;
 				playerHealth++;
+				player.hp++;
 			}
 		}
 
@@ -219,6 +233,29 @@ public class GameEvents {
 			};
 			timergame.schedule(gametest, 2000);
 		}
+
+	}
+
+	class Damage extends Thread {
+		public int midTime = 500;
+
+		@Override
+		public void run() {
+			Timer damageSlow = new Timer();
+
+			damageSlow.schedule(gametest, 1000);
+		}
+
+		public TimerTask gametest = new TimerTask() {
+			@Override
+			public void run() {
+				if (midTime > 0) {
+					midTime--;
+					System.out.printf("DAMAGE = %d\n", midTime + 1);
+				}
+			}
+
+		};
 
 	}
 
