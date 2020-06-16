@@ -78,20 +78,33 @@ public class GameEvents {
 		}
 	}
 
-	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level,NPC enemy) {
+	public void renderPlayerEvents(Screen screen, int x, int y, InputHandler input, Player player, final Level level,
+			NPC enemy) {
+		
+		boolean firstTrigger = false;
 
-		int onlyWeapon = 0;
-
-		if (input.shoot.isPressed()) { // Take out WEAPON
-			if (Player.triggeredWEAPON) {
-				System.out.printf("Weapon Taken Out\n");
+		if (input.shoot.isPressed() == true) { // Take out WEAPON
+			if (Player.triggeredWEAPON && !firstTrigger) {
 				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
 				level.addWeaponEntity(Game.FireBall);
-				level.removeUselessWeapon();
 				Player.triggeredWEAPON = false;
+			} else {
+				level.removeEntity(Game.FireBall);
+				level.removeWeaponEntity();
+				Player.triggeredWEAPON = true;
+				firstTrigger = false;
 			}
 
 		}
+
+		/*if (input.shoot.isPressed()) { // Take out WEAPON
+			if (Player.triggeredWEAPON) {
+				System.out.printf("Weapon Taken Out\n");
+				Game.FireBall = new Weapon(level, Screen.xOffset + 75, Screen.yOffset + 55, "Sword");
+				level.addWeaponEntity(Game.FireBall); // level.removeUselessWeapon();
+				Player.triggeredWEAPON = false;
+			}
+		}*/
 
 		if (input.weaponDes.isPressed()) { // Put away WEAPON
 			if (!Player.triggeredWEAPON) {
@@ -99,17 +112,16 @@ public class GameEvents {
 				level.removeWeaponEntity();
 				Player.triggeredWEAPON = true;
 			}
-
 		}
 
 		if (level.entities.size() == 1) { // If all the monster are dead
 			if (nowLevel == 1) {
 				nowLevel++;
 				Game.startLevel2("/levels/level_" + nowLevel + ".png", 505, 475);
-			}else if(nowLevel == 2) {
+			} else if (nowLevel == 2) {
 				nowLevel++;
 				Game.startLevel3("/levels/level_" + nowLevel + ".png", 505, 475);
-			}else if(nowLevel == 3) {
+			} else if (nowLevel == 3) {
 				nowLevel++;
 				Game.startLevel4("/levels/level_" + nowLevel + ".png", 505, 475);
 			}
@@ -156,9 +168,9 @@ public class GameEvents {
 			if (input.enter.isPressed()) {
 				if (nowLevel == 1) {
 					Game.startLevel1("/levels/level_" + nowLevel + ".png", 505, 475);
-				}else if(nowLevel == 2) {
+				} else if (nowLevel == 2) {
 					Game.startLevel2("/levels/level_" + nowLevel + ".png", 505, 475);
-				}else if(nowLevel == 3) {
+				} else if (nowLevel == 3) {
 					Game.startLevel3("/levels/level_" + nowLevel + ".png", 505, 475);
 				}
 
@@ -176,9 +188,9 @@ public class GameEvents {
 				Player.gettingDamage = false;
 			}
 		}
-		
-		if(Player.attackMonster == true) {
-			
+
+		if (Player.attackMonster == true) {
+
 		}
 
 		if (Player.gettingDamage == false && playerHealth < 10) { // MEDIC
@@ -193,6 +205,7 @@ public class GameEvents {
 			Font.render("Y O U  A R E", screen, 28, 30, Colours.get(-1, 135, -1, 555), 2);
 			Timer timergame = new Timer();
 			TimerTask gametest = new TimerTask() {
+
 				@Override
 				public void run() {
 					System.exit(1);

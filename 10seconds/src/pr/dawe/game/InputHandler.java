@@ -1,4 +1,4 @@
-package pr.dawe.game;
+	package pr.dawe.game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -86,14 +86,14 @@ public class InputHandler implements KeyListener {
 		}
 
 		// Take out WEAPON
-		if (keyCode == KeyEvent.VK_SPACE) {
+		if (keyCode == KeyEvent.VK_SPACE&& !Player.triggeredWEAPON) {
 			Weapon.shootDir = InputHandler.lookDir;
 			Player.triggeredWEAPON = true;
 			shoot.toggle(isPressed);
 		}
 
 		// Put Away Weapon
-		if (keyCode == KeyEvent.VK_CONTROL) {
+		if (keyCode == KeyEvent.VK_CONTROL&& Player.triggeredWEAPON) {
 			Player.triggeredWEAPON = false;
 			weaponDes.toggle(isPressed);
 		}

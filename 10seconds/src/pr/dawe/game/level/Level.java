@@ -146,7 +146,7 @@ public class Level {
 		if (0 > x || x >= width || 0 > y || y >= height) {
 			return null;
 		}
-		return ;
+		return NPC;
 	}*/
 
 	public void addPickableItems(List<PickableItem> pickableItems) {
