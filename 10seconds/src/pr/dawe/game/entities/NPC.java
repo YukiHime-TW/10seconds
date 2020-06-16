@@ -10,12 +10,13 @@ public class NPC extends Mob {
 
 	private int colour = Colours.get(-1, 19, 254, 23);
 	private int scale = 1;
+	public boolean isMon = true;
 	protected boolean isSwimming = false;
 	private int tickCount;
 	Random generator = new Random();
 	private int move;
 
-	public NPC(Level level, int x, int y, int colour,String name) {
+	public NPC(Level level, int x, int y, int colour, String name) {
 		super(level, name, x, y, 1, 3, 1);
 		this.colour = colour;
 	}
@@ -115,5 +116,9 @@ public class NPC extends Mob {
 		}
 
 		return false;
+	}
+
+	public boolean getIsMon() {
+		return isMon;
 	}
 }
